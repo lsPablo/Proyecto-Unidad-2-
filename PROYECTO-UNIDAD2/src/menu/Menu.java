@@ -75,8 +75,8 @@ public class Menu {
                     String confirmaContrasenia = sc.nextLine();
 
                     while (!nuevaContrasenia.equals(confirmaContrasenia)) {
-                        System.out.println("La contraseña no es la misma, chavo.");
-                        System.out.println("Confirma la contraseña:");
+                        System.out.println("LA CONTRASEÑA NO ES LA MISMA, CHAVO..");
+                        System.out.println("CONFIRMA TU CONTRASEÑA:");
                         confirmaContrasenia = sc.nextLine();
                     }
 
@@ -95,7 +95,7 @@ public class Menu {
 
                     Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
                     cine.registrarCliente(cliente);
-                    System.out.println("Cuenta creada exitosamente.");
+                    System.out.println("CUENTA CREADA EXITOSAMENTE");
                     break;
 
                 case 3:
@@ -117,23 +117,51 @@ public class Menu {
     private void mostrarMenuCliente(Cliente cliente) {
         int opcion = 0;
         while (opcion != 3) {
-            System.out.println("Menú del Cliente");
+            System.out.println("MENÚ CLIENTE");
             // Lógica del menú del cliente
         }
     }
 
     private void mostrarMenuEmpleado(Empleado empleado) {
         int opcion = 0;
-        while (opcion != 3) {
-            System.out.println("Menú del Empleado");
-            // Lógica del menú del empleado
+        while (opcion != 5) {
+            System.out.println("MENÚ DE EMPLEADO");
+            System.out.println("1.-AGREGAR PELICULA");
+            System.out.println("2.-ELIMINAR PELICULA");
+            System.out.println("3.-AGREGAR FUNCIÓN");
+            System.out.println("4.-ELIMINAR FUNCIÓN");
+            System.out.println("5.-SALIR");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
+                    String nombrePelicula = sc.nextLine();
+                    System.out.println("INGRESA SU GENERO: ");
+                    String generoPelicula = sc.nextLine();
+                    System.out.println("INGRESA SU CLASIFICACIÓN: ");
+                    String clasificacionPelicula = sc.nextLine();
+                    System.out.println("");//me falta lo de la duracion pero lo iba a cambiar a que fuera de tipo time pero ya me dio sueño xd
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    break;
+
+            }
         }
     }
 
     private void mostrarMenuAdmin(Admin admin) {
         int opcion = 0;
         while (opcion != 3) {
-            System.out.println("Menú del Admin");
+            System.out.println("MENÚ DE ADMINISTRADOR");
         }
     }
 }
