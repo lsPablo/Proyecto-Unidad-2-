@@ -5,6 +5,8 @@ public class Main {
         Menu menu = new Menu();
         menu.login();
 
+        //Id Administrador: AD-01
+        //Contrasenia: 54321*
 
     }
 }

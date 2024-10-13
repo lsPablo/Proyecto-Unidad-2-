@@ -11,14 +11,10 @@ public class Cliente extends Usuario {
         super(id, nombre, apellido, direccion, telefono, fechaNacimiento, contrasenia, Rol.CLIENTE);
     }
 
-    public void mostrarDatos() {
-        System.out.println("ID: " + getId());
-        System.out.println("Nombre: " + getNombre());
-        System.out.println("Apellido: " + getApellido());
-        System.out.println("Direccion: " + getDireccion());
-        System.out.println("Telefono: " + getTelefono());
-        System.out.println("Fecha Nacimiento: " + getFechaNacimiento());
-        System.out.println("Contrasenia: " + getContrasenia());
+    public String mostrarDatosCliente() {
+String datos = String.format("Id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, Fecha de Nacimiento: %s",
+        id, nombre, apellido, direccion, telefono, fechaNacimiento);
+    return datos;
     }
 
 }

@@ -40,16 +40,23 @@ public class Cine {
         }
         return null;
     }
-    public String generarIdEmpleado(){
-        Random random = new Random();
-        LocalDate fecha = LocalDate.now();
-        int anioactual = fecha.getYear();
-        int mesactual = fecha.getMonthValue();
-        int diaactual = fecha.getDayOfMonth();
-        int longitudCLientesMasUno = this.listaClientes.size()+1;
-        int numeroAleatorio = random.nextInt(1, 100000);
 
-        return String.format("C%d%d%d5d%d", anioactual, mesactual, diaactual, longitudCLientesMasUno,numeroAleatorio);
+    public void mostrarCliente(){
+        int iterador = 1;
+        System.out.println("--Datos del Cliente--");
+        for(Cliente cliente: this.listaClientes){
+            System.out.println("Este es el cliente"+iterador);
+            System.out.println(cliente.mostrarDatosCliente());
+        }
+    }
+
+    public void mostrarEmpleado(){
+        int iterador = 1;
+        System.out.println("--Datos del Empleado--");
+        for(Empleado empleado: this.listaEmpleados){
+            System.out.println("Este es el empleado"+iterador);
+            System.out.println(empleado.mostrarDatosEmpleado());
+        }
     }
 
 
