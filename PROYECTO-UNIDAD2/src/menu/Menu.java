@@ -11,8 +11,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
-    private Cine cine = new Cine();
-
+    public Cine cine = new Cine();
     Scanner sc = new Scanner(System.in);
 
     public void login() {
@@ -134,48 +133,7 @@ public class Menu {
     private void mostrarMenuAdmin(Admin admin) {
         int opcion = 0;
         while (opcion != 3) {
-            System.out.println("---Menú del Admin---");
-            System.out.println("1.-Registrar Empleado");
-            System.out.println("2.-Mostrar datos del Empleado");
-            System.out.println("3.-Salir");
-
-            System.out.println("Selecciona una opcion");
-            opcion = sc.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    String id = cine.generarIdEmpleado();
-                    System.out.println("Haz seleccionado la opcion registrar empleado");
-                    System.out.println("Ingresa el nombre del empleado");
-                    String nombre = sc.nextLine();
-                    System.out.println("Ingresa el apellido del empleado");
-                    String apellido = sc.nextLine();
-                    System.out.println("ingresa la direccion del empleado");
-                    String direccion = sc.nextLine();
-                    System.out.println("ingresa la telefono del empleado");
-                    String telefono = sc.nextLine();
-
-                    System.out.println("INGRESA SU AÑO DE NACIMIENTO (YYYY): ");
-                    String anio = sc.nextLine();
-                    System.out.println("INGRESA SU MES DE NACIMIENTO (MM): ");
-                    String mes = sc.nextLine();
-                    System.out.println("INGRESA SU DIA DE NACIMIENTO (DD): ");
-                    String dia = sc.nextLine();
-                    LocalDate fechaNacimiento = LocalDate.of(Integer.parseInt(anio), Integer.parseInt(mes), Integer.parseInt(dia));
-
-                    System.out.println("Inngresa su Curp");
-                    String curp = sc.nextLine();
-                    System.out.println("Ingresa su contrasenia");
-                    String contrasenia = sc.nextLine();
-
-                    Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,contrasenia);
-                    break;
-                    case 2:
-                        break;
-                        case 3:
-                            System.out.println("Hasta Luego");
-                            return;
-            }
+            System.out.println("Menú del Admin");
         }
     }
 }
