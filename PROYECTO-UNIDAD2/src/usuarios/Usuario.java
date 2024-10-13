@@ -54,4 +54,8 @@ public class Usuario {
     public String getContrasenia() {
         return contrasenia;
     }
+
+    public Rol getRol() {
+        return rol;
+    }
 }

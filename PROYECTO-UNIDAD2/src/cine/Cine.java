@@ -20,7 +20,14 @@ public class Cine {
         listaEmpleados.add(empleado);
         listaUsuarios.add(empleado);
     }
-
+    public Usuario validarInicioSesion(String idUsuario, String contrasenia){
+        for(Usuario usuario: this.listaUsuarios){
+            if(usuario.getId().equals(idUsuario) && usuario.getContrasenia().equals(contrasenia)){
+                return usuario;
+            }
+        }
+        return null;
+    }
 
 
 
