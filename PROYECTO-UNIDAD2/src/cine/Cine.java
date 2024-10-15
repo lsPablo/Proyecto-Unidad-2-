@@ -183,5 +183,5 @@ public class Cine {
         registrarCliente(cliente);
         System.out.println("Cuenta creada exitosamente.");
     }
-
+    //hola
 }
