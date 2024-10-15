@@ -1,5 +1,7 @@
 package cine;
 
+import peliculas.Pelicula;
+import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -8,8 +10,12 @@ import usuarios.utils.Rol;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Random;
 import java.util.Scanner;
+=======
+
+>>>>>>> 477343732155303bcd5a9b2461a585414bff899f
 
 public class Cine {
 
@@ -17,7 +23,14 @@ public class Cine {
     public ArrayList<Usuario>listaUsuarios =new ArrayList<>();
     public ArrayList<Empleado>listaEmpleados =new ArrayList<>();
     public ArrayList<Admin>listaAdmin =new ArrayList<>();
+<<<<<<< HEAD
     Scanner sc = new Scanner(System.in);
+=======
+    public ArrayList<Producto>listaSalado = new ArrayList<>();
+    public ArrayList<Producto>listaDulce =new ArrayList<>();
+    public ArrayList<Producto>listaCompras =new ArrayList<>();
+    public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
+>>>>>>> 477343732155303bcd5a9b2461a585414bff899f
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -30,10 +43,28 @@ public class Cine {
         listaClientes.add(cliente);
         listaUsuarios.add(cliente);
     }
+
     public void registrarEmpleado(Empleado empleado){
         listaEmpleados.add(empleado);
         listaUsuarios.add(empleado);
     }
+
+    public void registrarAdmin(Admin admin){
+        listaAdmin.add(admin);
+    }
+
+    public void registrarSalado(Producto producto){
+        listaSalado.add(producto);
+    }
+
+    public void registrarDulce(Producto producto){
+        listaDulce.add(producto);
+    }
+
+    public void registrarCompra(Producto producto){
+        listaCompras.add(producto);
+    }
+
     public Usuario validarInicioSesion(String idUsuario, String contrasenia){
         for(Usuario usuario: this.listaUsuarios){
             if(usuario.getId().equals(idUsuario) && usuario.getContrasenia().equals(contrasenia)){
@@ -52,6 +83,15 @@ public class Cine {
         }
     }
 
+    public void mostrarProdDulces(){
+        int iterador = 1;
+        System.out.println("--PRODUCTOS DULCES--");
+        for(Producto producto: this.listaDulce){
+            System.out.println("Este es el producto: "+iterador);
+            System.out.println(producto.mostrarProductoEmpleado());
+        }
+    }
+
     public void mostrarEmpleado(){
         int iterador = 1;
         System.out.println("--Datos del Empleado--");
@@ -61,6 +101,7 @@ public class Cine {
         }
     }
 
+<<<<<<< HEAD
     public void registrarNuevoEmpleado(){
         System.out.println("INGRESA TU NOMBRE COMPLETO: ");
         String nombre = sc.next();
@@ -101,5 +142,19 @@ public class Cine {
         System.out.println("Datos del empleado registrados correctamente");
     }
 
+=======
+    public String generarIdPelicula(){
+        int longitudPeliculasMasUno = this.listaPeliculas.size() + 1;
+        String idPelicula = String.format("P%d", longitudPeliculasMasUno);
+        return idPelicula;
+    }
+
+    public void registrarPelicula(Pelicula pelicula){
+        listaPeliculas.add(pelicula);
+    }
+
+    public void mostrarPelicula(){}
+
+>>>>>>> 477343732155303bcd5a9b2461a585414bff899f
 
 }
