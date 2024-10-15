@@ -8,8 +8,8 @@ public class Empleado extends Usuario {
 
     public String curp;
 
-    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String contrasenia) {
-        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, contrasenia, Rol.EMPLEADO);
+    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia) {
+        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO);
         this.curp = curp;
     }
 

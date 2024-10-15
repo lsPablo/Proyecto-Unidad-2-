@@ -1,6 +1,7 @@
 package menu;
 
 import cine.Cine;
+import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -17,11 +18,10 @@ public class Menu {
     public void login() {
         System.out.println("-----------------BIENVENIDO A LA FAMILIA CINEPOLLIS-----------------");
         int opcion = 0;
-        while (opcion != 4) {
+        while (opcion != 3) {
             System.out.println("1.- INICIAR SESIÓN.");
             System.out.println("2.- CREAR CUENTA.");
-            System.out.println("3.- MOSTRAR DATOS");
-            System.out.println("4.- SALIR.");
+            System.out.println("3.- SALIR.");
             opcion = sc.nextInt();
             sc.nextLine(); // Consumir el salto de línea después de sc.nextInt()
 
@@ -98,16 +98,12 @@ public class Menu {
                     Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
                     cine.registrarCliente(cliente);
                     System.out.println("Cuenta creada exitosamente.");
+
                     break;
 
-                    case 3:
-                        System.out.println("Estos son tus datos: ");
-                        cine.mostrarCliente();
+                    case 4:
+                        System.out.println("Hasta Luego");
                         break;
-                case 4:
-                    System.out.println("HASTA LUEGO");
-                    break;
-
                 default:
                     System.out.println("OPCIÓN INVÁLIDA.");
                     break;
@@ -124,16 +120,93 @@ public class Menu {
         int opcion = 0;
         while (opcion != 3) {
             System.out.println("Menú del Cliente");
-            // Lógica del menú del cliente
+            System.out.println("1.- VER CARTELERA");
+            System.out.println("2.- COMPRAR BOLETOS");
+            System.out.println("3.- Salir");
+
+            System.out.println("SELECCIONA UNA OPCION");
+            opcion = sc.nextInt();
         }
     }
 
     private void mostrarMenuEmpleado(Empleado empleado) {
         int opcion = 0;
-        while (opcion != 3) {
-            System.out.println("Menú del Empleado");
-            // Lógica del menú del empleado
+        while (opcion != 5) {
+            System.out.println("MENÚ DEL EMPLEADO");
+            System.out.println("1.-AÑIADIR PRODUCTOS DULCES A LA DULCERIA");
+            System.out.println("2.-AÑIADIR PRODUCTOS SALADOS A LA DULCERIA");
+            System.out.println("3.-VER PRODUCTOS DULCES");
+            System.out.println("4.- VER PRODUCTOS SALADOS");
+            System.out.println("5.-SALIR");
+
+            System.out.println("SELECCIONA UNA OPCION");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("--Has seleccionado la opcion de agregar productos dulces a la dulceria--");
+                    System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
+                    String id = sc.next();
+                    System.out.println("Ingresa el nombre del producto que vas a ingresar: ");
+                    String nombre = sc.next();
+
+                    int opciontamaño =0;
+                    double precio =0;
+                    String tamaño = "";
+                    while(opciontamaño < 1 || opciontamaño > 4){
+                        System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
+                        System.out.println("1.- CHICO");
+                        System.out.println("2.- MEDIANO");
+                        System.out.println("3.- GRANDE");
+                        System.out.println("4.- NO TIENE TAMAÑO");
+                        System.out.println("SELECCIONA UNA OPCION");
+                        opciontamaño = sc.nextInt();
+
+                        switch (opciontamaño){
+                            case 1:
+                                System.out.println("Ingresa el precio del producto CHICO: ");
+                                precio = sc.nextDouble();
+                                tamaño = "CHICO";
+                                break;
+                                case 2:
+                                    System.out.println("Ingresa el precio del producto CHICO: ");
+                                    precio = sc.nextDouble();
+                                    tamaño = "MEDIANO";
+                                    break;
+                                    case 3:
+                                        System.out.println("Ingresa el precio del producto CHICO: ");
+                                        precio = sc.nextDouble();
+                                        tamaño = "GRANDE";
+                                        break;
+                                        case 4:
+                                            System.out.println("Igresa el precio del producto");
+                                            precio = sc.nextDouble();
+                                            tamaño = "";
+                                            break;
+                        }
+                    }
+                    Producto producto = new Producto(id, nombre, tamaño, precio);
+                    cine.registrarDulce(producto);
+                    System.out.println("Producto registrado exitosamente.");
+                    break;
+                case 2:
+                    System.out.println("--Haz seleccionado la opcion de agregar productos dulces a la dulceria--");
+                    System.out.println("Ingresa el nombre del producto que vas a ingresar: ");
+                    String nombredulce = sc.next();
+                    break;
+                    case 3:
+                        System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
+                        cine.mostrarProdDulces();
+                        break;
+                        case 4:
+                            break;
+                            case 5:
+                                System.out.println("HASTA LUEGO");
+                                return;
+            }
         }
+
+
     }
 
     private void mostrarMenuAdmin(Admin admin) {
