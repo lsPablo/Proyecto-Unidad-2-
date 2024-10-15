@@ -214,6 +214,16 @@ public class Menu {
                    empleado.agregarPelicula();
                     break;
                 case 6:
+                    System.out.println("--ELIMINAR PELICULA--");
+                    break;
+                case 7:
+                    System.out.println("--ELIMINAR PELICULA--");
+                    break;
+                case 8:
+                    System.out.println("--AGREGAR FUNCION--");
+                    break;
+                case 9:
+
                     break;
                 case 10:
 
@@ -244,9 +254,8 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
-<<<<<<< HEAD
+
                     cine.registrarNuevoEmpleado();
-=======
                     System.out.println("INGRESA TU NOMBRE COMPLETO: ");
                     String nombre = sc.next();
 
@@ -284,7 +293,6 @@ public class Menu {
                     //Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,nuevacontrasenia);
                     cine.registrarEmpleado(empleado);
                     System.out.println("DATOS DEL EMPLEADO REGISTRADOS CORRECTAMENTE");
->>>>>>> 477343732155303bcd5a9b2461a585414bff899f
                     break;
                 case 2:
                     System.out.println("---DATOS DE EMPLEADO---");
