@@ -1,6 +1,7 @@
 package menu;
 
 import cine.Cine;
+import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -61,6 +62,7 @@ public class Menu {
                     break;
 
                 case 2:
+
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
                     System.out.println("INGRESA TU NOMBRE COMPLETO: ");
                     String nombre = sc.nextLine();
@@ -75,8 +77,8 @@ public class Menu {
                     String confirmaContrasenia = sc.nextLine();
 
                     while (!nuevaContrasenia.equals(confirmaContrasenia)) {
-                        System.out.println("LA CONTRASEÑA NO ES LA MISMA, CHAVO..");
-                        System.out.println("CONFIRMA TU CONTRASEÑA:");
+                        System.out.println("La contraseña no es la misma, chavo.");
+                        System.out.println("Confirma la contraseña:");
                         confirmaContrasenia = sc.nextLine();
                     }
 
@@ -95,13 +97,13 @@ public class Menu {
 
                     Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
                     cine.registrarCliente(cliente);
-                    System.out.println("CUENTA CREADA EXITOSAMENTE");
+                    System.out.println("Cuenta creada exitosamente.");
+
                     break;
 
-                case 3:
-                    System.out.println("HASTA LUEGO");
-                    break;
-
+                    case 4:
+                        System.out.println("Hasta Luego");
+                        break;
                 default:
                     System.out.println("OPCIÓN INVÁLIDA.");
                     break;
@@ -117,51 +119,157 @@ public class Menu {
     private void mostrarMenuCliente(Cliente cliente) {
         int opcion = 0;
         while (opcion != 3) {
-            System.out.println("MENÚ CLIENTE");
-            // Lógica del menú del cliente
+            System.out.println("Menú del Cliente");
+            System.out.println("1.- VER CARTELERA");
+            System.out.println("2.- COMPRAR BOLETOS");
+            System.out.println("3.- Salir");
+
+            System.out.println("SELECCIONA UNA OPCION");
+            opcion = sc.nextInt();
         }
     }
 
     private void mostrarMenuEmpleado(Empleado empleado) {
         int opcion = 0;
         while (opcion != 5) {
-            System.out.println("MENÚ DE EMPLEADO");
-            System.out.println("1.-AGREGAR PELICULA");
-            System.out.println("2.-ELIMINAR PELICULA");
-            System.out.println("3.-AGREGAR FUNCIÓN");
-            System.out.println("4.-ELIMINAR FUNCIÓN");
+            System.out.println("MENÚ DEL EMPLEADO");
+            System.out.println("1.-AÑIADIR PRODUCTOS DULCES A LA DULCERIA");
+            System.out.println("2.-AÑIADIR PRODUCTOS SALADOS A LA DULCERIA");
+            System.out.println("3.-VER PRODUCTOS DULCES");
+            System.out.println("4.- VER PRODUCTOS SALADOS");
             System.out.println("5.-SALIR");
+
+            System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
-                    String nombrePelicula = sc.nextLine();
-                    System.out.println("INGRESA SU GENERO: ");
-                    String generoPelicula = sc.nextLine();
-                    System.out.println("INGRESA SU CLASIFICACIÓN: ");
-                    String clasificacionPelicula = sc.nextLine();
-                    System.out.println("");//me falta lo de la duracion pero lo iba a cambiar a que fuera de tipo time pero ya me dio sueño xd
+                    System.out.println("--Has seleccionado la opcion de agregar productos dulces a la dulceria--");
+                    System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
+                    String id = sc.next();
+                    System.out.println("Ingresa el nombre del producto que vas a ingresar: ");
+                    String nombre = sc.next();
+
+                    int opciontamaño =0;
+                    double precio =0;
+                    String tamaño = "";
+                    while(opciontamaño < 1 || opciontamaño > 4){
+                        System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
+                        System.out.println("1.- CHICO");
+                        System.out.println("2.- MEDIANO");
+                        System.out.println("3.- GRANDE");
+                        System.out.println("4.- NO TIENE TAMAÑO");
+                        System.out.println("SELECCIONA UNA OPCION");
+                        opciontamaño = sc.nextInt();
+
+                        switch (opciontamaño){
+                            case 1:
+                                System.out.println("Ingresa el precio del producto CHICO: ");
+                                precio = sc.nextDouble();
+                                tamaño = "CHICO";
+                                break;
+                                case 2:
+                                    System.out.println("Ingresa el precio del producto CHICO: ");
+                                    precio = sc.nextDouble();
+                                    tamaño = "MEDIANO";
+                                    break;
+                                    case 3:
+                                        System.out.println("Ingresa el precio del producto CHICO: ");
+                                        precio = sc.nextDouble();
+                                        tamaño = "GRANDE";
+                                        break;
+                                        case 4:
+                                            System.out.println("Igresa el precio del producto");
+                                            precio = sc.nextDouble();
+                                            tamaño = "";
+                                            break;
+                        }
+                    }
+                    Producto producto = new Producto(id, nombre, tamaño, precio);
+                    cine.registrarDulce(producto);
+                    System.out.println("Producto registrado exitosamente.");
                     break;
                 case 2:
+                    System.out.println("--Haz seleccionado la opcion de agregar productos dulces a la dulceria--");
+                    System.out.println("Ingresa el nombre del producto que vas a ingresar: ");
+                    String nombredulce = sc.next();
                     break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    break;
-
+                    case 3:
+                        System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
+                        cine.mostrarProdDulces();
+                        break;
+                        case 4:
+                            break;
+                            case 5:
+                                System.out.println("HASTA LUEGO");
+                                return;
             }
         }
+
+
     }
 
     private void mostrarMenuAdmin(Admin admin) {
         int opcion = 0;
         while (opcion != 3) {
-            System.out.println("MENÚ DE ADMINISTRADOR");
+            System.out.println("---Menú del Admin---");
+            System.out.println("1.-Registrar Empleado");
+            System.out.println("2.-Mostrar datos del Empleado");
+            System.out.println("3.-Salir");
+
+            System.out.println("Selecciona una opcion");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+
+                    System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
+                    System.out.println("INGRESA TU NOMBRE COMPLETO: ");
+                    String nombre = sc.next();
+
+                    System.out.println("INGRESA TU APELLIDO: ");
+                    String apellido = sc.next();
+                    System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
+                    String id = sc.next();
+                    System.out.println("INGRESA TU CONTRASEÑA:");
+                    String nuevaContrasenia = sc.next();
+                    System.out.println("CONFIRMA TU CONTRASEÑA:");
+                    String confirmaContrasenia = sc.next();
+
+                    while (!nuevaContrasenia.equals(confirmaContrasenia)) {
+                        System.out.println("La contraseña no es la misma, chavo.");
+                        System.out.println("Confirma la contraseña:");
+                        confirmaContrasenia = sc.next();
+                    }
+
+                    System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
+                    int anio = sc.nextInt();
+                    System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
+                    int mes = sc.nextInt();
+                    System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
+                    int dia = sc.nextInt();
+                    LocalDate fechaNacimiento = LocalDate.of(anio,mes,dia);
+
+                    System.out.println("INGRESA TU DIRECCIÓN:");
+                    String direccion = sc.next();
+                    System.out.println("INGRESA TU TELÉFONO: ");
+                    String telefono = sc.next();
+                    System.out.println("INGRESA TU CURP");
+                    String curp = sc.next();
+
+                    Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia);
+                    //Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,nuevacontrasenia);
+                    cine.registrarEmpleado(empleado);
+                    System.out.println("Datos del empleado registrados correctamente");
+                    break;
+                case 2:
+                    System.out.println("Aqui estan los datos del Empleado");
+                    cine.mostrarEmpleado();
+                    break;
+                case 3:
+                    System.out.println("Hasta Luego");
+                    return;
+            }
         }
     }
 }

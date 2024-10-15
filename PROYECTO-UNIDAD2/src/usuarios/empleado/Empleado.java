@@ -8,8 +8,8 @@ public class Empleado extends Usuario {
 
     public String curp;
 
-    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String contrasenia) {
-        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, contrasenia, Rol.EMPLEADO);
+    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia) {
+        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO);
         this.curp = curp;
     }
 
@@ -17,14 +17,9 @@ public class Empleado extends Usuario {
         return curp;
     }
 
-    public void mostrarDatos() {
-        System.out.println("ID: " + getId());
-        System.out.println("Nombre: " + getNombre());
-        System.out.println("Apellido: " + getApellido());
-        System.out.println("Direccion: " + getDireccion());
-        System.out.println("Telefono: " + getTelefono());
-        System.out.println("Fecha de nacimiento: " + getFechaNacimiento());
-        System.out.println("Curp: " + getCurp());
-        System.out.println("Contrasenia: " + getContrasenia());
+    public String mostrarDatosEmpleado() {
+        String datos = String.format ("id: %d, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
+                "Fecha de Nacimiento: %s, CURP: %s", id, nombre,apellido,direccion,telefono,fechaNacimiento,curp);
+        return datos;
     }
 }
