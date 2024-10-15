@@ -84,6 +84,14 @@ public class Cine {
             System.out.println(producto.mostrarProductoEmpleado());
         }
     }
+    public void mostrarProductoSalado(){
+        int iterador = 1;
+        System.out.println("--PRODUCTOS SALDO--");
+        for(Producto producto: this.listaSalado){
+            System.out.println("Este es el producto: "+iterador);
+            System.out.println(producto.mostrarProductoEmpleado());
+        }
+    }
 
     public void mostrarEmpleado(){
         int iterador = 1;
@@ -183,5 +191,5 @@ public class Cine {
         registrarCliente(cliente);
         System.out.println("Cuenta creada exitosamente.");
     }
-    //hola
+
 }

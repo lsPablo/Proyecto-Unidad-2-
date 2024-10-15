@@ -119,6 +119,7 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+
                     System.out.println("--AGREGAR PROFUCTOS DULCES A LA DULCERIA--");
                     System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
                     String id = sc.next();
@@ -166,16 +167,59 @@ public class Menu {
                     System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
                     break;
                 case 2:
-                    System.out.println("--AGREGAR PRODUCTOS DULCES A LA DULCERIA--");
+                    System.out.println("--AGREGAR PROFUCTOS DULCES A LA DULCERIA--");
+                    System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
+                    String ids = sc.next();
                     System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
-                    String nombredulce = sc.next();
+                    String nombres = sc.next();
+
+                    int opciontamaños =0;
+                    double precios =0;
+                    String tamaños = "";
+                    while(opciontamaños < 1 || opciontamaños > 4){
+                        System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
+                        System.out.println("1.- CHICO");
+                        System.out.println("2.- MEDIANO");
+                        System.out.println("3.- GRANDE");
+                        System.out.println("4.- NO TIENE TAMAÑO");
+                        System.out.println("SELECCIONA UNA OPCION");
+                        opciontamaños = sc.nextInt();
+
+                        switch (opciontamaños){
+                            case 1:
+                                System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
+                                precios = sc.nextDouble();
+                                tamaños = "CHICO";
+                                break;
+                            case 2:
+                                System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
+                                precios = sc.nextDouble();
+                                tamaños = "MEDIANO";
+                                break;
+                            case 3:
+
+                                System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
+                                precios = sc.nextDouble();
+                                tamaños = "GRANDE";
+                                break;
+                            case 4:
+                                System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
+                                precios = sc.nextDouble();
+                                tamaños = "";
+                                break;
+                        }
+                    }
+                    Producto productos = new Producto(ids, nombres, tamaños, precios);
+                    cine.registrarSalado(productos);
+                    System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
                     break;
                 case 3:
                     System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
                     cine.mostrarProdDulces();
                     break;
                 case 4:
-
+                    System.out.println("AQUI ESTAN LOS PRODUCTOS SALADOS: ");
+                    cine.mostrarProductoSalado();
                     break;
                 case 5:
                    empleado.agregarPelicula();

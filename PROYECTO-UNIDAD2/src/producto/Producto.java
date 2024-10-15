@@ -36,4 +36,6 @@ public class Producto {
     public String mostrarProductoCliente(){
         return String.format("%s: %s Tamaño: %s. $%.2f",id, nombre, tamaño ,precio );
     }
+
+
 }
