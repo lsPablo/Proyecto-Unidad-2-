@@ -160,32 +160,34 @@ public class Cine {
         String nombre = sc.nextLine();
 
         System.out.println("INGRESA TU APELLIDO: ");
-        String apellido = sc.nextLine();
+        String apellido = sc.next();
+
+
         System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
-        String id = sc.nextLine();
+        String id = sc.next();
         System.out.println("INGRESA TU CONTRASEÑA:");
-        String nuevaContrasenia = sc.nextLine();
+        String nuevaContrasenia = sc.next();
         System.out.println("CONFIRMA TU CONTRASEÑA:");
-        String confirmaContrasenia = sc.nextLine();
+        String confirmaContrasenia = sc.next();
 
         while (!nuevaContrasenia.equals(confirmaContrasenia)) {
             System.out.println("La contraseña no es la misma, chavo.");
             System.out.println("Confirma la contraseña:");
-            confirmaContrasenia = sc.nextLine();
+            confirmaContrasenia = sc.next();
         }
 
         System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
-        String anio = sc.nextLine();
+        String anio = sc.next();
         System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
-        String mes = sc.nextLine();
+        String mes = sc.next();
         System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
-        String dia = sc.nextLine();
+        String dia = sc.next();
         LocalDate fechaNacimiento = LocalDate.of(Integer.parseInt(anio), Integer.parseInt(mes), Integer.parseInt(dia));
 
         System.out.println("INGRESA TU DIRECCIÓN:");
-        String direccion = sc.nextLine();
+        String direccion = sc.next();
         System.out.println("INGRESA TU TELÉFONO: ");
-        String telefono = sc.nextLine();
+        String telefono = sc.next();
 
         Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
         registrarCliente(cliente);
