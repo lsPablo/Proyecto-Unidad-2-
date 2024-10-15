@@ -77,4 +77,9 @@ public class Empleado extends Usuario {
         }
         System.out.println("NO HAY PELICULAS REGISTRADAS CON ESE NOMBRE.");
     }
+    public void eliminarProductos(){
+        if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){
+            System.out.println("NO HAY PRODUCTOS REGISTRADOS");
+        }
+    }
 }
