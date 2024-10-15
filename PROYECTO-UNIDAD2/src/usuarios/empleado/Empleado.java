@@ -18,7 +18,7 @@ public class Empleado extends Usuario {
     }
 
     public String mostrarDatosEmpleado() {
-        String datos = String.format ("id: %d, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
+        String datos = String.format ("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
                 "Fecha de Nacimiento: %s, CURP: %s", id, nombre,apellido,direccion,telefono,fechaNacimiento,curp);
         return datos;
     }
