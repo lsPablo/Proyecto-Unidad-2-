@@ -6,23 +6,17 @@ import java.util.ArrayList;
 
 public class Sala {
     public int id;
-    private int capacidad = 120;
     public String[][] distribucion;
     public String tipoAsiento;
 
-    public Sala(int id, int capacidad, String[][] distribucion, String tipoAsiento) {
+    public Sala(int id, String[][] distribucion, String tipoAsiento) {
         this.id = id;
-        this.capacidad = capacidad;
         this.distribucion = distribucion;
         this.tipoAsiento = tipoAsiento;
     }
 
     public int getId() {
         return this.id;
-    }
-
-    public int getCapacidad() {
-        return this.capacidad;
     }
 
     public String[][] getDistribucion() {
@@ -35,10 +29,6 @@ public class Sala {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
     }
 
     public void setDistribucion(String[][] distribucion) {
