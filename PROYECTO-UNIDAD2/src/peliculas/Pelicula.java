@@ -1,28 +1,23 @@
 package peliculas;
 
-import salas.Sala;
-
 import java.sql.Time;
+import java.time.Duration;
 
 public class Pelicula {
-    public int id;
+    public String id;
     public String titulo;
     public String gernero;
     public char clasificacion;
-    public Time duracion;
+    public Duration duracion;
     public String sinopsis;
 
-    public Pelicula(int id, String titulo, String gernero, char clasificacion, Time duracion, String sinopsis) {
+    public Pelicula(String id, String titulo, String gernero, char clasificacion, Duration duracion, String sinopsis) {
         this.id = id;
         this.titulo = titulo;
         this.gernero = gernero;
         this.clasificacion = clasificacion;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTitulo() {
@@ -37,7 +32,7 @@ public class Pelicula {
         return clasificacion;
     }
 
-    public Time getDuracion() {
+    public Duration getDuracion() {
         return duracion;
     }
 
@@ -45,7 +40,7 @@ public class Pelicula {
         return sinopsis;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -61,7 +56,7 @@ public class Pelicula {
         this.clasificacion = clasificacion;
     }
 
-    public void setDuracion(Time duracion) {
+    public void setDuracion(Duration duracion) {
         this.duracion = duracion;
     }
 
@@ -70,5 +65,5 @@ public class Pelicula {
     }
 
 
-    public void
+
 }

@@ -1,5 +1,6 @@
 package cine;
 
+import peliculas.Pelicula;
 import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
@@ -20,6 +21,7 @@ public class Cine {
     public ArrayList<Producto>listaSalado = new ArrayList<>();
     public ArrayList<Producto>listaDulce =new ArrayList<>();
     public ArrayList<Producto>listaCompras =new ArrayList<>();
+    public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -32,22 +34,28 @@ public class Cine {
         listaClientes.add(cliente);
         listaUsuarios.add(cliente);
     }
+
     public void registrarEmpleado(Empleado empleado){
         listaEmpleados.add(empleado);
         listaUsuarios.add(empleado);
     }
+
     public void registrarAdmin(Admin admin){
         listaAdmin.add(admin);
     }
+
     public void registrarSalado(Producto producto){
         listaSalado.add(producto);
     }
+
     public void registrarDulce(Producto producto){
         listaDulce.add(producto);
     }
+
     public void registrarCompra(Producto producto){
         listaCompras.add(producto);
     }
+
     public Usuario validarInicioSesion(String idUsuario, String contrasenia){
         for(Usuario usuario: this.listaUsuarios){
             if(usuario.getId().equals(idUsuario) && usuario.getContrasenia().equals(contrasenia)){
@@ -65,6 +73,7 @@ public class Cine {
             System.out.println(cliente.mostrarDatosCliente());
         }
     }
+
     public void mostrarProdDulces(){
         int iterador = 1;
         System.out.println("--PRODUCTOS DULCES--");
@@ -82,6 +91,18 @@ public class Cine {
             System.out.println(empleado.mostrarDatosEmpleado());
         }
     }
+
+    public String generarIdPelicula(){
+        int longitudPeliculasMasUno = this.listaPeliculas.size() + 1;
+        String idPelicula = String.format("P%d", longitudPeliculasMasUno);
+        return idPelicula;
+    }
+
+    public void registrarPelicula(Pelicula pelicula){
+        listaPeliculas.add(pelicula);
+    }
+
+    public void mostrarPelicula(){}
 
 
 }
