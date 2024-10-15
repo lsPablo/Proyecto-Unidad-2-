@@ -64,6 +64,11 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-
+    public String mostrarDatos() {
+        long minutos = duracion.toMinutes();
+        String duracionFormateada = String.format(" %s MINUTOS", minutos);
+        String datos = String.format("ID: %s, NOMBRE: %s, GENERO: %s, CLASIFICACIÓN: %s, DURACIÓN: %s, SINOPSIS: %s", this.id, this.titulo, this.gernero, this.clasificacion, duracionFormateada, this.sinopsis);
+        return datos;
+    }
 
 }

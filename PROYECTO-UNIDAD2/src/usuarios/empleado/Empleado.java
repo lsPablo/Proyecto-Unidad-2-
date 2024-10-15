@@ -30,7 +30,6 @@ public class Empleado extends Usuario {
     }
 
     public void agregarPelicula(){
-
         String idPelicula = cine.generarIdPelicula();
         System.out.println("--AGREGAR PELÍCULA--");
         System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
@@ -39,15 +38,42 @@ public class Empleado extends Usuario {
         String generoPelicula = sc.nextLine();
         System.out.println("INGRESA SU CLASIFICACIÓN (A|B|C|): ");
         char clasificacionPelicula = sc.next().charAt(0);
-        System.out.println("INGRESA LAS HORAS DE DURACIÓN: ");
-        int horasPelicula = sc.nextInt();
-        System.out.println("INGRESA LOS MINUTOS: ");
+
+        System.out.println("INGRESA LOS MINUTOS DE DURACIÓN: ");
         int minutosPelicula = sc.nextInt();
-        Duration duracion = Duration.ofHours(horasPelicula).plusMinutes(minutosPelicula);
+        sc.nextLine();
+        Duration duracion = Duration.ofMinutes(minutosPelicula);
         System.out.println("INGRESA UNA SINOPSIS: ");
         String sinopsisPelicula = sc.nextLine();
 
         Pelicula pelicula = new Pelicula(idPelicula, nombrePelicula ,generoPelicula,clasificacionPelicula,duracion,sinopsisPelicula);
         cine.registrarPelicula(pelicula);
+    }
+
+    public void mostrarPeliculas(){
+        if (cine.listaPeliculas.size() == 0){
+            System.out.println("NO HAY PELICULAS REGISTRADAS");
+        }
+
+        for (Pelicula pelicula : this.cine.listaPeliculas){
+            System.out.println(pelicula.mostrarDatos());
+        }
+    }
+
+    public void eliminarPelicula(){
+        if (cine.listaPeliculas.size() == 0){
+            System.out.println("NO HAY PELICULAS REGISTRADAS");
+        }
+
+        System.out.println("INGRESA EL NOMBRE DE LA PELICULA A ELIMINAR:");
+        String nombrePelicula = sc.nextLine();
+
+        for (Pelicula pelicula : this.cine.listaPeliculas){
+            if (pelicula.getTitulo().equals(nombrePelicula)){
+                cine.listaPeliculas.remove(pelicula);
+                break;
+            }
+        }
+        System.out.println("NO HAY PELICULAS REGISTRADAS CON ESE NOMBRE.");
     }
 }
