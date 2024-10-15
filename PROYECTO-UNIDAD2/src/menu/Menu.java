@@ -70,7 +70,7 @@ public class Menu {
 
                     break;
 
-                    case 4:
+                    case 3:
                         System.out.println("Hasta Luego");
                         break;
                 default:
@@ -221,45 +221,7 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
-
                     cine.registrarNuevoEmpleado();
-                    System.out.println("INGRESA TU NOMBRE COMPLETO: ");
-                    String nombre = sc.next();
-
-                    System.out.println("INGRESA TU APELLIDO: ");
-                    String apellido = sc.next();
-                    System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
-                    String id = sc.next();
-                    System.out.println("INGRESA TU CONTRASEÑA:");
-                    String nuevaContrasenia = sc.next();
-                    System.out.println("CONFIRMA TU CONTRASEÑA:");
-                    String confirmaContrasenia = sc.next();
-
-                    while (!nuevaContrasenia.equals(confirmaContrasenia)) {
-                        System.out.println("LA CONTRASEÑA NO ES LA MISMA, CHAVO.");
-                        System.out.println("CONFIRMA LA CONTRASEÑA:");
-                        confirmaContrasenia = sc.next();
-                    }
-
-                    System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
-                    int anio = sc.nextInt();
-                    System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
-                    int mes = sc.nextInt();
-                    System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
-                    int dia = sc.nextInt();
-                    LocalDate fechaNacimiento = LocalDate.of(anio,mes,dia);
-
-                    System.out.println("INGRESA TU DIRECCIÓN:");
-                    String direccion = sc.next();
-                    System.out.println("INGRESA TU TELÉFONO: ");
-                    String telefono = sc.next();
-                    System.out.println("INGRESA TU CURP");
-                    String curp = sc.next();
-
-                    Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia);
-                    //Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,nuevacontrasenia);
-                    cine.registrarEmpleado(empleado);
-                    System.out.println("DATOS DEL EMPLEADO REGISTRADOS CORRECTAMENTE");
                     break;
                 case 2:
                     System.out.println("---DATOS DE EMPLEADO---");
