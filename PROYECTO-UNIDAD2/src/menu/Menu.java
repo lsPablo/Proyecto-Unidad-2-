@@ -214,16 +214,6 @@ public class Menu {
                    empleado.agregarPelicula();
                     break;
                 case 6:
-                    System.out.println("--ELIMINAR PELICULA--");
-                    break;
-                case 7:
-                    System.out.println("--ELIMINAR PELICULA--");
-                    break;
-                case 8:
-                    System.out.println("--AGREGAR FUNCION--");
-                    break;
-                case 9:
-
                     break;
                 case 10:
 
