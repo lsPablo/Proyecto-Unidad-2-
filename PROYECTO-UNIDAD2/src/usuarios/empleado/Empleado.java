@@ -70,7 +70,8 @@ public class Empleado extends Usuario {
 
         for (Pelicula pelicula : this.cine.listaPeliculas){
             if (pelicula.getTitulo().equals(nombrePelicula)){
-                cine.listaPeliculas.remove(pelicula);
+                int posicion = cine.listaPeliculas.indexOf(pelicula);
+                cine.listaPeliculas.remove(posicion);
                 break;
             }
         }
