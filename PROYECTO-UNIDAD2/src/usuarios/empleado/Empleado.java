@@ -1,6 +1,7 @@
 package usuarios.empleado;
 
 import peliculas.Pelicula;
+import producto.Producto;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 import cine.Cine;
@@ -80,6 +81,12 @@ public class Empleado extends Usuario {
     public void eliminarProductos(){
         if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){
             System.out.println("NO HAY PRODUCTOS REGISTRADOS");
+        }
+        System.out.println("INGRESA EL ID DEL PRODUCTO A ELIMINAR");
+        String idProducto = sc.nextLine();
+        for(Producto producto : this.cine.listaProductos){
+            int posicion = cine.listaProductos.indexOf(producto);
+            System.out.println(cine.mostrarProdDulces());
         }
     }
 }

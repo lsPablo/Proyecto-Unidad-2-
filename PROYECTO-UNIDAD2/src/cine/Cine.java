@@ -24,6 +24,7 @@ public class Cine {
     public ArrayList<Producto>listaDulce =new ArrayList<>();
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
+    public ArrayList<Producto>listaProductos =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -48,10 +49,12 @@ public class Cine {
 
     public void registrarSalado(Producto producto){
         listaSalado.add(producto);
+        listaProductos.add(producto);
     }
 
     public void registrarDulce(Producto producto){
         listaDulce.add(producto);
+        listaProductos.add(producto);
     }
 
     public void registrarCompra(Producto producto){
