@@ -84,8 +84,8 @@ public class Empleado extends Usuario {
         }
         System.out.println("INGRESA EL ID DEL PRODUCTO A ELIMINAR");
         String idProducto = sc.nextLine();
-        for(Producto producto : this.cine.listaProductos){
-            int posicion = cine.listaProductos.indexOf(producto);
+        for(Producto producto : this.cine.listaSalado){
+            int posicion = cine.listaSalado.indexOf(producto);
             System.out.println();
         }
     }
