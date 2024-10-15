@@ -11,16 +11,14 @@ public class Pelicula {
     public char clasificacion;
     public Time duracion;
     public String sinopsis;
-    public Sala sala;
 
-    public Pelicula(int id, String titulo, String gernero, char clasificacion, Time duracion, String sinopsis, Sala sala) {
+    public Pelicula(int id, String titulo, String gernero, char clasificacion, Time duracion, String sinopsis) {
         this.id = id;
         this.titulo = titulo;
         this.gernero = gernero;
         this.clasificacion = clasificacion;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
-        this.sala = sala;
     }
 
     public int getId() {
@@ -47,10 +45,6 @@ public class Pelicula {
         return sinopsis;
     }
 
-    public Sala getSala() {
-        return sala;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -75,7 +69,6 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    public void setSala(Sala sala) {
-        this.sala = sala;
-    }
+
+    public void
 }
