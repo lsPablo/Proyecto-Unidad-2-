@@ -230,6 +230,9 @@ public class Menu {
                 case 3:
                     System.out.println("HASTA LUEGO");
                     return;
+                default:
+                    System.out.println("OPCION INVALIDA.");
+                    break;
             }
         }
     }
