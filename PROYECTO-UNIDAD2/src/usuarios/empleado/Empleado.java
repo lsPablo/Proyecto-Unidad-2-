@@ -86,7 +86,7 @@ public class Empleado extends Usuario {
         String idProducto = sc.nextLine();
         for(Producto producto : this.cine.listaProductos){
             int posicion = cine.listaProductos.indexOf(producto);
-            System.out.println(cine.mostrarProdDulces());
+            System.out.println();
         }
     }
 }
