@@ -40,5 +40,10 @@ public class Cartelera {
         this.horaProyeccion = horaProyeccion;
     }
 
-
+    public String mostrarCartelera() {
+        String peliculaEnCartelera = pelicula.mostrarDatos();
+        String salaEnCarteñera = sala.getId();
+        String cartelera = String.format("HORA DE FUNCION: %s, Pelicula%s, Sala: %s", horaProyeccion, peliculaEnCartelera,salaEnCarteñera);
+        return cartelera;
+    }
 }

@@ -139,7 +139,7 @@ public class Empleado extends Usuario {
         }
 
         for (Cartelera cartelera : this.cine.listaFunciones){
-        //en proceso
+            cartelera.mostrarCartelera();
         }
     }
 
