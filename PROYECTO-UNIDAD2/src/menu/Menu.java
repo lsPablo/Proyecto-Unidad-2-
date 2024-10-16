@@ -162,9 +162,11 @@ public class Menu {
                     break;
                 case 11:
                     System.out.println("--MOSTRAR FUNCIONES--");
+                    cine.mostrarCartelera();
                     break;
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
+                    empleado.eliminarFunciones();
                     break;
                 case 13:
                     System.out.println("HASTA LUEGO");

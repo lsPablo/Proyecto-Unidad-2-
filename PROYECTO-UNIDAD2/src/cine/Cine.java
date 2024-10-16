@@ -168,6 +168,12 @@ public class Cine {
         return idSala;
     }
 
+    public String generarIdFuncion(){
+        int longitudFuncionesMasUno = this.listaFunciones.size() + 1;
+        String idFuncion = String.format("F%d", longitudFuncionesMasUno);
+        return idFuncion;
+    }
+
     public void registrarPelicula(Pelicula pelicula){
         listaPeliculas.add(pelicula);
     }
@@ -341,6 +347,26 @@ public class Cine {
             }
         }
         return null;
+    }
+
+    public Cartelera obtenerCarteleraPorId(String idCartelera) {
+        for (Cartelera cartelera: this.listaFunciones){
+            if(cartelera.getId().equalsIgnoreCase(idCartelera)){
+                return cartelera;
+            }
+        }
+        return null;
+    }
+
+    public void mostrarCartelera(){
+        if (listaFunciones.equals(null)) {
+            System.out.println("NO HAY FUNCIONES REGISTRADAS");
+            return;
+        }
+
+        for (Cartelera cartelera : this.listaFunciones){
+            System.out.println(cartelera.mostrarCartelera()+":)");
+        }
     }
 
 }

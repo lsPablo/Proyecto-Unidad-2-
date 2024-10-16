@@ -6,11 +6,14 @@ import salas.Sala;
 import java.time.LocalTime;
 
 public class Cartelera {
+    String id;
     Pelicula pelicula;
     Sala sala;
     LocalTime horaProyeccion;
 
-    public Cartelera(Pelicula pelicula, Sala sala, LocalTime horaProyeccion) {
+
+    public Cartelera(String idFuncion, Pelicula pelicula, Sala sala, LocalTime horaProyeccion) {
+        this.id = idFuncion;
         this.pelicula = pelicula;
         this.sala = sala;
         this.horaProyeccion = horaProyeccion;
@@ -22,6 +25,10 @@ public class Cartelera {
 
     public Sala getSala() {
         return sala;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public LocalTime getHoraProyeccion() {
@@ -42,8 +49,8 @@ public class Cartelera {
 
     public String mostrarCartelera() {
         String peliculaEnCartelera = pelicula.mostrarDatos();
-        String salaEnCarteñera = sala.getId();
-        String cartelera = String.format("HORA DE FUNCION: %s, Pelicula%s, Sala: %s", horaProyeccion, peliculaEnCartelera,salaEnCarteñera);
+        String salaEnCartelera = sala.getId();
+        String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Pelicula%s, Sala: %s", id, horaProyeccion, peliculaEnCartelera,salaEnCartelera);
         return cartelera;
     }
 }

@@ -8,5 +8,8 @@ public class Main {
         //Id Administrador: AD-01
         //Contrasenia: 54321*
 
+        //ID EMPLEADO: EM-00
+        // COTRASEÑA: 123
+
     }
 }

@@ -66,6 +66,7 @@ public class Empleado extends Usuario {
     public void eliminarPelicula(){
         if (cine.listaPeliculas.size() == 0){
             System.out.println("NO HAY PELICULAS REGISTRADAS");
+            return;
         }
 
         System.out.println("INGRESA EL NOMBRE DE LA PELICULA A ELIMINAR:");
@@ -91,60 +92,66 @@ public class Empleado extends Usuario {
     }
 
     public void agregarFunciones(){
-            System.out.println("INGRESA EL NOMBRE DE LA PELICULA A PROYECTAR: ");
-            String nombrePelicula = sc.nextLine();
-            if (!cine.existePelícula(nombrePelicula)){
-                System.out.println("NO EXISTE ESA PELICULA");
-            }else{
-                System.out.println("INGRESA EL ID DE LA SALA: ");
-                String idSala = sc.nextLine();
-                if (!cine.existeSala(idSala)){
-                    System.out.println("NO EXISTE TAL SALA");
-                }else {
-                    System.out.println("INGRESA LA HORA DE PROYECCIÓN (HH:MM): ");
-                    String hora = sc.nextLine();
-                    LocalTime horaFuncion = LocalTime.parse(hora);
-                    Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
-                    Duration duracionTotal = duracionPelicula.plusMinutes(20);
-                    boolean conflictoEnHoras = false;
+        System.out.println("INGRESA EL NOMBRE DE LA PELICULA A PROYECTAR: ");
+        String nombrePelicula = sc.nextLine();
 
-                    for (Cartelera cartelera : cine.listaFunciones) {
-                        LocalTime horaInicioExistente = cartelera.getHoraProyeccion();
-                        Duration duracionExistente = cartelera.getPelicula().getDuracion();
-                        Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
-                        LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
+        if (!cine.existePelícula(nombrePelicula)){
+            System.out.println("NO EXISTE ESA PELICULA");
+            return;
+        }
 
-                        if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente) && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente) && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
+        System.out.println("INGRESA EL ID DE LA SALA: ");
+        String idSala = sc.nextLine();
 
-                            System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
-                            conflictoEnHoras = true;
-                            break;
-                        }
-                    }
+        if (!cine.existeSala(idSala)){
+            System.out.println("NO EXISTE TAL SALA");
+            return;
+        }
 
-                    if (!conflictoEnHoras) {
-                        Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
-                        Sala sala = cine.obtenerSalaPorId(idSala);
-                        Cartelera cartelera = new Cartelera(pelicula, sala, horaFuncion);
-                        cine.listaFunciones.add(cartelera);
-                        System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
-                    }
-                }
+        System.out.println("INGRESA LA HORA DE PROYECCIÓN (HH:MM): ");
+        String hora = sc.nextLine();
+        LocalTime horaFuncion = LocalTime.parse(hora);
+        Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
+        Duration duracionTotal = duracionPelicula.plusMinutes(20);
+        boolean conflictoEnHoras = false;
+
+        for (Cartelera cartelera : cine.listaFunciones) {
+            LocalTime horaInicioExistente = cartelera.getHoraProyeccion();
+            Duration duracionExistente = cartelera.getPelicula().getDuracion();
+            Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
+            LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
+
+            if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente) && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente) && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
+                System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
+                conflictoEnHoras = true;
+                break;
             }
-    }
-
-    public void mostrarFunciones(){
-        if (cine.listaFunciones.size() == 0){
-            System.out.println("NO HAY FUNCIONES REGISTRADAS");
         }
 
-        for (Cartelera cartelera : this.cine.listaFunciones){
-            cartelera.mostrarCartelera();
+        if (!conflictoEnHoras) {
+            Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
+            Sala sala = cine.obtenerSalaPorId(idSala);
+            String idFuncion = cine.generarIdFuncion();
+            Cartelera cartelera = new Cartelera(idFuncion, pelicula, sala, horaFuncion);
+            cine.listaFunciones.add(cartelera);
+            System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
         }
+
     }
 
     public void eliminarFunciones(){
-
+        if(cine.listaFunciones.isEmpty()){
+            System.out.println("NO EXISTE ELIMINAR FUNCIONES");
+        }else{
+            System.out.println("INGRESA EL ID DE LA FUNCION: ");
+            String idFuncion = sc.nextLine();
+            for (Cartelera cartelera : cine.listaFunciones) {
+                int posicion = cine.listaFunciones.indexOf(cartelera);
+                cine.listaFunciones.remove(posicion);
+                break;
+            }
+            System.out.println("NO HAY FUNCIONES REGISTRADAS CON ESE ID.");
+        }
     }
 
     public void eliminarProductos(){
