@@ -1,5 +1,6 @@
 package cine;
 
+import cartelera.Cartelera;
 import peliculas.Pelicula;
 import producto.Producto;
 import salas.Sala;
@@ -26,6 +27,7 @@ public class Cine {
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
+    public ArrayList<Cartelera>listaFunciones =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -303,6 +305,42 @@ public class Cine {
         Producto productos = new Producto(ids, nombres, tamaños, precios);
         registrarSalado(productos);
         System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
+    }
+
+    public boolean existePelícula(String nombrePelicula) {
+        for (Pelicula pelicula : this.listaPeliculas) {
+            if (pelicula.getTitulo().equals(nombrePelicula)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existeSala(String idSala) {
+        for (Sala sala : this.listaSalas) {
+            if (sala.getId().equals(idSala)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Pelicula obtenerPeliculaPorNombre(String nombrePelicula) {
+        for (Pelicula pelicula : this.listaPeliculas) {
+            if (pelicula.getTitulo().equalsIgnoreCase(nombrePelicula)) {
+                return pelicula;
+            }
+        }
+        return null;
+    }
+
+    public Sala obtenerSalaPorId(String idSala) {
+        for (Sala sala : this.listaSalas) {
+            if (sala.getId().equalsIgnoreCase(idSala)) {
+                return sala;
+            }
+        }
+        return null;
     }
 
 }

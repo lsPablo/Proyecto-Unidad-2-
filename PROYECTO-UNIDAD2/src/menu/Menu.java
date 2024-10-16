@@ -158,6 +158,7 @@ public class Menu {
                     break;
                 case 10:
                     System.out.println("--AGREGAR FUNCIONES--");
+                    empleado.agregarFunciones();
                     break;
                 case 11:
                     System.out.println("--MOSTRAR FUNCIONES--");
