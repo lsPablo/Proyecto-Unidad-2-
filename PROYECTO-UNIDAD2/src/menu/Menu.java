@@ -98,43 +98,26 @@ public class Menu {
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
-
-            switch (opcion){
-                case 1:
-                    System.out.println("-- CARTELERA --");
-                    break;
-
-                case 2:
-                    System.out.println("-- COMPRAR BOLETOS --");
-                    break;
-                case 3:
-                    System.out.println("-- HASTA LUEGO --");
-                    return;
-
-                default:
-                    System.out.println("-- OPCION NO VALIDA --");
-                    break;
-            }
-
         }
     }
 
     private void mostrarMenuEmpleado(Empleado empleado) {
         int opcion = 0;
-        while (opcion != 12) {
+        while (opcion != 13) {
             System.out.println("MENÚ DE EMPLEADO");
-            System.out.println("1.-AÑIADIR PRODUCTOS DULCES A LA DULCERIA");
-            System.out.println("2.-AÑIADIR PRODUCTOS SALADOS A LA DULCERIA");
+            System.out.println("1.-AGREGAR PRODUCTOS DULCES A LA DULCERIA");
+            System.out.println("2.-AGREGAR PRODUCTOS SALADOS A LA DULCERIA");
             System.out.println("3.-VER PRODUCTOS DULCES");
-            System.out.println("4.- VER PRODUCTOS SALADOS");
-            System.out.println("5.- ELIMINAR PRODUCTOS");
+            System.out.println("4.-VER PRODUCTOS SALADOS");
+            System.out.println("5.-ELIMINAR PRODUCTOS");
             System.out.println("6.-AGREGAR PELICULA");
-            System.out.println("7.-ELIMINAR PELICULA");
-            System.out.println("8.- MOSTRAR PELICULAS");
-            System.out.println("9.-AGREGAR FUNCIÓN");
-            System.out.println("10.-ELIMINAR FUNCIÓN");
+            System.out.println("7.-MOSTRAR PELICULAS");
+            System.out.println("8.-ELIMINAR PELICULAS");
+            System.out.println("9.-VER SALAS");
+            System.out.println("10.-AGREGAR FUNCIONES");
             System.out.println("11.-MOSTRAR FUNCIONES");
-            System.out.println("12.-SALIR");
+            System.out.println("12.-ELIMINAR FUNCIONES");
+            System.out.println("13.-SALIR");
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
@@ -161,26 +144,33 @@ public class Menu {
 
                         break;
                 case 6:
+                    System.out.println("--AGREGAR PELÍCULA--");
                    empleado.agregarPelicula();
                     break;
                 case 7:
-                    System.out.println("--ELIMINAR PELICULA--");
-                    empleado.eliminarPelicula();
-                    break;
-                case 8:
                     System.out.println("--MOSTRAR PELICULA--");
                     empleado.mostrarPeliculas();
                     break;
+                case 8:
+                    System.out.println("--ELIMINAR PELICULA--");
+                    empleado.eliminarPelicula();
+                    break;
                 case 9:
-                    System.out.println("--AGREGAR FUNCION--");
+                    System.out.println("--VER SALAS--");
+                    cine.Salas();
+                    empleado.verSalas();
                     break;
                 case 10:
-
+                    System.out.println("--AGREGAR FUNCIONES--");
+                    empleado.agregarFunciones();
                     break;
                 case 11:
-
+                    System.out.println("--MOSTRAR FUNCIONES--");
                     break;
                 case 12:
+                    System.out.println("--ELIMINAR FUNCIONES--");
+                    break;
+                case 13:
                     System.out.println("HASTA LUEGO");
                     return;
                 default:

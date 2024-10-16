@@ -1,11 +1,15 @@
 package usuarios.empleado;
 
+import cartelera.Cartelera;
 import peliculas.Pelicula;
+import producto.Producto;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 import cine.Cine;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 
@@ -31,7 +35,6 @@ public class Empleado extends Usuario {
 
     public void agregarPelicula(){
         String idPelicula = cine.generarIdPelicula();
-        System.out.println("--AGREGAR PELÍCULA--");
         System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
         String nombrePelicula = sc.nextLine();
         System.out.println("INGRESA EL GENERO: ");
@@ -77,9 +80,82 @@ public class Empleado extends Usuario {
         }
         System.out.println("NO HAY PELICULAS REGISTRADAS CON ESE NOMBRE.");
     }
+
+    public void verSalas(){
+        System.out.println("---SALAS---");
+        cine.Salas();
+        for (Sala sala : this.cine.listaSalas){
+            System.out.println(sala.getId());
+            sala.mostrarDistribucion();
+        }
+    }
+
+    public void agregarFunciones(){
+            System.out.println("INGRESA EL NOMBRE DE LA PELICULA A PROYECTAR: ");
+            String nombrePelicula = sc.nextLine();
+            if (!cine.existePelícula(nombrePelicula)){
+                System.out.println("NO EXISTE ESA PELICULA");
+            }else{
+                System.out.println("INGRESA EL ID DE LA SALA: ");
+                String idSala = sc.nextLine();
+                if (!cine.existeSala(idSala)){
+                    System.out.println("NO EXISTE TAL SALA");
+                }else {
+                    System.out.println("INGRESA LA HORA DE PROYECCIÓN (HH:MM): ");
+                    String hora = sc.nextLine();
+                    LocalTime horaFuncion = LocalTime.parse(hora);
+                    Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
+                    Duration duracionTotal = duracionPelicula.plusMinutes(20);
+                    boolean conflictoEnHoras = false;
+
+                    for (Cartelera cartelera : cine.listaFunciones) {
+                        LocalTime horaInicioExistente = cartelera.getHoraProyeccion();
+                        Duration duracionExistente = cartelera.getPelicula().getDuracion();
+                        Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
+                        LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
+
+                        if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente) && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente) && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
+
+                            System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
+                            conflictoEnHoras = true;
+                            break;
+                        }
+                    }
+
+                    if (!conflictoEnHoras) {
+                        Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
+                        Sala sala = cine.obtenerSalaPorId(idSala);
+                        Cartelera cartelera = new Cartelera(pelicula, sala, horaFuncion);
+                        cine.listaFunciones.add(cartelera);
+                        System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
+                    }
+                }
+            }
+    }
+
+    public void mostrarFunciones(){
+        if (cine.listaFunciones.size() == 0){
+            System.out.println("NO HAY FUNCIONES REGISTRADAS");
+        }
+
+        for (Cartelera cartelera : this.cine.listaFunciones){
+        //en proceso
+        }
+    }
+
+    public void eliminarFunciones(){
+
+    }
+
     public void eliminarProductos(){
         if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){
             System.out.println("NO HAY PRODUCTOS REGISTRADOS");
+        }
+        System.out.println("INGRESA EL ID DEL PRODUCTO A ELIMINAR");
+        String idProducto = sc.nextLine();
+        for(Producto producto : this.cine.listaSalado){
+            int posicion = cine.listaSalado.indexOf(producto);
+            System.out.println();
         }
     }
 }

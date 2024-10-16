@@ -1,7 +1,9 @@
 package cine;
 
+import cartelera.Cartelera;
 import peliculas.Pelicula;
 import producto.Producto;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -14,22 +16,34 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Cine {
+    Scanner sc = new Scanner(System.in);
 
     public ArrayList<Cliente>listaClientes=new ArrayList<>();
     public ArrayList<Usuario>listaUsuarios =new ArrayList<>();
     public ArrayList<Empleado>listaEmpleados =new ArrayList<>();
     public ArrayList<Admin>listaAdmin =new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
     public ArrayList<Producto>listaSalado = new ArrayList<>();
     public ArrayList<Producto>listaDulce =new ArrayList<>();
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
+    public ArrayList<Sala>listaSalas =new ArrayList<>();
+    public ArrayList<Cartelera>listaFunciones =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
         Admin admin =new Admin("AD-01", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"54321*", Rol.ADMINISTRADOR);
         this.listaUsuarios.add(admin);
         this.listaAdmin.add(admin);
+    }
+
+    public void Salas(){
+        for (int i = 0; i < 11; i++) {
+            String idSala = generarIdSala();
+            Sala sala = new Sala(idSala);
+            sala.llenarDistribucion();
+            listaSalas.add(sala);
+
+        }
     }
 
     public void registrarCliente(Cliente cliente){
@@ -148,12 +162,15 @@ public class Cine {
         return idPelicula;
     }
 
+    public String generarIdSala(){
+        int longitudSalasMasUno = this.listaSalas.size() + 1;
+        String idSala = String.format("S%d", longitudSalasMasUno);
+        return idSala;
+    }
+
     public void registrarPelicula(Pelicula pelicula){
         listaPeliculas.add(pelicula);
     }
-
-    public void mostrarPelicula(){}
-
 
     public void crearNuevaCuenta(){
         System.out.println("INGRESA TU NOMBRE COMPLETO: ");
@@ -288,6 +305,42 @@ public class Cine {
         Producto productos = new Producto(ids, nombres, tamaños, precios);
         registrarSalado(productos);
         System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
+    }
+
+    public boolean existePelícula(String nombrePelicula) {
+        for (Pelicula pelicula : this.listaPeliculas) {
+            if (pelicula.getTitulo().equals(nombrePelicula)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existeSala(String idSala) {
+        for (Sala sala : this.listaSalas) {
+            if (sala.getId().equals(idSala)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Pelicula obtenerPeliculaPorNombre(String nombrePelicula) {
+        for (Pelicula pelicula : this.listaPeliculas) {
+            if (pelicula.getTitulo().equalsIgnoreCase(nombrePelicula)) {
+                return pelicula;
+            }
+        }
+        return null;
+    }
+
+    public Sala obtenerSalaPorId(String idSala) {
+        for (Sala sala : this.listaSalas) {
+            if (sala.getId().equalsIgnoreCase(idSala)) {
+                return sala;
+            }
+        }
+        return null;
     }
 
 }
