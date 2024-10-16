@@ -5,42 +5,22 @@ import peliculas.Pelicula;
 import java.util.ArrayList;
 
 public class Sala {
-    public int id;
-    public String[][] distribucion;
-    public String tipoAsiento;
+    public String id;
+    private String[][] distribucion = new String [12][10];
 
-    public Sala(int id, String[][] distribucion, String tipoAsiento) {
+    public Sala(String id) {
         this.id = id;
-        this.distribucion = distribucion;
-        this.tipoAsiento = tipoAsiento;
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
-    public String[][] getDistribucion() {
-        return this.distribucion;
-    }
-
-    public String getTipoAsiento() {
-        return this.tipoAsiento;
-    }
-
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setDistribucion(String[][] distribucion) {
-        this.distribucion = distribucion;
-    }
-
-    public void setTipoAsiento(String tipoAsiento) {
-        this.tipoAsiento = tipoAsiento;
-    }
-
-    private void llenarDistribucion() {
-        distribucion = new String[12][10];
+    public void llenarDistribucion() {
         for (int i = 0; i < 10; i++) {
             char letra = 'L'; // Inicia con la letra 'L'
             for (int j = 0; j < 12; j++) {
@@ -65,5 +45,7 @@ public class Sala {
         }
         System.out.println("                --------PANTALLA--------  ");
     }
+
+
 }
 

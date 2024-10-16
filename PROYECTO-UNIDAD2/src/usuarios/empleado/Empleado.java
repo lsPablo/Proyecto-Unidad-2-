@@ -2,6 +2,7 @@ package usuarios.empleado;
 
 import peliculas.Pelicula;
 import producto.Producto;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 import cine.Cine;
@@ -32,7 +33,6 @@ public class Empleado extends Usuario {
 
     public void agregarPelicula(){
         String idPelicula = cine.generarIdPelicula();
-        System.out.println("--AGREGAR PELÍCULA--");
         System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
         String nombrePelicula = sc.nextLine();
         System.out.println("INGRESA EL GENERO: ");
@@ -78,6 +78,16 @@ public class Empleado extends Usuario {
         }
         System.out.println("NO HAY PELICULAS REGISTRADAS CON ESE NOMBRE.");
     }
+
+    public void verSalas(){
+        System.out.println("---SALAS---");
+        cine.Salas();
+        for (Sala sala : this.cine.listaSalas){
+            System.out.println(sala.getId());
+            sala.mostrarDistribucion();
+        }
+    }
+
     public void eliminarProductos(){
         if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){
             System.out.println("NO HAY PRODUCTOS REGISTRADOS");
