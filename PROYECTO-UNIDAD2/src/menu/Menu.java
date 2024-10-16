@@ -90,6 +90,9 @@ public class Menu {
         while (opcion != 3) {
             System.out.println("Menú del Cliente");
             System.out.println("1.- VER CARTELERA");
+            
+
+
             System.out.println("2.- COMPRAR BOLETOS");
             System.out.println("3.- Salir");
 
@@ -155,6 +158,7 @@ public class Menu {
                     cine.mostrarProductoSalado();
                     break;
                     case 5:
+
                         break;
                 case 6:
                    empleado.agregarPelicula();
