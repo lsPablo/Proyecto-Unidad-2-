@@ -1,6 +1,6 @@
 package cine;
 
-import cartelera.Cartelera;
+import funcion.Funcion;
 import peliculas.Pelicula;
 import producto.Producto;
 import salas.Sala;
@@ -12,7 +12,6 @@ import usuarios.utils.Rol;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Cine {
@@ -27,7 +26,7 @@ public class Cine {
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
-    public ArrayList<Cartelera>listaFunciones =new ArrayList<>();
+    public ArrayList<Funcion>listaFunciones =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -349,10 +348,10 @@ public class Cine {
         return null;
     }
 
-    public Cartelera obtenerCarteleraPorId(String idCartelera) {
-        for (Cartelera cartelera: this.listaFunciones){
-            if(cartelera.getId().equalsIgnoreCase(idCartelera)){
-                return cartelera;
+    public Funcion obtenerCarteleraPorId(String idCartelera) {
+        for (Funcion funcion : this.listaFunciones){
+            if(funcion.getId().equalsIgnoreCase(idCartelera)){
+                return funcion;
             }
         }
         return null;
@@ -364,8 +363,8 @@ public class Cine {
             return;
         }
 
-        for (Cartelera cartelera : this.listaFunciones){
-            System.out.println(cartelera.mostrarCartelera()+":)");
+        for (Funcion funcion : this.listaFunciones){
+            System.out.println(funcion.mostrarCartelera()+":)");
         }
     }
 

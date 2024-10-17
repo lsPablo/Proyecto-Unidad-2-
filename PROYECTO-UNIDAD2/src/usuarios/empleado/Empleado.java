@@ -1,6 +1,6 @@
 package usuarios.empleado;
 
-import cartelera.Cartelera;
+import funcion.Funcion;
 import peliculas.Pelicula;
 import producto.Producto;
 import salas.Sala;
@@ -115,9 +115,9 @@ public class Empleado extends Usuario {
         Duration duracionTotal = duracionPelicula.plusMinutes(20);
         boolean conflictoEnHoras = false;
 
-        for (Cartelera cartelera : cine.listaFunciones) {
-            LocalTime horaInicioExistente = cartelera.getHoraProyeccion();
-            Duration duracionExistente = cartelera.getPelicula().getDuracion();
+        for (Funcion funcion : cine.listaFunciones) {
+            LocalTime horaInicioExistente = funcion.getHoraProyeccion();
+            Duration duracionExistente = funcion.getPelicula().getDuracion();
             Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
             LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
 
@@ -132,8 +132,8 @@ public class Empleado extends Usuario {
             Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
             Sala sala = cine.obtenerSalaPorId(idSala);
             String idFuncion = cine.generarIdFuncion();
-            Cartelera cartelera = new Cartelera(idFuncion, pelicula, sala, horaFuncion);
-            cine.listaFunciones.add(cartelera);
+            Funcion funcion = new Funcion(idFuncion, pelicula, sala, horaFuncion);
+            cine.listaFunciones.add(funcion);
             System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
         }
 
@@ -145,8 +145,8 @@ public class Empleado extends Usuario {
         }else{
             System.out.println("INGRESA EL ID DE LA FUNCION: ");
             String idFuncion = sc.nextLine();
-            for (Cartelera cartelera : cine.listaFunciones) {
-                int posicion = cine.listaFunciones.indexOf(cartelera);
+            for (Funcion funcion : cine.listaFunciones) {
+                int posicion = cine.listaFunciones.indexOf(funcion);
                 cine.listaFunciones.remove(posicion);
                 break;
             }
