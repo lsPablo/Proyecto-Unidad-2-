@@ -7,20 +7,14 @@ import java.time.LocalTime;
 
 public class Funcion {
     String id;
-    Pelicula pelicula;
     Sala sala;
     LocalTime horaProyeccion;
 
 
-    public Funcion(String idFuncion, Pelicula pelicula, Sala sala, LocalTime horaProyeccion) {
+    public Funcion(String idFuncion, Sala sala, LocalTime horaProyeccion) {
         this.id = idFuncion;
-        this.pelicula = pelicula;
         this.sala = sala;
         this.horaProyeccion = horaProyeccion;
-    }
-
-    public Pelicula getPelicula() {
-        return pelicula;
     }
 
     public Sala getSala() {
@@ -35,10 +29,6 @@ public class Funcion {
         return horaProyeccion;
     }
 
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
-    }
-
     public void setSala(Sala sala) {
         this.sala = sala;
     }
@@ -48,9 +38,8 @@ public class Funcion {
     }
 
     public String mostrarCartelera() {
-        String peliculaEnCartelera = pelicula.mostrarDatos();
         String salaEnCartelera = sala.getId();
-        String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Pelicula%s, Sala: %s", id, horaProyeccion, peliculaEnCartelera,salaEnCartelera);
+        String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Sala: %s", id, horaProyeccion,salaEnCartelera);
         return cartelera;
     }
 }

@@ -1,16 +1,12 @@
 package menu;
 
 import cine.Cine;
-import peliculas.Pelicula;
-import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
-import java.time.Duration;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
@@ -162,11 +158,9 @@ public class Menu {
                     break;
                 case 11:
                     System.out.println("--MOSTRAR FUNCIONES--");
-                    cine.mostrarCartelera();
                     break;
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
-                    empleado.eliminarFunciones();
                     break;
                 case 13:
                     System.out.println("HASTA LUEGO");

@@ -113,46 +113,37 @@ public class Empleado extends Usuario {
         LocalTime horaFuncion = LocalTime.parse(hora);
         Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
         Duration duracionTotal = duracionPelicula.plusMinutes(20);
-        boolean conflictoEnHoras = false;
+        boolean chocanHoras = false;
 
-        for (Funcion funcion : cine.listaFunciones) {
+        Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
+
+        for (Funcion funcion : pelicula.listaFunciones) {
             LocalTime horaInicioExistente = funcion.getHoraProyeccion();
-            Duration duracionExistente = funcion.getPelicula().getDuracion();
+            Duration duracionExistente = pelicula.getDuracion();
             Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
             LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
 
-            if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente) && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente) && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
+            if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente)
+                    && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente)
+                    && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
                 System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
-                conflictoEnHoras = true;
+                System.out.println("LA HORA PROXIMA DISPONIBE ES DE LAS: " + horaInicioExistente);
+                chocanHoras = true;
                 break;
             }
         }
 
-        if (!conflictoEnHoras) {
-            Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
+        if (!chocanHoras) {
             Sala sala = cine.obtenerSalaPorId(idSala);
-            String idFuncion = cine.generarIdFuncion();
-            Funcion funcion = new Funcion(idFuncion, pelicula, sala, horaFuncion);
-            cine.listaFunciones.add(funcion);
+            String idFuncion = pelicula.generarIdFuncion();
+            Funcion funcion = new Funcion(idFuncion, sala, horaFuncion);
+            pelicula.listaFunciones.add(funcion);
             System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
         }
 
     }
 
-    public void eliminarFunciones(){
-        if(cine.listaFunciones.isEmpty()){
-            System.out.println("NO EXISTE ELIMINAR FUNCIONES");
-        }else{
-            System.out.println("INGRESA EL ID DE LA FUNCION: ");
-            String idFuncion = sc.nextLine();
-            for (Funcion funcion : cine.listaFunciones) {
-                int posicion = cine.listaFunciones.indexOf(funcion);
-                cine.listaFunciones.remove(posicion);
-                break;
-            }
-            System.out.println("NO HAY FUNCIONES REGISTRADAS CON ESE ID.");
-        }
-    }
+
 
     public void eliminarProductos(){
         if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){

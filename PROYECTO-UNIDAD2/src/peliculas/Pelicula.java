@@ -1,7 +1,11 @@
 package peliculas;
 
+import funcion.Funcion;
+
 import java.sql.Time;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Pelicula {
     public String id;
@@ -10,6 +14,9 @@ public class Pelicula {
     public char clasificacion;
     public Duration duracion;
     public String sinopsis;
+    public ArrayList<Funcion> listaFunciones = new ArrayList();
+
+    Scanner sc = new Scanner(System.in);
 
     public Pelicula(String id, String titulo, String gernero, char clasificacion, Duration duracion, String sinopsis) {
         this.id = id;
@@ -64,11 +71,47 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
+    public String generarIdFuncion(){
+        int longitudFuncionesMasUno = this.listaFunciones.size() + 1;
+        String idFuncion = String.format("F%d", longitudFuncionesMasUno);
+        return idFuncion;
+    }
+
+    public void mostrarFunciones(){
+        if (listaFunciones.equals(null)) {
+            System.out.println("NO HAY FUNCIONES REGISTRADAS");
+            return;
+        }
+
+        for (Funcion funcion : this.listaFunciones){
+            System.out.println(funcion.mostrarCartelera());
+        }
+    }
+
+    public void eliminarFunciones(){
+
+        if(this.listaFunciones.isEmpty()){
+            System.out.println("NO EXISTE ELIMINAR FUNCIONES");
+            return;
+        }
+
+        System.out.println("INGRESA EL ID DE LA FUNCION: ");
+        String idFuncion = sc.nextLine();
+        for (Funcion funcion : this.listaFunciones) {
+            int posicion = this.listaFunciones.indexOf(funcion);
+            this.listaFunciones.remove(posicion);
+                break;
+            }
+        System.out.println("NO HAY FUNCIONES REGISTRADAS CON ESE ID.");
+
+    }
+
     public String mostrarDatos() {
         long minutos = duracion.toMinutes();
         String duracionFormateada = String.format(" %s MINUTOS", minutos);
         String datos = String.format("ID: %s, NOMBRE: %s, GENERO: %s, CLASIFICACIÓN: %s, DURACIÓN: %s, SINOPSIS: %s", this.id, this.titulo, this.gernero, this.clasificacion, duracionFormateada, this.sinopsis);
         return datos;
     }
+
 
 }

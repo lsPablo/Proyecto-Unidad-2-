@@ -26,7 +26,6 @@ public class Cine {
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
-    public ArrayList<Funcion>listaFunciones =new ArrayList<>();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -167,11 +166,7 @@ public class Cine {
         return idSala;
     }
 
-    public String generarIdFuncion(){
-        int longitudFuncionesMasUno = this.listaFunciones.size() + 1;
-        String idFuncion = String.format("F%d", longitudFuncionesMasUno);
-        return idFuncion;
-    }
+
 
     public void registrarPelicula(Pelicula pelicula){
         listaPeliculas.add(pelicula);
@@ -348,24 +343,15 @@ public class Cine {
         return null;
     }
 
-    public Funcion obtenerCarteleraPorId(String idCartelera) {
+    /*public Funcion obtenerCarteleraPorId(String idCartelera) {
         for (Funcion funcion : this.listaFunciones){
             if(funcion.getId().equalsIgnoreCase(idCartelera)){
                 return funcion;
             }
         }
         return null;
-    }
+    }*/
 
-    public void mostrarCartelera(){
-        if (listaFunciones.equals(null)) {
-            System.out.println("NO HAY FUNCIONES REGISTRADAS");
-            return;
-        }
 
-        for (Funcion funcion : this.listaFunciones){
-            System.out.println(funcion.mostrarCartelera()+":)");
-        }
-    }
 
 }
