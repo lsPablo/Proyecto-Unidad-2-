@@ -8,20 +8,20 @@ public class ValidadorCine {
     public Cine cine = new Cine();
     Scanner sc = new Scanner(System.in);
 
-    public void validadorPeliculaId() {
-        System.out.println("Ingresa el ID de la Pelicula");
-        String idPelicula = sc.nextLine();
+    public Pelicula validadorPeliculaId() {
+        System.out.println("Ingresa el titulo de la Pelicula");
+        String tituloPelicula = sc.nextLine();
         boolean peliculaEncontrada = false;
 
         for (Pelicula pelicula : this.cine.listaPeliculas) {
-            if (pelicula.getId().equals(idPelicula)) {
+            if (pelicula.getId().equals(tituloPelicula)) {
                 peliculaEncontrada = true;
-                break;
+                return pelicula;
             }
         }
 
         if (!peliculaEncontrada) {
-            System.out.println("El ID de la pelicula no existe");
+            System.out.println("La pelicula ingresada no existe");
         }
     }
 }

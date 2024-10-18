@@ -1,5 +1,6 @@
 package usuarios.empleado;
 
+import cine.ValidadorCine;
 import funcion.Funcion;
 import peliculas.Pelicula;
 import producto.Producto;
@@ -143,6 +144,9 @@ public class Empleado extends Usuario {
 
     }
 
+    public void eliminarFuncion(){
+
+    }
 
 
     public void eliminarProductos(){
