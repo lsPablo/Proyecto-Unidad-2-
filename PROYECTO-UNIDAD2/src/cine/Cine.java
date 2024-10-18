@@ -43,7 +43,6 @@ public class Cine {
 
         }
     }
-
     public void registrarCliente(Cliente cliente){
         listaClientes.add(cliente);
         listaUsuarios.add(cliente);
@@ -210,8 +209,6 @@ public class Cine {
         registrarCliente(cliente);
         System.out.println("Cuenta creada exitosamente.");
     }
-
-
 
     public void agregarProductoDulce(){
         System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");

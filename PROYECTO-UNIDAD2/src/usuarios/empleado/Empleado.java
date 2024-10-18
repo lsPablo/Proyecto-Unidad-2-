@@ -127,7 +127,7 @@ public class Empleado extends Usuario {
                     && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente)
                     && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
                 System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
-                System.out.println("LA HORA PROXIMA DISPONIBE ES DE LAS: " + horaInicioExistente);
+                System.out.println("LA HORA PROXIMA DISPONIBE ES DE LAS: " + horaTerminoExistente);
                 chocanHoras = true;
                 break;
             }

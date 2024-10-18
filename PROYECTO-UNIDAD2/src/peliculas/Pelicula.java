@@ -27,6 +27,10 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getTitulo() {
         return titulo;
     }
