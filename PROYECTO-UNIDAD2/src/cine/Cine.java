@@ -23,6 +23,7 @@ public class Cine {
     public ArrayList<Admin>listaAdmin =new ArrayList<>();
     public ArrayList<Producto>listaSalado = new ArrayList<>();
     public ArrayList<Producto>listaDulce =new ArrayList<>();
+    public ArrayList<Producto>listaProductos =new ArrayList<>();
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
@@ -65,6 +66,9 @@ public class Cine {
     public void registrarDulce(Producto producto){
         listaDulce.add(producto);
     }
+    public void registrarProducto(Producto producto){
+        listaProductos.add(producto);
+    }
 
     public void registrarCompra(Producto producto){
         listaCompras.add(producto);
@@ -88,22 +92,6 @@ public class Cine {
         }
     }
 
-    public void mostrarProdDulces(){
-        int iterador = 1;
-        System.out.println("--PRODUCTOS DULCES--");
-        for(Producto producto: this.listaDulce){
-            System.out.println("Este es el producto: "+iterador);
-            System.out.println(producto.mostrarProductoEmpleado());
-        }
-    }
-    public void mostrarProductoSalado(){
-        int iterador = 1;
-        System.out.println("--PRODUCTOS SALDO--");
-        for(Producto producto: this.listaSalado){
-            System.out.println("Este es el producto: "+iterador);
-            System.out.println(producto.mostrarProductoEmpleado());
-        }
-    }
 
     public void mostrarEmpleado(){
         int iterador = 1;
@@ -166,6 +154,16 @@ public class Cine {
         return idSala;
     }
 
+    public String generarIdProductoSalado(){
+        int longitudProdMasUno = this.listaSalado.size() + 1;
+        return String.format("ProdS%d",longitudProdMasUno);
+    }
+    public String generarIdDulce(){
+        int longitudDulceMasUno = this.listaDulce.size() + 1;
+        return String.format("ProdD%d",longitudDulceMasUno);
+    }
+
+
 
 
     public void registrarPelicula(Pelicula pelicula){
@@ -209,102 +207,6 @@ public class Cine {
         Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
         registrarCliente(cliente);
         System.out.println("Cuenta creada exitosamente.");
-    }
-
-
-
-    public void agregarProductoDulce(){
-        System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
-        String id = sc.next();
-        System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
-        String nombre = sc.next();
-
-        int opciontamaño =0;
-        double precio =0;
-        String tamaño = "";
-        while(opciontamaño < 1 || opciontamaño > 4){
-            System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
-            System.out.println("1.- CHICO");
-            System.out.println("2.- MEDIANO");
-            System.out.println("3.- GRANDE");
-            System.out.println("4.- NO TIENE TAMAÑO");
-            System.out.println("SELECCIONA UNA OPCION");
-            opciontamaño = sc.nextInt();
-
-            switch (opciontamaño){
-                case 1:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
-                    precio = sc.nextDouble();
-                    tamaño = "CHICO";
-                    break;
-                case 2:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
-                    precio = sc.nextDouble();
-                    tamaño = "MEDIANO";
-                    break;
-                case 3:
-
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
-                    precio = sc.nextDouble();
-                    tamaño = "GRANDE";
-                    break;
-                case 4:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
-                    precio = sc.nextDouble();
-                    tamaño = "";
-                    break;
-            }
-        }
-        Producto producto = new Producto(id, nombre, tamaño, precio);
-        registrarDulce(producto);
-        System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
-    }
-
-    public void agregarProductoSalado(){
-        System.out.println("INGRESA EL ID DEL PRODUCTO A AGREGAR: ");
-        String ids = sc.next();
-        System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
-        String nombres = sc.next();
-
-        int opciontamaños =0;
-        double precios =0;
-        String tamaños = "";
-        while(opciontamaños < 1 || opciontamaños > 4){
-            System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
-            System.out.println("1.- CHICO");
-            System.out.println("2.- MEDIANO");
-            System.out.println("3.- GRANDE");
-            System.out.println("4.- NO TIENE TAMAÑO");
-            System.out.println("SELECCIONA UNA OPCION");
-            opciontamaños = sc.nextInt();
-
-            switch (opciontamaños){
-                case 1:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
-                    precios = sc.nextDouble();
-                    tamaños = "CHICO";
-                    break;
-                case 2:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
-                    precios = sc.nextDouble();
-                    tamaños = "MEDIANO";
-                    break;
-                case 3:
-
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
-                    precios = sc.nextDouble();
-                    tamaños = "GRANDE";
-                    break;
-                case 4:
-                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
-                    precios = sc.nextDouble();
-                    tamaños = "";
-                    break;
-            }
-        }
-        Producto productos = new Producto(ids, nombres, tamaños, precios);
-        registrarSalado(productos);
-        System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
     }
 
     public boolean existePelícula(String nombrePelicula) {
