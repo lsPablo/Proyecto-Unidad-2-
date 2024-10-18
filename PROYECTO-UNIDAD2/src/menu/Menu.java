@@ -66,9 +66,9 @@ public class Menu {
 
                     break;
 
-                case 3:
-                    System.out.println("Hasta Luego");
-                    break;
+                    case 3:
+                        System.out.println("Hasta Luego");
+                        break;
                 default:
                     System.out.println("OPCIÓN INVÁLIDA.");
                     break;
@@ -118,28 +118,26 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     System.out.println("--AGREGAR PRODUCTOS DULCES A LA DULCERIA--");
-                    empleado.agregarProductoDulce();
+                    cine.agregarProductoDulce();
                     break;
                 case 2:
                     System.out.println("--AGREGAR PRODUCTO SALADO A LA DULCERIA--");
-                    empleado.agregarProductoSalado();
+                   cine.agregarProductoSalado();
 
                     break;
                 case 3:
                     System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
-                    empleado.mostrarProdDulces();
+                    cine.mostrarProdDulces();
                     break;
                 case 4:
                     System.out.println("AQUI ESTAN LOS PRODUCTOS SALADOS: ");
-                    empleado.mostrarProductoSalado();
+                    cine.mostrarProductoSalado();
                     break;
-                case 5:
-                    System.out.println("Haz seleccionado la opcion eliminar Producto");
-                    empleado.eliminarProductos();
-                    break;
+                    case 5:
+                        break;
                 case 6:
                     System.out.println("--AGREGAR PELÍCULA--");
-                    empleado.agregarPelicula();
+                   empleado.agregarPelicula();
                     break;
                 case 7:
                     System.out.println("--MOSTRAR PELICULA--");

@@ -37,7 +37,7 @@ public class Funcion {
         this.horaProyeccion = horaProyeccion;
     }
 
-    public String mostrarCartelera() {
+    public String mostrarFuncion() {
         String salaEnCartelera = sala.getId();
         String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Sala: %s", id, horaProyeccion,salaEnCartelera);
         return cartelera;
