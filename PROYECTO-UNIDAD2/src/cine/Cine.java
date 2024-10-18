@@ -42,7 +42,6 @@ public class Cine {
             Sala sala = new Sala(idSala);
             sala.llenarDistribucion();
             listaSalas.add(sala);
-
         }
     }
 

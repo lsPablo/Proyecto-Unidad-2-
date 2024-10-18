@@ -2,6 +2,7 @@ package menu;
 
 import cine.Cine;
 import peliculas.Pelicula;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -149,14 +150,10 @@ public class Menu {
                     break;
                 case 8:
                     System.out.println("--ELIMINAR PELICULA--");
-                    System.out.println("INGRESA LA PELICULA DE INTERES: ");
-                    String tituloPelicula = sc.nextLine();
-
                     empleado.eliminarPelicula();
                     break;
                 case 9:
                     System.out.println("--VER SALAS--");
-                    cine.Salas();
                     empleado.verSalas();
                     break;
                 case 10:
