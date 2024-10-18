@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-
 public class Empleado extends Usuario {
     Scanner sc = new Scanner(System.in);
     public Cine cine = new Cine();

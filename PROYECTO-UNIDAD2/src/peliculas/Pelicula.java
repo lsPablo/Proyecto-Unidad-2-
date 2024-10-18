@@ -102,24 +102,6 @@ public class Pelicula {
         return null;
     }
 
-    public void eliminarFunciones(){
-
-        if(this.listaFunciones.isEmpty()){
-            System.out.println("NO EXISTE ELIMINAR FUNCIONES");
-            return;
-        }
-
-        System.out.println("INGRESA EL ID DE LA FUNCION: ");
-        String idFuncion = sc.nextLine();
-        for (Funcion funcion : this.listaFunciones) {
-            int posicion = this.listaFunciones.indexOf(funcion);
-            this.listaFunciones.remove(posicion);
-                break;
-            }
-        System.out.println("NO HAY FUNCIONES REGISTRADAS CON ESE ID.");
-
-    }
-
     public String mostrarDatos() {
         long minutos = duracion.toMinutes();
         String duracionFormateada = String.format(" %s MINUTOS", minutos);
