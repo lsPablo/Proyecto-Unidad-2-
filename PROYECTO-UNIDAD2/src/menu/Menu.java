@@ -1,6 +1,7 @@
 package menu;
 
 import cine.Cine;
+import peliculas.Pelicula;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 public class Menu {
     public Cine cine = new Cine();
+    public Pelicula pelicula;
     Scanner sc = new Scanner(System.in);
 
     public void login() {
@@ -118,23 +120,25 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     System.out.println("--AGREGAR PRODUCTOS DULCES A LA DULCERIA--");
-                    cine.agregarProductoDulce();
+                    empleado.agregarProductoDulce();
                     break;
                 case 2:
                     System.out.println("--AGREGAR PRODUCTO SALADO A LA DULCERIA--");
-                   cine.agregarProductoSalado();
+                   empleado.agregarProductoSalado();
 
                     break;
                 case 3:
                     System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
-                    cine.mostrarProdDulces();
+                    empleado.mostrarProdDulces();
                     break;
                 case 4:
-                    System.out.println("AQUI ESTAN LOS PRODUCTOS SALADOS: ");
-                    cine.mostrarProductoSalado();
+                    System.out.println("PRODUCTOS SALADOS: ");
+                    empleado.mostrarProductoSalado();
                     break;
-                    case 5:
-                        break;
+                case 5:
+                    System.out.println("ELIMINAR PRODUCTO: ");
+                    empleado.eliminarProductos();
+                    break;
                 case 6:
                     System.out.println("--AGREGAR PELÍCULA--");
                    empleado.agregarPelicula();
@@ -145,6 +149,9 @@ public class Menu {
                     break;
                 case 8:
                     System.out.println("--ELIMINAR PELICULA--");
+                    System.out.println("INGRESA LA PELICULA DE INTERES: ");
+                    String tituloPelicula = sc.nextLine();
+
                     empleado.eliminarPelicula();
                     break;
                 case 9:
@@ -158,9 +165,20 @@ public class Menu {
                     break;
                 case 11:
                     System.out.println("--MOSTRAR FUNCIONES--");
+                    sc.nextLine();
+                    System.out.println("INGRESA LA PELICULA DE INTERES: ");
+                    String peliculaInteres = sc.nextLine();
+
+                    pelicula.mostrarFunciones(peliculaInteres);
                     break;
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
+
+                    sc.nextLine();
+                    System.out.println("INGRESA LA PELICULA DE INTERES: ");
+                     peliculaInteres = sc.nextLine();
+
+                    empleado.eliminarFuncion(peliculaInteres);
                     break;
                 case 13:
                     System.out.println("HASTA LUEGO");
@@ -170,8 +188,6 @@ public class Menu {
                     break;
             }
         }
-
-
     }
 
     private void mostrarMenuAdmin(Admin admin) {

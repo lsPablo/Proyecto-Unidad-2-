@@ -16,7 +16,9 @@ import java.util.Scanner;
 
 public class Empleado extends Usuario {
     Scanner sc = new Scanner(System.in);
-    public Cine cine = new Cine();
+    private Cine cine = new Cine();
+    private  Pelicula pelicula;
+    public ValidadorCine validadorCine = new ValidadorCine();
     public String curp;
 
     public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia) {
@@ -32,6 +34,167 @@ public class Empleado extends Usuario {
         String datos = String.format ("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
                 "Fecha de Nacimiento: %s, CURP: %s", id, nombre,apellido,direccion,telefono,fechaNacimiento,curp);
         return datos;
+    }
+
+    public void agregarProductoDulce(){
+
+        String ID = cine.generarIdDulce();
+        System.out.println("INGRESA LA CATEGORIA DEL PRODUCTO A AGREGAR: ");
+        String id = sc.next();
+        System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
+        String nombre = sc.next();
+
+        int opciontamaño =0;
+        double precio =0;
+        String tamaño = "";
+        while(opciontamaño < 1 || opciontamaño > 4){
+            System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
+            System.out.println("1.- CHICO");
+            System.out.println("2.- MEDIANO");
+            System.out.println("3.- GRANDE");
+            System.out.println("4.- NO TIENE TAMAÑO");
+            System.out.println("SELECCIONA UNA OPCION");
+            opciontamaño = sc.nextInt();
+
+            switch (opciontamaño){
+                case 1:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
+                    precio = sc.nextDouble();
+                    tamaño = "CHICO";
+                    break;
+                case 2:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
+                    precio = sc.nextDouble();
+                    tamaño = "MEDIANO";
+                    break;
+                case 3:
+
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
+                    precio = sc.nextDouble();
+                    tamaño = "GRANDE";
+                    break;
+                case 4:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
+                    precio = sc.nextDouble();
+                    tamaño = "";
+                    break;
+            }
+        }
+        Producto producto = new Producto(ID,id, nombre, tamaño, precio);
+        cine.registrarDulce(producto);
+        cine.registrarProducto(producto);
+        System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
+    }
+
+    public void agregarProductoSalado(){
+        String ID = cine.generarIdProductoSalado();
+        System.out.println("INGRESA LA CATEGORIA DEL PRODUCTO A AGREGAR: ");
+        String ids = sc.next();
+        System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
+        String nombres = sc.next();
+
+        int opciontamaños =0;
+        double precios =0;
+        String tamaños = "";
+        while(opciontamaños < 1 || opciontamaños > 4){
+            System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
+            System.out.println("1.- CHICO");
+            System.out.println("2.- MEDIANO");
+            System.out.println("3.- GRANDE");
+            System.out.println("4.- NO TIENE TAMAÑO");
+            System.out.println("SELECCIONA UNA OPCION");
+            opciontamaños = sc.nextInt();
+
+            switch (opciontamaños){
+                case 1:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
+                    precios = sc.nextDouble();
+                    tamaños = "CHICO";
+                    break;
+                case 2:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
+                    precios = sc.nextDouble();
+                    tamaños = "MEDIANO";
+                    break;
+                case 3:
+
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
+                    precios = sc.nextDouble();
+                    tamaños = "GRANDE";
+                    break;
+                case 4:
+                    System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
+                    precios = sc.nextDouble();
+                    tamaños = "";
+                    break;
+            }
+        }
+        Producto producto = new Producto(ID,ids, nombres, tamaños, precios);
+        cine.registrarSalado(producto);
+        cine.registrarProducto(producto);
+        System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
+    }
+
+    public void mostrarProdDulces(){
+        int iterador = 1;
+        System.out.println("--PRODUCTOS DULCES--");
+        for(Producto producto: this.cine.listaDulce){
+            System.out.println("Este es el producto: "+iterador);
+            System.out.println(producto.mostrarProductoEmpleado());
+        }
+    }
+
+    public void mostrarProductoSalado(){
+        int iterador = 1;
+        System.out.println("--PRODUCTOS SALDO--");
+        for(Producto producto: this.cine.listaSalado){
+            System.out.println("Este es el producto: "+iterador);
+            System.out.println(producto.mostrarProductoEmpleado());
+        }
+    }
+
+    public void eliminarProdDulce(String idProducto){
+        for (Producto producto : this.cine.listaDulce){
+            if (producto.getID().equals(idProducto)){
+                this.cine.listaDulce.remove(producto);
+                return;
+            }
+        }
+    }
+
+    public void eliminarProdSalado(String idProducto){
+        for (Producto producto : this.cine.listaSalado){
+            if (producto.getID().equals(idProducto)){
+                this.cine.listaSalado.remove(producto);
+                return;
+            }
+        }
+    }
+
+    public Producto obtenerProdporId(String idProducto){
+        for (Producto producto : this.cine.listaProductos){
+            if (producto.getID().equals(idProducto)){
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarProductos(){
+        if (cine.listaProductos.size() == 0){
+            System.out.println("NO HAY PRODUCTOS REGISTRADOS");
+            return;
+        }
+        System.out.println("INGRESA EL ID DEL PRODUCTO A ELIMINAR:");
+        String idProducto = sc.next();
+
+        Producto producto = obtenerProdporId(idProducto);
+        if (producto == null){
+            System.out.println("No existe un producto con el ID: " + idProducto);
+            return;
+        }
+        this.eliminarProdDulce(idProducto);
+        this.eliminarProdSalado(idProducto);
     }
 
     public void agregarPelicula(){
@@ -144,20 +307,26 @@ public class Empleado extends Usuario {
 
     }
 
-    public void eliminarFuncion(){
+    public void eliminarFuncion(String tituloPeli){
+        //MOSTRAR FUNCIONES
+        //pelicula.mostrarFunciones(tituloPeli);
 
+        System.out.println("INGRESA EL ID DE LA FUNCION A ELIMINAR: ");
+        String idFuncion = sc.nextLine();
+
+        for (Pelicula pelicula : this.cine.listaPeliculas) {
+            if (pelicula.getTitulo().equals(tituloPeli)) {
+                for (Funcion funcion: pelicula.listaFunciones){
+                    if (funcion.getId().equals(idFuncion)) {
+                        pelicula.listaFunciones.remove(funcion);
+                        System.out.println(pelicula.listaFunciones.size());//eliminar despues
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("NO EXISTE ESA FUNCION.");
     }
 
 
-    public void eliminarProductos(){
-        if (cine.listaSalado.size() == 0 && cine.listaDulce.size() == 0){
-            System.out.println("NO HAY PRODUCTOS REGISTRADOS");
-        }
-        System.out.println("INGRESA EL ID DEL PRODUCTO A ELIMINAR");
-        String idProducto = sc.nextLine();
-        for(Producto producto : this.cine.listaSalado){
-            int posicion = cine.listaSalado.indexOf(producto);
-            System.out.println();
-        }
-    }
 }

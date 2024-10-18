@@ -51,6 +51,10 @@ public class Pelicula {
         return sinopsis;
     }
 
+    public ArrayList<Funcion> getListaFunciones() {
+        return listaFunciones;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -81,15 +85,21 @@ public class Pelicula {
         return idFuncion;
     }
 
-    public void mostrarFunciones(){
-        if (listaFunciones.equals(null)) {
+    public String mostrarFunciones(String tituloPelicula) {
+        if (listaFunciones.isEmpty()) {
             System.out.println("NO HAY FUNCIONES REGISTRADAS");
-            return;
         }
-
-        for (Funcion funcion : this.listaFunciones){
-            System.out.println(funcion.mostrarCartelera());
+        boolean funcionesEncontradas = false; // To track if any functions were found
+        for (Funcion funcion : this.listaFunciones) {
+            if (this.titulo.equals(tituloPelicula)) {
+                System.out.println(funcion.mostrarFuncion());
+                funcionesEncontradas = true;
+            }
         }
+        if (!funcionesEncontradas) {
+            System.out.println("NO HAY FUNCIONES PARA ESA PELICULA");
+        }
+        return null;
     }
 
     public void eliminarFunciones(){
