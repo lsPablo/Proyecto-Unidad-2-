@@ -166,7 +166,7 @@ public class Menu {
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
                     String peliculaInteres = sc.nextLine();
 
-                    pelicula.mostrarFunciones(peliculaInteres);
+                    empleado.mostratrarFunciones(peliculaInteres);
                     break;
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
@@ -174,6 +174,8 @@ public class Menu {
                     sc.nextLine();
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
                      peliculaInteres = sc.nextLine();
+
+                    empleado.mostratrarFunciones(peliculaInteres);
 
                     empleado.eliminarFuncion(peliculaInteres);
                     break;
