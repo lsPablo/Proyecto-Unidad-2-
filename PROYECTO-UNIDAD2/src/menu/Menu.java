@@ -123,11 +123,13 @@ public class Menu {
 
     private void mostrarMenuCliente(Cliente cliente) {
         int opcion = 0;
-        while (opcion != 3) {
+        while (opcion != 5) {
             System.out.println("Menú del Cliente");
             System.out.println("1.- VER CARTELERA");
             System.out.println("2.- COMPRAR BOLETOS");
-            System.out.println("3.- Salir");
+            System.out.println("3.- METODO DE PAGO");
+            System.out.println("4.- COMPRAR EN DULCERIA");
+            System.out.println("5.- Salir");
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
@@ -166,7 +168,68 @@ public class Menu {
                 case 2:
                     System.out.println("--- COMPRAR BOLETOS ---");
                     break;
-                case 3:
+                    case 3:
+                        //aqui a trabajar
+                        int tipopago = 0;
+                        while (tipopago != 3){
+                            System.out.println("***SELECCIONA EL METODO DE PAGO");
+                            System.out.println("1.- EFECTIVO");
+                            System.out.println("2.- PAGO CON TERJETA");
+                            System.out.println("3.- SALIR");
+                            tipopago = sc.nextInt();
+
+                            switch (tipopago){
+                                case 1:
+                                    System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO EN EFECTIVO");
+
+                                    break;
+                                case 2:
+                                    System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO CON TARJETA");
+                                    cliente.registrarTarjeta();
+                                    //aplicarDescuentosSiMesNacimiento(cliente);
+                                    cliente.mostrarTotalCompra();
+                                    break;
+                                    case 3:
+                                        System.out.println("HASTA LUEGO");
+                                        break;
+                                default:
+                                    System.out.println("OPCION INVALIDA");
+                                    break;
+                            }
+                        }
+                        break;
+                        case 4:
+                            System.out.println("BIENVENIDO A LA DULCERIA");
+                            cliente.mostrarProdcliente();
+                            int verprod = 0;
+                            while (verprod != 3){
+                                System.out.println("1.- COMPRAR PRODUCTO");
+                                System.out.println("2.- QUIERO VER QUE SALE");
+                                System.out.println("3.- SALIR");
+                                System.out.println("SELECCIONA UNA OPCION");
+                                verprod = sc.nextInt();
+
+                                switch (verprod){
+                                    case 1:
+                                        System.out.println("INGRESA EL NOMBRE DEL PRODUCTO A COMPRAR");
+                                        //cliente.obtenerProd();
+                                        cliente.agregarProductoACompras();
+                                        System.out.println("PRODUCTO CARGADO CORRECTAMENTE");
+
+                                        break;
+                                        case 2:
+                                            cliente.mostrarTotalCompra();
+                                            break;
+                                            case 3:
+                                                System.out.println("HASTA LUEGO");
+                                                break;
+                                                default:
+                                                    System.out.println("OPCION INVALIDA");
+                                                    break;
+                                }
+                            }
+                            break;
+                case 5:
                     System.out.println("HASTA TU PROXIMA VISITA");
                     break;
                 default:

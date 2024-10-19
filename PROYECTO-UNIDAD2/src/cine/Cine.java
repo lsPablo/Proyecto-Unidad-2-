@@ -8,11 +8,15 @@ import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
+import usuarios.cliente.ValidadorCliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Cine {
@@ -118,6 +122,16 @@ public class Cine {
         return String.format("ProdD%d",longitudDulceMasUno);
     }
 
+    public String generarIdPago(){
+        int longitudComprasMasUno = this.listaCompras.size() + 1;
+        Random random = new Random();
+        int diaActual = LocalDate.now().getDayOfMonth();
+        int mesActual = LocalDate.now().getMonthValue();
+        int anoActual = LocalDate.now().getYear();
+        int numeroAleatorio = random.nextInt(1, 100000);
+        return String.format("Cin%d%d%d%d%d",longitudComprasMasUno,diaActual,mesActual,anoActual,numeroAleatorio);
+    }
+
     public String generarIdPelicula(){
         int longitudPeliculasMasUno = this.listaPeliculas.size() + 1;
         String idPelicula = String.format("P%d", longitudPeliculasMasUno);
@@ -193,5 +207,11 @@ public class Cine {
                 }
             }
         }
+    }
+
+    private ValidadorCliente validador = new ValidadorCliente();
+
+    public boolean validarFechaCorrecta(YearMonth fechaDeseada){
+        return  this.validador.validarFechaCorrecta(fechaDeseada);
     }
 }

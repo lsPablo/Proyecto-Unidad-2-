@@ -39,7 +39,7 @@ public class Producto {
         return String.format("ID: %s, Categoria: %s, Nombre : %s, Tamaño: %s, Precio: $%.2f", ID,id, nombre, tamaño, precio);
     }
     public String mostrarProductoCliente(){
-        return String.format("%s: %s Tamaño: %s. $%.2f",id, nombre, tamaño ,precio );
+        return String.format("ID: %s, %s: %s Tamaño: %s. $%.2f",ID,id, nombre, tamaño ,precio );
     }
 
 

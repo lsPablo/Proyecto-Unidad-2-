@@ -15,8 +15,6 @@ import java.util.Scanner;
 
 public class Empleado extends Usuario {
 
-    private  Pelicula pelicula;
-    public ValidadorCine validadorCine = new ValidadorCine();
     public String curp;
     private Scanner sc = new Scanner(System.in);
 
@@ -139,6 +137,7 @@ public class Empleado extends Usuario {
         for(Producto producto: this.cine.listaDulce){
             System.out.println("Este es el producto: "+iterador);
             System.out.println(producto.mostrarProductoEmpleado());
+            iterador++;
         }
     }
 
@@ -148,6 +147,7 @@ public class Empleado extends Usuario {
         for(Producto producto: this.cine.listaSalado){
             System.out.println("Este es el producto: "+iterador);
             System.out.println(producto.mostrarProductoEmpleado());
+            iterador++;
         }
     }
 
@@ -177,6 +177,7 @@ public class Empleado extends Usuario {
         }
         return null;
     }
+
 
     public void eliminarProductos(){
         if (cine.listaProductos.size() == 0){
