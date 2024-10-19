@@ -34,6 +34,10 @@ public class Cine {
         Admin admin =new Admin("A", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"1", Rol.ADMINISTRADOR, this);
         this.listaUsuarios.add(admin);
         this.listaAdmin.add(admin);
+        LocalDate fechaNacimiento1 = LocalDate.of(2005,11,30);
+        Empleado empleado = new Empleado("E","Victor", "Hernandez","Patzcuaro","654987321",fechaNacimiento1,"Curp","123",Rol.EMPLEADO, this);
+        this.listaUsuarios.add(empleado);
+        this.listaEmpleados.add(empleado);
         generarSalas();
 
     }
