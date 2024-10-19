@@ -50,6 +50,23 @@ public class Sala {
         System.out.println("                --------PANTALLA--------  ");
     }
 
+    public boolean reservarAsiento(String asiento) {
+        for (int i = 0; i < distribucion.length; i++) {
+            for (int j = 0; j < distribucion[i].length; j++) {
+                if (distribucion[i][j].equals(asiento)) {
+                    if (!distribucion[i][j].equals("X")) {
+                        distribucion[i][j] = "X";
+                        return true;
+                    } else {
+                        System.out.println("Asiento ya reservado.");
+                        return false;
+                    }
+                }
+            }
+        }
+        System.out.println("Asiento no encontrado.");
+        return false;
+    }
 
 }
 

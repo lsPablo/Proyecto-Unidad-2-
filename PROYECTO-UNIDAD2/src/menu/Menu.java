@@ -157,10 +157,17 @@ public class Menu {
                                 String hora = sc.nextLine();
                                 LocalTime horaFuncionElegida = LocalTime.parse(hora);
                                 Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida);
+
                                 String salaElegida = funcionElegida.getId();
                                 cine.mostrarDistribucionSalaPorId(salaElegida);
                                 System.out.println("Elige la cantidad de asientos");
                                 int cantidadAsientos=sc.nextInt();
+
+                                for (int i = 0; i < cantidadAsientos; i++) {
+                                    System.out.println("Ingresa el Asiento deseado");
+                                    String asiento = sc.next();
+                                    funcionElegida.getSala().reservarAsiento(asiento);
+                                }
 
 
 
