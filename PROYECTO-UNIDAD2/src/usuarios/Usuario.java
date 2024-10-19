@@ -1,5 +1,6 @@
 package usuarios;
 
+import cine.Cine;
 import usuarios.utils.Rol;
 
 import java.time.LocalDate;
@@ -15,8 +16,9 @@ public class Usuario {
     public LocalDate fechaNacimiento;
     public String contrasenia;
     public Rol rol;
+    protected Cine cine;
 
-    public Usuario(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Rol rol) {
+    public Usuario(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Rol rol, Cine cine) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -25,6 +27,7 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.contrasenia = contrasenia;
         this.rol=rol;
+        this.cine= cine;
     }
 
     public String getId() {

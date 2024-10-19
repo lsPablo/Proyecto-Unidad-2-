@@ -15,13 +15,13 @@ import java.util.Scanner;
 
 public class Empleado extends Usuario {
     Scanner sc = new Scanner(System.in);
-    private Cine cine = new Cine();
+
     private  Pelicula pelicula;
     public ValidadorCine validadorCine = new ValidadorCine();
     public String curp;
 
-    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia) {
-        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO);
+    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia, Cine cine) {
+        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO, cine);
         this.curp = curp;
     }
 
@@ -216,12 +216,12 @@ public class Empleado extends Usuario {
         cine.registrarPelicula(pelicula);
     }
 
-    public void mostrarPeliculas(){
-        if (cine.listaPeliculas.size() == 0){
+    public void mostrarPeliculas() {
+        if (cine.listaPeliculas.size() == 0) {
             System.out.println("NO HAY PELICULAS REGISTRADAS");
         }
 
-        for (Pelicula pelicula : this.cine.listaPeliculas){
+        for (Pelicula pelicula : this.cine.listaPeliculas) {
             System.out.println(pelicula.mostrarDatos());
         }
     }
