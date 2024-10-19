@@ -153,6 +153,7 @@ public class Menu {
                         switch (op) {
                             case 1:
                                 System.out.println("--- COMPRAR BOLETOS ---");
+                                sc.nextLine();
                                 System.out.println("Elige la hora de la funcion (HH:MM)");
                                 String hora = sc.nextLine();
                                 LocalTime horaFuncionElegida = LocalTime.parse(hora);
@@ -165,7 +166,8 @@ public class Menu {
                                 for (int i = 0; i < cantidadAsientos; i++) {
                                     System.out.println("Ingresa el Asiento deseado");
                                     String asiento = sc.next();
-                                    funcionElegida.getSala().reservarAsiento(asiento);
+                                    Double totalAsientos = funcionElegida.getSala().reservarAsiento(asiento);
+                                    System.out.println("TOTAL ASIENTOS: "+totalAsientos);
                                 }
 
 

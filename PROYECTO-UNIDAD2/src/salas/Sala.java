@@ -50,22 +50,40 @@ public class Sala {
         System.out.println("                --------PANTALLA--------  ");
     }
 
-    public boolean reservarAsiento(String asiento) {
+    public Double reservarAsiento(String asiento) {
+        Double precioAsiento = 0.0, totalAsiento = 0.0;
         for (int i = 0; i < distribucion.length; i++) {
             for (int j = 0; j < distribucion[i].length; j++) {
                 if (distribucion[i][j].equals(asiento)) {
-                    if (!distribucion[i][j].equals("X")) {
-                        distribucion[i][j] = "X";
-                        return true;
-                    } else {
-                        System.out.println("Asiento ya reservado.");
-                        return false;
+                    if (distribucion[i][j].toLowerCase().charAt(0) == 'V') {
+                        if (!distribucion[i][j].equals("X")) {
+                            precioAsiento = 400.00;
+                            distribucion[i][j] = "X";
+                        } else {
+                            System.out.println("Asiento ya reservado.");
+                        }
+                    } else if (distribucion[i][j].toLowerCase().charAt(0) == 'P') {
+                        if (!distribucion[i][j].equals("X")) {
+                            precioAsiento = 200.00;
+                            distribucion[i][j] = "X";
+                        } else {
+                            System.out.println("Asiento ya reservado.");
+                        }
+                    }else{
+                        if (!distribucion[i][j].equals("X")) {
+                            precioAsiento = 75.00;
+                            distribucion[i][j] = "X";
+                        } else {
+                            System.out.println("Asiento ya reservado.");
+                        }
                     }
                 }
+                totalAsiento = precioAsiento + totalAsiento;
             }
+            return totalAsiento;
         }
         System.out.println("Asiento no encontrado.");
-        return false;
+        return null;
     }
 
 

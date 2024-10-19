@@ -200,7 +200,7 @@ public class Cine {
 
     public Funcion buscarFuncion(String titulo, LocalTime hora) {
         for (Pelicula pelicula : listaPeliculas) {
-            if (pelicula.getTitulo().equalsIgnoreCase(titulo)) {
+            if (pelicula.getTitulo().equals(titulo)) {
                 for (Funcion funcion : pelicula.listaFunciones) {
                     if (funcion.getHoraProyeccion().equals(hora)) {
                         return funcion; // Retorna la función si se encuentra
