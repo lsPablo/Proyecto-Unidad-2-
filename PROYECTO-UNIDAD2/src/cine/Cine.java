@@ -220,19 +220,5 @@ public class Cine {
         }
     }
 
-    public void validarAsientosSala(int noAsientos){
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < noAsientos; i++) {
-            System.out.println("INGRESA EL ASIENTO QUE DESEAS: "); //A,B,C,D,E,F,G,H,I,J,K,L
-            String asientoDeseado = sc.nextLine();
-
-            for (int j = 0; j < 10; j++) {
-                for (int k = 0; k < 12; k++) {
-                    if (asientoDeseado.equals() {}
-                }
-            }
-
-        }
-    }
 }
 
