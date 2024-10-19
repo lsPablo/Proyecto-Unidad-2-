@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Sala {
     public String id;
-    private String[][] distribucion = new String [12][10];
+    private static String[][] distribucion = new String [12][10];
 
-    public Sala(){
+    static {
         llenarDistribucion();
     }
 
@@ -24,7 +24,7 @@ public class Sala {
         this.id = id;
     }
 
-    public void llenarDistribucion() {
+    public static void llenarDistribucion() {
         for (int i = 0; i < 10; i++) {
             char letra = 'L'; // Inicia con la letra 'L'
             for (int j = 0; j < 12; j++) {
