@@ -1,5 +1,6 @@
 package cine;
 
+import cartelera.Cartelera;
 import funcion.Funcion;
 import peliculas.Pelicula;
 import producto.Producto;
@@ -27,11 +28,12 @@ public class Cine {
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
+    public Cartelera cartelera = new Cartelera();
 
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
-        Admin admin =new Admin("A", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"1", Rol.ADMINISTRADOR);
+        Admin admin =new Admin("A", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"1", Rol.ADMINISTRADOR, this);
         this.listaUsuarios.add(admin);
         this.listaAdmin.add(admin);
         generarSalas();
@@ -164,7 +166,7 @@ public class Cine {
         System.out.println("INGRESA TU CURP");
         String curp = sc.next();
 
-        Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia);
+        Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia, this);
         //Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,nuevacontrasenia);
         registrarEmpleado(empleado);
         System.out.println("Datos del empleado registrados correctamente");
@@ -197,6 +199,7 @@ public class Cine {
     }
 
     public void crearNuevaCuenta(){
+        sc.nextLine();
         System.out.println("INGRESA TU NOMBRE COMPLETO: ");
         String nombre = sc.nextLine();
 
@@ -230,7 +233,7 @@ public class Cine {
         System.out.println("INGRESA TU TELÉFONO: ");
         String telefono = sc.next();
 
-        Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia);
+        Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia, this);
         registrarCliente(cliente);
         System.out.println("Cuenta creada exitosamente.");
     }
@@ -271,6 +274,13 @@ public class Cine {
         return null;
     }
 
+    public void mostrarCartelera(){
+        if (listaPeliculas.size() == 0){
+            System.out.println("NO HAY PELICULAS REGISTRADAS");
+        }
 
-
+        for (Pelicula pelicula : this.listaPeliculas){
+            System.out.println(pelicula.mostrarTitulo());
+        }
+    }
 }

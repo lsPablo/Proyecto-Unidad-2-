@@ -92,5 +92,10 @@ public class Pelicula {
         return datos;
     }
 
+    public String mostrarTitulo() {
+        String titulo = String.format("%s ", this.titulo);
+        return titulo;
+    }
+
 
 }

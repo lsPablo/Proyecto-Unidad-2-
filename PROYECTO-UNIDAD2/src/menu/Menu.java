@@ -94,6 +94,22 @@ public class Menu {
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("--- CARTELERA ---");
+                    cine.mostrarCartelera();
+                    break;
+                case 2:
+                    System.out.println("--- COMPRAR BOLETOS ---");
+                    break;
+                case 3:
+                    System.out.println("HASTA TU PROXIMA VISITA");
+                    break;
+                default:
+                    System.out.println("OPCION INVALIDA");
+                    break;
+            }
         }
     }
 
