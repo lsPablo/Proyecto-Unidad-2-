@@ -1,5 +1,6 @@
 package cine;
 
+import boleto.Boleto;
 import cartelera.Cartelera;
 import funcion.Funcion;
 import peliculas.Pelicula;
@@ -12,6 +13,7 @@ import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,6 +30,7 @@ public class Cine {
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
     public Cartelera cartelera = new Cartelera();
+
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -194,4 +197,27 @@ public class Cine {
             }
         }
     }
+
+    public Funcion buscarFuncion(String titulo, LocalTime hora) {
+        for (Pelicula pelicula : listaPeliculas) {
+            if (pelicula.getTitulo().equalsIgnoreCase(titulo)) {
+                for (Funcion funcion : pelicula.listaFunciones) {
+                    if (funcion.getHoraProyeccion().equals(hora)) {
+                        return funcion; // Retorna la función si se encuentra
+                    }
+                }
+            }
+        }
+        System.out.println("Funcion no encontrada");
+        return null; // Retorna null si no se encuentra la función
+    }
+
+    public void mostrarDistribucionSalaPorId(String idSala){
+        for(Sala sala : this.listaSalas){
+            if(sala.getId().equals(idSala)){
+                sala.mostrarDistribucion();
+            }
+        }
+    }
 }
+

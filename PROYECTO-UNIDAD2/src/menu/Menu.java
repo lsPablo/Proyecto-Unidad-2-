@@ -1,6 +1,7 @@
 package menu;
 
 import cine.Cine;
+import funcion.Funcion;
 import peliculas.Pelicula;
 import salas.Sala;
 import usuarios.Usuario;
@@ -10,6 +11,7 @@ import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Menu {
@@ -138,10 +140,10 @@ public class Menu {
                     cine.mostrarCartelera();
 
                     sc.nextLine();
-                    System.out.println("¿QUÉ ELICULA VEREMOS HOY? ");
-                    String pelicula = sc.nextLine();
+                    System.out.println("¿QUÉ PELICULA VEREMOS HOY? ");
+                    String peliculaVer = sc.nextLine();
 
-                    cine.infoPeliculasEnCartelera(pelicula);
+                    cine.infoPeliculasEnCartelera(peliculaVer);
                     int op = 0;
                     while (op != 2 ){
                         System.out.println("1.- COMPRAR BOLETOS");
@@ -151,6 +153,21 @@ public class Menu {
                         switch (op) {
                             case 1:
                                 System.out.println("--- COMPRAR BOLETOS ---");
+                                System.out.println("Elige la hora de la funcion (HH:MM)");
+                                String hora = sc.nextLine();
+                                LocalTime horaFuncionElegida = LocalTime.parse(hora);
+                                Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida);
+                                String salaElegida = funcionElegida.getId();
+                                cine.mostrarDistribucionSalaPorId(salaElegida);
+                                System.out.println("Elige la cantidad de asientos");
+                                int cantidadAsientos=sc.nextInt();
+
+
+
+
+
+
+
                                 break;
                             case 2:
                                 System.out.println("HASTA LUEGO.");
