@@ -28,15 +28,25 @@ public class Cine {
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
 
+
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
         Admin admin =new Admin("A", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"1", Rol.ADMINISTRADOR);
         this.listaUsuarios.add(admin);
         this.listaAdmin.add(admin);
+        generarSalas();
 
     }
 
-    public void Salas(){
+   /* public void Salas(){
+        for (int i = 0; i < 11; i++) {
+            String idSala = generarIdSala();
+            Sala sala = new Sala(idSala);
+            sala.llenarDistribucion();
+            listaSalas.add(sala);
+        }
+    }*/
+    public void generarSalas() {
         for (int i = 0; i < 11; i++) {
             String idSala = generarIdSala();
             Sala sala = new Sala(idSala);

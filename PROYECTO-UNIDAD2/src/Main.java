@@ -1,5 +1,6 @@
 import cine.Cine;
 import menu.Menu;
+import salas.Sala;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
@@ -9,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
         Cine cine = new Cine();
+        Sala sala;
         /*LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
         Empleado empleado = new Empleado("EM", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"fasdfasdf","123");
         cine.listaUsuarios.add(empleado);
