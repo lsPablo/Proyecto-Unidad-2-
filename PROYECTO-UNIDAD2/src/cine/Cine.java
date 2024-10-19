@@ -35,10 +35,11 @@ public class Cine {
         Admin admin =new Admin("A", "Josue","Marquez","Calle #5 Mayo-#127", "4321564686",fechaNcimiento,"1", Rol.ADMINISTRADOR, this);
         this.listaUsuarios.add(admin);
         this.listaAdmin.add(admin);
+        generarSalas();
 
     }
 
-    public void Salas(){
+    public void generarSalas(){
         for (int i = 0; i < 11; i++) {
             String idSala = generarIdSala();
             Sala sala = new Sala(idSala);

@@ -247,7 +247,6 @@ public class Empleado extends Usuario {
 
     public void verSalas(){
         System.out.println("---SALAS---");
-        cine.Salas();
         for (Sala sala : this.cine.listaSalas){
             System.out.println(sala.getId());
             sala.mostrarDistribucion();
