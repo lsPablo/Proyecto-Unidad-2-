@@ -85,23 +85,6 @@ public class Pelicula {
         return idFuncion;
     }
 
-    public String mostrarFunciones(String tituloPelicula) {
-        if (listaFunciones.isEmpty()) {
-            System.out.println("NO HAY FUNCIONES REGISTRADAS");
-        }
-        boolean funcionesEncontradas = false; // To track if any functions were found
-        for (Funcion funcion : this.listaFunciones) {
-            if (this.titulo.equals(tituloPelicula)) {
-                System.out.println(funcion.mostrarFuncion());
-                funcionesEncontradas = true;
-            }
-        }
-        if (!funcionesEncontradas) {
-            System.out.println("NO HAY FUNCIONES PARA ESA PELICULA");
-        }
-        return null;
-    }
-
     public String mostrarDatos() {
         long minutos = duracion.toMinutes();
         String duracionFormateada = String.format(" %s MINUTOS", minutos);
