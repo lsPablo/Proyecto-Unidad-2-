@@ -325,5 +325,13 @@ public class Empleado extends Usuario {
         System.out.println("NO EXISTE ESA FUNCION.");
     }
 
+    public void mostratrarFunciones(String tituloPeli){
+
+        Pelicula peliculaInteres = cine.obtenerPeliculaPorNombre(tituloPeli);
+        for (Funcion funcion : peliculaInteres.listaFunciones) {
+            System.out.println(funcion.mostrarFuncion());
+        }
+    }
+
 
 }

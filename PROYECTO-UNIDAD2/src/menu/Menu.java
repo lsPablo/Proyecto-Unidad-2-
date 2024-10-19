@@ -2,6 +2,7 @@ package menu;
 
 import cine.Cine;
 import peliculas.Pelicula;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -105,9 +106,9 @@ public class Menu {
 
                     break;
 
-                    case 3:
-                        System.out.println("Hasta Luego");
-                        break;
+                case 3:
+                    System.out.println("Hasta Luego");
+                    break;
                 default:
                     System.out.println("OPCIÓN INVÁLIDA.");
                     break;
@@ -141,7 +142,7 @@ public class Menu {
                     String pelicula = sc.nextLine();
 
                     cine.infoPeliculasEnCartelera(pelicula);
-                     int op = 0;
+                    int op = 0;
                     while (op != 2 ){
                         System.out.println("1.- COMPRAR BOLETOS");
                         System.out.println("2.- SALIR.");
@@ -203,7 +204,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("--AGREGAR PRODUCTO SALADO A LA DULCERIA--");
-                   empleado.agregarProductoSalado();
+                    empleado.agregarProductoSalado();
 
                     break;
                 case 3:
@@ -220,7 +221,7 @@ public class Menu {
                     break;
                 case 6:
                     System.out.println("--AGREGAR PELÍCULA--");
-                   empleado.agregarPelicula();
+                    empleado.agregarPelicula();
                     break;
                 case 7:
                     System.out.println("--MOSTRAR PELICULA--");
@@ -228,14 +229,10 @@ public class Menu {
                     break;
                 case 8:
                     System.out.println("--ELIMINAR PELICULA--");
-                    System.out.println("INGRESA LA PELICULA DE INTERES: ");
-                    String tituloPelicula = sc.nextLine();
-
                     empleado.eliminarPelicula();
                     break;
                 case 9:
                     System.out.println("--VER SALAS--");
-                    cine.Salas();
                     empleado.verSalas();
                     break;
                 case 10:
@@ -255,7 +252,7 @@ public class Menu {
 
                     sc.nextLine();
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
-                     peliculaInteres = sc.nextLine();
+                    peliculaInteres = sc.nextLine();
 
                     empleado.mostratrarFunciones(peliculaInteres);
 

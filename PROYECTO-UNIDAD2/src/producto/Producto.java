@@ -1,16 +1,21 @@
 package producto;
 
 public class Producto {
+    String ID;
     String id;
     String nombre;
     double precio;
     String tamaño;
 
-    public Producto(String id, String nombre, String tamaño ,Double precio) {
+    public Producto(String ID, String id, String nombre, String tamaño ,Double precio) {
+        this.ID = ID;
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.tamaño = tamaño;
+    }
+    public String getID() {
+        return ID;
     }
 
     public String getId() {
@@ -31,7 +36,7 @@ public class Producto {
 
     public String mostrarProductoEmpleado(){
 
-        return String.format("Id %s: Nombre : %s Tamaño: %s Precio: $%.2f", id, nombre, tamaño, precio);
+        return String.format("ID: %s, Categoria: %s, Nombre : %s, Tamaño: %s, Precio: $%.2f", ID,id, nombre, tamaño, precio);
     }
     public String mostrarProductoCliente(){
         return String.format("%s: %s Tamaño: %s. $%.2f",id, nombre, tamaño ,precio );

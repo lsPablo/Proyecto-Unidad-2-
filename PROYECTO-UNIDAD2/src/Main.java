@@ -14,6 +14,7 @@ public class Main {
         //Id Administrador: A
         //Contrasenia: 1
 
+
         //ID EMPLEADO: E
         // COTRASEÑA: 123
 
