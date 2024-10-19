@@ -333,7 +333,6 @@ public class Empleado extends Usuario {
         for (Funcion funcion : peliculaInteres.listaFunciones) {
             System.out.println(funcion.mostrarFuncion());
         }
-
     }
 
 
