@@ -164,6 +164,7 @@ public class Cine {
         int longitudProdMasUno = this.listaSalado.size() + 1;
         return String.format("ProdS%d",longitudProdMasUno);
     }
+
     public String generarIdDulce(){
         int longitudDulceMasUno = this.listaDulce.size() + 1;
         return String.format("ProdD%d",longitudDulceMasUno);
@@ -180,8 +181,6 @@ public class Cine {
         String idSala = String.format("S%d", longitudSalasMasUno);
         return idSala;
     }
-
-
 
     public void registrarPelicula(Pelicula pelicula){
         listaPeliculas.add(pelicula);
@@ -261,16 +260,6 @@ public class Cine {
         }
         return null;
     }
-
-    /*public Funcion obtenerCarteleraPorId(String idCartelera) {
-        for (Funcion funcion : this.listaFunciones){
-            if(funcion.getId().equalsIgnoreCase(idCartelera)){
-                return funcion;
-            }
-        }
-        return null;
-    }*/
-
 
 
 }

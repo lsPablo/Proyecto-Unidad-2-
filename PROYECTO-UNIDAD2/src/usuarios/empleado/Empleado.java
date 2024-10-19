@@ -14,14 +14,14 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Empleado extends Usuario {
-    Scanner sc = new Scanner(System.in);
-    private Cine cine = new Cine();
+
     private  Pelicula pelicula;
     public ValidadorCine validadorCine = new ValidadorCine();
     public String curp;
+    private Scanner sc = new Scanner(System.in);
 
-    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia) {
-        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO);
+    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia, Rol rol,  Cine cine) {
+        super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO, cine);
         this.curp = curp;
     }
 
@@ -30,9 +30,8 @@ public class Empleado extends Usuario {
     }
 
     public String mostrarDatosEmpleado() {
-        String datos = String.format ("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
-                "Fecha de Nacimiento: %s, CURP: %s", id, nombre,apellido,direccion,telefono,fechaNacimiento,curp);
-        return datos;
+        return String.format("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, Fecha de Nacimiento: %s, Cuerp: %s",id,nombre, apellido, direccion,
+                telefono, fechaNacimiento, curp);
     }
 
     public void agregarProductoDulce(){
@@ -216,12 +215,12 @@ public class Empleado extends Usuario {
         cine.registrarPelicula(pelicula);
     }
 
-    public void mostrarPeliculas(){
-        if (cine.listaPeliculas.size() == 0){
+    public void mostrarPeliculas() {
+        if (cine.listaPeliculas.size() == 0) {
             System.out.println("NO HAY PELICULAS REGISTRADAS");
         }
 
-        for (Pelicula pelicula : this.cine.listaPeliculas){
+        for (Pelicula pelicula : this.cine.listaPeliculas) {
             System.out.println(pelicula.mostrarDatos());
         }
     }
@@ -247,7 +246,6 @@ public class Empleado extends Usuario {
 
     public void verSalas(){
         System.out.println("---SALAS---");
-        cine.Salas();
         for (Sala sala : this.cine.listaSalas){
             System.out.println(sala.getId());
             sala.mostrarDistribucion();

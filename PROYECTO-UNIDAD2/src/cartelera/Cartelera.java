@@ -1,11 +1,10 @@
 package cartelera;
 
+import cine.Cine;
 import peliculas.Pelicula;
-
-import java.util.ArrayList;
+import usuarios.cliente.Cliente;
 
 public class Cartelera {
-    public ArrayList<Pelicula> peliculas;
-
+    private Cine cine;
 
 }

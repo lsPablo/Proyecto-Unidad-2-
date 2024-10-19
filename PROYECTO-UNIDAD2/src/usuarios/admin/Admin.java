@@ -9,9 +9,8 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Admin extends Usuario {
-    Scanner sc = new Scanner(System.in);
-    public Admin(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Rol rol ) {
-        super(id, nombre, apellido,direccion, telefono, fechaNacimiento, contrasenia, Rol.ADMINISTRADOR);
+    public Admin(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Rol rol, Cine cine ) {
+        super(id, nombre, apellido,direccion, telefono, fechaNacimiento, contrasenia, Rol.ADMINISTRADOR, cine);
 
 
     }
