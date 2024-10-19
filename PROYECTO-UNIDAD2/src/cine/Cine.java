@@ -273,4 +273,8 @@ public class Cine {
             System.out.println(pelicula.mostrarTitulo());
         }
     }
+
+    public void infoPeliculasEnCartelera(String tituloPelicula){
+
+    }
 }

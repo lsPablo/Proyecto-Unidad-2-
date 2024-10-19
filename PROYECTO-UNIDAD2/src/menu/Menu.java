@@ -99,6 +99,12 @@ public class Menu {
                 case 1:
                     System.out.println("--- CARTELERA ---");
                     cine.mostrarCartelera();
+
+                    sc.nextLine();
+                    System.out.println("¿QUÉ ELICULA VEREMOS HOY? ");
+                    String pelicula = sc.nextLine();
+
+                    cine.infoPeliculasEnCartelera(pelicula);
                     break;
                 case 2:
                     System.out.println("--- COMPRAR BOLETOS ---");
