@@ -8,6 +8,10 @@ public class Sala {
     public String id;
     private String[][] distribucion = new String [12][10];
 
+    public Sala(){
+        llenarDistribucion();
+    }
+
     public Sala(String id) {
         this.id = id;
     }
