@@ -1,5 +1,6 @@
 package cine;
 
+import boleto.Boleto;
 import cartelera.Cartelera;
 import funcion.Funcion;
 import peliculas.Pelicula;
@@ -8,15 +9,13 @@ import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
-import usuarios.cliente.ValidadorCliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Cine {
@@ -32,6 +31,7 @@ public class Cine {
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
     public Cartelera cartelera = new Cartelera();
+
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -94,6 +94,10 @@ public class Cine {
         return null;
     }
 
+    public boolean validarFechaCorrecta(YearMonth fechaDeseada){
+        return fechaDeseada.equals(YearMonth.now());
+    }
+
     public void mostrarCliente(){
         int iterador = 1;
         System.out.println("--Datos del Cliente--");
@@ -120,16 +124,6 @@ public class Cine {
     public String generarIdDulce(){
         int longitudDulceMasUno = this.listaDulce.size() + 1;
         return String.format("ProdD%d",longitudDulceMasUno);
-    }
-
-    public String generarIdPago(){
-        int longitudComprasMasUno = this.listaCompras.size() + 1;
-        Random random = new Random();
-        int diaActual = LocalDate.now().getDayOfMonth();
-        int mesActual = LocalDate.now().getMonthValue();
-        int anoActual = LocalDate.now().getYear();
-        int numeroAleatorio = random.nextInt(1, 100000);
-        return String.format("Cin%d%d%d%d%d",longitudComprasMasUno,diaActual,mesActual,anoActual,numeroAleatorio);
     }
 
     public String generarIdPelicula(){
@@ -209,9 +203,26 @@ public class Cine {
         }
     }
 
-    private ValidadorCliente validador = new ValidadorCliente();
-
-    public boolean validarFechaCorrecta(YearMonth fechaDeseada){
-        return  this.validador.validarFechaCorrecta(fechaDeseada);
+    public Funcion buscarFuncion(String titulo, LocalTime hora) {
+        for (Pelicula pelicula : listaPeliculas) {
+            if (pelicula.getTitulo().equals(titulo)) {
+                for (Funcion funcion : pelicula.listaFunciones) {
+                    if (funcion.getHoraProyeccion().equals(hora)) {
+                        return funcion; // Retorna la función si se encuentra
+                    }
+                }
+            }
+        }
+        System.out.println("Funcion no encontrada");
+        return null; // Retorna null si no se encuentra la función
     }
+
+    public void mostrarDistribucionSalaPorId(String idSala){
+        for(Sala sala : this.listaSalas){
+            if(sala.getId().equals(idSala)){
+                sala.mostrarDistribucion();
+            }
+        }
+    }
+
 }
