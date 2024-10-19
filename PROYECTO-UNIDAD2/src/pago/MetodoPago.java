@@ -14,7 +14,7 @@ public class MetodoPago {
     //nombre pelicula
     //precio
     //tipo de asiento
-    //tipo descuento
+    //tipo descuento.
     public LocalDateTime fechaCompra;
     public Producto producto;
 

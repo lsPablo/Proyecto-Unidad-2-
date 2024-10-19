@@ -109,7 +109,7 @@ public class Cliente extends Usuario {
             int mes = sc.nextInt();
             try{
                 fechaanio = YearMonth.of(anio, mes);
-                if (!cine.validarFechaCorrecta(fechaanio)){
+                if (!cine.validarFechaCorrectas(fechaanio)){
                     System.out.println("Fecha de tarjeta vencida, intenta nuevamente");
                 }else {
                     break;

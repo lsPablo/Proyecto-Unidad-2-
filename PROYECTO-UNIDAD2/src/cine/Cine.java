@@ -9,6 +9,7 @@ import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
+import usuarios.cliente.ValidadorCliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
@@ -45,6 +46,7 @@ public class Cine {
         generarSalas();
 
     }
+    private ValidadorCliente validador = new ValidadorCliente();
 
     public void generarSalas(){
         for (int i = 0; i < 11; i++) {
@@ -94,8 +96,8 @@ public class Cine {
         return null;
     }
 
-    public boolean validarFechaCorrecta(YearMonth fechaDeseada){
-        return fechaDeseada.equals(YearMonth.now());
+    public boolean validarFechaCorrectas(YearMonth fechaDeseada){
+        return this.validador.validarFechaCorrecta(fechaDeseada);
     }
 
     public void mostrarCliente(){
