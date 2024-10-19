@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cine {
-    Scanner sc = new Scanner(System.in);
 
     public ArrayList<Cliente>listaClientes=new ArrayList<>();
     public ArrayList<Usuario>listaUsuarios =new ArrayList<>();
@@ -96,24 +95,6 @@ public class Cine {
         }
     }
 
-    public void mostrarProdDulces(){
-        int iterador = 1;
-        System.out.println("--PRODUCTOS DULCES--");
-        for(Producto producto: this.listaDulce){
-            System.out.println("Este es el producto: "+iterador);
-            System.out.println(producto.mostrarProductoEmpleado());
-        }
-    }
-
-    public void mostrarProductoSalado(){
-        int iterador = 1;
-        System.out.println("--PRODUCTOS SALDO--");
-        for(Producto producto: this.listaSalado){
-            System.out.println("Este es el producto: "+iterador);
-            System.out.println(producto.mostrarProductoEmpleado());
-        }
-    }
-
     public void mostrarEmpleado(){
         int iterador = 1;
         System.out.println("--Datos del Empleado--");
@@ -121,46 +102,6 @@ public class Cine {
             System.out.println("Este es el empleado" +iterador);
             System.out.println(empleado.mostrarDatosEmpleado());
         }
-    }
-
-    public void registrarNuevoEmpleado(){
-        System.out.println("INGRESA TU NOMBRE COMPLETO: ");
-        String nombre = sc.next();
-
-        System.out.println("INGRESA TU APELLIDO: ");
-        String apellido = sc.next();
-        System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
-        String id = sc.next();
-        System.out.println("INGRESA TU CONTRASEÑA:");
-        String nuevaContrasenia = sc.next();
-        System.out.println("CONFIRMA TU CONTRASEÑA:");
-        String confirmaContrasenia = sc.next();
-
-        while (!nuevaContrasenia.equals(confirmaContrasenia)) {
-            System.out.println("La contraseña no es la misma, chavo.");
-            System.out.println("Confirma la contraseña:");
-            confirmaContrasenia = sc.next();
-        }
-
-        System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
-        int anio = sc.nextInt();
-        System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
-        int mes = sc.nextInt();
-        System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
-        int dia = sc.nextInt();
-        LocalDate fechaNacimiento = LocalDate.of(anio,mes,dia);
-
-        System.out.println("INGRESA TU DIRECCIÓN:");
-        String direccion = sc.next();
-        System.out.println("INGRESA TU TELÉFONO: ");
-        String telefono = sc.next();
-        System.out.println("INGRESA TU CURP");
-        String curp = sc.next();
-
-        Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia, this);
-        //Empleado empleado = new Empleado(id,nombre,apellido,direccion,telefono,fechaNacimiento,curp,nuevacontrasenia);
-        registrarEmpleado(empleado);
-        System.out.println("Datos del empleado registrados correctamente");
     }
 
     public String generarIdProductoSalado(){
@@ -187,46 +128,6 @@ public class Cine {
 
     public void registrarPelicula(Pelicula pelicula){
         listaPeliculas.add(pelicula);
-    }
-
-    public void crearNuevaCuenta(){
-        sc.nextLine();
-        System.out.println("INGRESA TU NOMBRE COMPLETO: ");
-        String nombre = sc.nextLine();
-
-        System.out.println("INGRESA TU APELLIDO: ");
-        String apellido = sc.next();
-
-
-        System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
-        String id = sc.next();
-        System.out.println("INGRESA TU CONTRASEÑA:");
-        String nuevaContrasenia = sc.next();
-        System.out.println("CONFIRMA TU CONTRASEÑA:");
-        String confirmaContrasenia = sc.next();
-
-        while (!nuevaContrasenia.equals(confirmaContrasenia)) {
-            System.out.println("La contraseña no es la misma, chavo.");
-            System.out.println("Confirma la contraseña:");
-            confirmaContrasenia = sc.next();
-        }
-
-        System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
-        String anio = sc.next();
-        System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
-        String mes = sc.next();
-        System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
-        String dia = sc.next();
-        LocalDate fechaNacimiento = LocalDate.of(Integer.parseInt(anio), Integer.parseInt(mes), Integer.parseInt(dia));
-
-        System.out.println("INGRESA TU DIRECCIÓN:");
-        String direccion = sc.next();
-        System.out.println("INGRESA TU TELÉFONO: ");
-        String telefono = sc.next();
-
-        Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia, this);
-        registrarCliente(cliente);
-        System.out.println("Cuenta creada exitosamente.");
     }
 
     public boolean existePelícula(String nombrePelicula) {
@@ -276,6 +177,17 @@ public class Cine {
     }
 
     public void infoPeliculasEnCartelera(String tituloPelicula){
-
+        if (listaPeliculas.size() == 0){
+            System.out.println("NO HAY PELICULAS REGISTRADAS");
+        }
+        for (Pelicula pelicula : this.listaPeliculas){
+            if (pelicula.getTitulo().equals(tituloPelicula)){
+                System.out.println(pelicula.mostrarDatos());
+                System.out.println("--FUNCIONES--");
+                for (Funcion funcion: pelicula.listaFunciones){
+                    System.out.println(funcion.mostrarFuncion());
+                }
+            }
+        }
     }
 }

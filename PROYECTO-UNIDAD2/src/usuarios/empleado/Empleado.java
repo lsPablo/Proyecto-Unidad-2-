@@ -14,13 +14,13 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Empleado extends Usuario {
-    Scanner sc = new Scanner(System.in);
 
     private  Pelicula pelicula;
     public ValidadorCine validadorCine = new ValidadorCine();
     public String curp;
+    private Scanner sc = new Scanner(System.in);
 
-    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia, Cine cine) {
+    public Empleado(String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String curp, String nuevacontrasenia, Rol rol,  Cine cine) {
         super(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevacontrasenia, Rol.EMPLEADO, cine);
         this.curp = curp;
     }
@@ -30,9 +30,8 @@ public class Empleado extends Usuario {
     }
 
     public String mostrarDatosEmpleado() {
-        String datos = String.format ("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, " +
-                "Fecha de Nacimiento: %s, CURP: %s", id, nombre,apellido,direccion,telefono,fechaNacimiento,curp);
-        return datos;
+        return String.format("id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, Fecha de Nacimiento: %s, Cuerp: %s",id,nombre, apellido, direccion,
+                telefono, fechaNacimiento, curp);
     }
 
     public void agregarProductoDulce(){

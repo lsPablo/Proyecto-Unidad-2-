@@ -9,6 +9,7 @@ import usuarios.cliente.Cliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
@@ -65,7 +66,43 @@ public class Menu {
                 case 2:
 
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
-                    cine.crearNuevaCuenta();
+                    sc.nextLine();
+                    System.out.println("INGRESA TU NOMBRE COMPLETO: ");
+                    String nombre = sc.nextLine();
+
+                    System.out.println("INGRESA TU APELLIDO: ");
+                    String apellido = sc.next();
+
+
+                    System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
+                    String id = sc.next();
+                    System.out.println("INGRESA TU CONTRASEÑA:");
+                    String nuevaContrasenia = sc.next();
+                    System.out.println("CONFIRMA TU CONTRASEÑA:");
+                    String confirmaContrasenia = sc.next();
+
+                    while (!nuevaContrasenia.equals(confirmaContrasenia)) {
+                        System.out.println("La contraseña no es la misma, chavo.");
+                        System.out.println("Confirma la contraseña:");
+                        confirmaContrasenia = sc.next();
+                    }
+
+                    System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
+                    String anio = sc.next();
+                    System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
+                    String mes = sc.next();
+                    System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
+                    String dia = sc.next();
+                    LocalDate fechaNacimiento = LocalDate.of(Integer.parseInt(anio), Integer.parseInt(mes), Integer.parseInt(dia));
+
+                    System.out.println("INGRESA TU DIRECCIÓN:");
+                    String direccion = sc.next();
+                    System.out.println("INGRESA TU TELÉFONO: ");
+                    String telefono = sc.next();
+
+                    Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia, cine);
+                    cine.registrarCliente(cliente);
+                    System.out.println("Cuenta creada exitosamente.");
 
                     break;
 
@@ -105,6 +142,26 @@ public class Menu {
                     String pelicula = sc.nextLine();
 
                     cine.infoPeliculasEnCartelera(pelicula);
+                     int op = 0;
+                    while (op != 2 ){
+                        System.out.println("1.- COMPRAR BOLETOS");
+                        System.out.println("2.- SALIR.");
+                        op = sc.nextInt();
+
+                        switch (op) {
+                            case 1:
+                                System.out.println("--- COMPRAR BOLETOS ---");
+                                break;
+                            case 2:
+                                System.out.println("HASTA LUEGO.");
+                                break;
+                            default:
+                                System.out.println("OPCION INVALIDA");
+                                break;
+                        }
+                    }
+
+                    System.out.println("");
                     break;
                 case 2:
                     System.out.println("--- COMPRAR BOLETOS ---");
@@ -225,7 +282,42 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
-                    cine.registrarNuevoEmpleado();
+                    System.out.println("INGRESA TU NOMBRE COMPLETO: ");
+                    String nombre = sc.next();
+
+                    System.out.println("INGRESA TU APELLIDO: ");
+                    String apellido = sc.next();
+                    System.out.println("INGRESA TU NOMBRE DE USUARIO: ");
+                    String id = sc.next();
+                    System.out.println("INGRESA TU CONTRASEÑA:");
+                    String nuevaContrasenia = sc.next();
+                    System.out.println("CONFIRMA TU CONTRASEÑA:");
+                    String confirmaContrasenia = sc.next();
+
+                    while (!nuevaContrasenia.equals(confirmaContrasenia)) {
+                        System.out.println("La contraseña no es la misma, chavo.");
+                        System.out.println("Confirma la contraseña:");
+                        confirmaContrasenia = sc.next();
+                    }
+
+                    System.out.println("INGRESA TU AÑO DE NACIMIENTO (YYYY): ");
+                    int anio = sc.nextInt();
+                    System.out.println("INGRESA TU MES DE NACIMIENTO (MM): ");
+                    int mes = sc.nextInt();
+                    System.out.println("INGRESA TU FECHA DE NACIMIENTO (DD): ");
+                    int dia = sc.nextInt();
+                    LocalDate fechaNacimiento = LocalDate.of(anio,mes,dia);
+
+                    System.out.println("INGRESA TU DIRECCIÓN:");
+                    String direccion = sc.next();
+                    System.out.println("INGRESA TU TELÉFONO: ");
+                    String telefono = sc.next();
+                    System.out.println("INGRESA TU CURP");
+                    String curp = sc.next();
+
+                    Empleado empleado = new Empleado(id, nombre, apellido, direccion, telefono, fechaNacimiento,curp, nuevaContrasenia, Rol.EMPLEADO, cine);
+                    cine.registrarEmpleado(empleado);
+                    System.out.println("Datos del empleado registrados correctamente");
                     break;
                 case 2:
                     System.out.println("---DATOS DE EMPLEADO---");
