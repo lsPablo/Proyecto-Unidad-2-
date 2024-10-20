@@ -10,6 +10,7 @@ import usuarios.cliente.Cliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
 
+import javax.print.DocFlavor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -178,7 +179,7 @@ public class Menu {
 
 
                                     Double precio = funcionElegida.getSala().reservarAsiento(asiento);
-                                    precio= precio*cliente.aplicarDescuento();
+                                    precio = precio * cliente.aplicarDescuento();
 
                                     if (precio != null) {
                                         totalAsientos += precio;
@@ -212,12 +213,13 @@ public class Menu {
                                             } else if (efectivo > totalAsientos) {
                                                 System.out.println("TU CAMBIO ES DE $" + (efectivo - totalAsientos) + " PESOS.");
                                                 System.out.println("GRACIAS POR TU COMPRA");
-
-                                                boleto.mostrarBoleto();
+                                                System.out.println(boleto.mostrarBoleto());
+                                                return;
                                             }else{
                                                 System.out.println("GRACIAS POR TU COMPRA");
+                                                System.out.println(boleto.mostrarBoleto());
                                             }
-                                            break;
+                                            return;
                                         case 2:
                                             System.out.println("----PAGO CON TARJETA----");
                                             cliente.registrarTarjeta();

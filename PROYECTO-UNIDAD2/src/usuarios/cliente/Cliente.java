@@ -131,12 +131,12 @@ public class Cliente extends Usuario {
     public double aplicarDescuento(){
         LocalDate fechaActual = LocalDate.now();
         int mesActual = fechaActual.getMonthValue();
-        int mesNacimiento = fechaActual.getMonthValue();
+        int mesNacimiento = fechaNacimiento.getMonthValue();
 
         if (mesActual == mesNacimiento){
             System.out.println("¡FELICIDADES! TIENES UN DESCUENTO POR TU MES DE NACIMIENTO");
             return 0.6;
         }
-        return 0;
+        return 1;
     }
 }

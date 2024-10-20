@@ -82,7 +82,7 @@ public class Boleto {
     }
 
     public String mostrarBoleto(){
-        return String.format("ID: %s, PELICULA: %s, SALA: %s, ASIENTO: %s, HORA DE FUNCION: %s, PRECIO BOLETO", this.id, this.tituloPelicula, this.sala, this.asiento, this.horaFuncion, this.precioBoleto);
+        return String.format("ID: %s, PELICULA: %s, SALA: %s, ASIENTO: %s, HORA DE FUNCION: %s, PRECIO BOLETO: %f", this.id, this.tituloPelicula, this.sala, this.asiento, this.horaFuncion, this.precioBoleto);
     }
 
 }
