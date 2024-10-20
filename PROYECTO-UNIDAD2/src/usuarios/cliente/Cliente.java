@@ -32,10 +32,14 @@ public class Cliente extends Usuario {
     }
 
     public void mostrarProdcliente(){
+        if (this.cine.listaProductos.isEmpty()){
+            System.out.println("NO HAY PRODUCTOS");
+        }
+
         System.out.println("ESTOS SON LOS PRODUCTO DULCES");
         int iterador = 1;
         for(Producto producto: this.cine.listaDulce){
-            System.out.println("Este es e producto: " +iterador);
+            System.out.println("ESTE SON LOS PRODUCTOS SALADOS: " +iterador);
             System.out.println(producto.mostrarProductoCliente());
             iterador++;
         }
