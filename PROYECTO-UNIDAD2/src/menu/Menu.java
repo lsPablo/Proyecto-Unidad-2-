@@ -175,7 +175,7 @@ public class Menu {
                                     asiento = asiento.trim().toUpperCase();
 
 
-                                    Double precio = funcionElegida.getSala().reservarAsiento(asiento);
+                                    Double precio = funcionElegida.getSala().reservarAsiento(salaDeseada, asiento);
                                     precio = precio * cliente.aplicarDescuento();
 
                                     if (precio != null) {
