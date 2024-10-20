@@ -52,7 +52,7 @@ public class ImprimirBoleto {
         int AnioActual = LocalDate.now().getYear();
         int MesActual = LocalDate.now().getMonthValue();
         int DiaActual = LocalDate.now().getDayOfMonth();
-        int numeroAleatorio =random.nextInt(1,1000000);
+        int numeroAleatorio =random.nextInt(1000000);
         return String.format("%d%d%d%d",AnioActual,numeroAleatorio,MesActual,DiaActual);
     }
 

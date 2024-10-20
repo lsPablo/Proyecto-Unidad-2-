@@ -2,7 +2,9 @@ package salas;
 
 import funcion.Funcion;
 import peliculas.Pelicula;
+import usuarios.cliente.Cliente;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Sala {
@@ -57,7 +59,8 @@ public class Sala {
         System.out.println("                --------PANTALLA--------  ");
     }
 
-    public Double reservarAsiento(String asiento) {
+    public Double reservarAsiento(String asiento ) {
+
         Double precioAsiento = 0.00;
 
         asiento = asiento.trim().toUpperCase();
@@ -73,6 +76,8 @@ public class Sala {
                     if (distribucion[i][j].startsWith("LV") || distribucion[i][j].startsWith("KV")) {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 400.00;
+
+
                             distribucion[i][j] = "X";
                             System.out.println("Asiento VIP reservado.");
                         } else {
@@ -112,6 +117,10 @@ public class Sala {
     }
 
 
+    /*double descuento = aplicarDescuento();
+        if (descuento > 0) {
+        total = total *(1-descuento);
+    }*/
 
 
 

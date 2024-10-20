@@ -77,10 +77,7 @@ public class Cliente extends Usuario {
             System.out.println(producto.getNombre() + " - " + producto.getPrecio());
             total += producto.getPrecio();
         }
-        double descuento = aplicarDescuento();
-        if (descuento > 0) {
-            total = total *(1-descuento);
-        }
+
         System.out.println("Total a pagar: " + total);
     }
 
@@ -135,7 +132,7 @@ public class Cliente extends Usuario {
 
         if (mesActual == mesNacimiento){
             System.out.println("¡FELICIDADES! TIENES UN DESCUENTO POR TU MES DE NACIMIENTO");
-            return 0.2;
+            return 0.6;
         }
         return 0;
     }

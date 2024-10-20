@@ -177,6 +177,7 @@ public class Menu {
 
 
                                     Double precio = funcionElegida.getSala().reservarAsiento(asiento);
+                                    precio= precio*cliente.aplicarDescuento();
 
                                     if (precio != null) {
                                         totalAsientos += precio;
