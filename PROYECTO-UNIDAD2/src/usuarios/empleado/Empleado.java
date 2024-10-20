@@ -272,6 +272,10 @@ public class Empleado extends Usuario {
 
         System.out.println("INGRESA LA HORA DE PROYECCIÓN (HH:MM): ");
         String hora = sc.nextLine();
+
+        Sala salaFuncion = cine.obtenerSalaPorId(idSala);
+        salaFuncion.getListaFunciones();
+
         LocalTime horaFuncion = LocalTime.parse(hora);
         Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
         Duration duracionTotal = duracionPelicula.plusMinutes(20);
@@ -279,19 +283,21 @@ public class Empleado extends Usuario {
 
         Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
 
-        for (Funcion funcion : pelicula.listaFunciones) {
-            LocalTime horaInicioExistente = funcion.getHoraProyeccion();
-            Duration duracionExistente = pelicula.getDuracion();
-            Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
-            LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
+        for (Funcion funcion : salaFuncion.getListaFunciones()) {
+            if (salaFuncion.getId().equals(idSala)){
+                LocalTime horaInicioExistente = funcion.getHoraProyeccion();
+                Duration duracionExistente = pelicula.getDuracion();
+                Duration duracionTotalExistente = duracionExistente.plusMinutes(20);
+                LocalTime horaTerminoExistente = horaInicioExistente.plus(duracionTotalExistente);
 
-            if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente)
-                    && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente)
-                    && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
-                System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
-                System.out.println("LA HORA PROXIMA DISPONIBE ES DE LAS: " + horaTerminoExistente);
-                chocanHoras = true;
-                break;
+                if ((horaFuncion.equals(horaInicioExistente) || (horaFuncion.isAfter(horaInicioExistente)
+                        && horaFuncion.isBefore(horaTerminoExistente)) || (horaFuncion.plus(duracionTotal).isAfter(horaInicioExistente)
+                        && horaFuncion.plus(duracionTotal).isBefore(horaTerminoExistente)))) {
+                    System.out.println("YA HAY UNA FUNCIÓN PARA ESA HORA.");
+                    System.out.println("LA HORA PROXIMA DISPONIBE ES A LAS: " + horaTerminoExistente);
+                    chocanHoras = true;
+                    break;
+                }
             }
         }
 
@@ -300,6 +306,7 @@ public class Empleado extends Usuario {
             String idFuncion = pelicula.generarIdFuncion();
             Funcion funcion = new Funcion(idFuncion, sala, horaFuncion);
             pelicula.listaFunciones.add(funcion);
+            sala.listaFunciones.add(funcion);
             System.out.println("FUNCIÓN AGREGADA EXITOSAMENTE");
         }
 

@@ -46,6 +46,7 @@ public class Cine {
         generarSalas();
 
     }
+
     private ValidadorCliente validador = new ValidadorCliente();
 
     public void generarSalas(){
@@ -205,11 +206,11 @@ public class Cine {
         }
     }
 
-    public Funcion buscarFuncion(String titulo, LocalTime hora) {
+    public Funcion buscarFuncion(String titulo, LocalTime hora, String salaDeseada) {
         for (Pelicula pelicula : listaPeliculas) {
             if (pelicula.getTitulo().equals(titulo)) {
                 for (Funcion funcion : pelicula.listaFunciones) {
-                    if (funcion.getHoraProyeccion().equals(hora)) {
+                    if (funcion.getHoraProyeccion().equals(hora) && funcion.getSala().getId().equals(salaDeseada)) {
                         return funcion; // Retorna la función si se encuentra
                     }
                 }
@@ -219,12 +220,18 @@ public class Cine {
         return null; // Retorna null si no se encuentra la función
     }
 
-    public void mostrarDistribucionSalaPorId(String idSala){
-        for(Sala sala : this.listaSalas){
-            if(sala.getId().equals(idSala)){
-                sala.mostrarDistribucion();
+
+    public void mostrarDistribucionSala(LocalTime horaDeseada, String salaDeseada) {
+        System.out.println("---SALAS---");
+        for (Sala sala : this.listaSalas){
+            if (sala.getId().equals(salaDeseada)) {
+                for (Funcion funcion : sala.listaFunciones){
+                    if (funcion.getHoraProyeccion().equals(horaDeseada)) {
+                        System.out.println(sala.getId());
+                        sala.mostrarDistribucion();
+                    }
+                }
             }
         }
     }
-
 }

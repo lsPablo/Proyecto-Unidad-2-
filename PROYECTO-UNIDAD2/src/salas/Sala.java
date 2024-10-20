@@ -1,5 +1,6 @@
 package salas;
 
+import funcion.Funcion;
 import peliculas.Pelicula;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 public class Sala {
     public String id;
     private static String[][] distribucion = new String [12][10];
+    public ArrayList<Funcion> listaFunciones;
 
     static {
         llenarDistribucion();
@@ -14,10 +16,15 @@ public class Sala {
 
     public Sala(String id) {
         this.id = id;
+        this.listaFunciones = new ArrayList<>();
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public ArrayList<Funcion> getListaFunciones() {
+        return listaFunciones;
     }
 
     public void setId(String id) {
@@ -51,18 +58,18 @@ public class Sala {
     }
 
     public Double reservarAsiento(String asiento) {
-        Double precioAsiento = 0.0, totalAsiento = 0.0;
-        for (int i = 0; i < distribucion.length; i++) {
-            for (int j = 0; j < distribucion[i].length; j++) {
+        Double precioAsiento = 0.00, totalAsiento = 0.00;
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 10; j++) {
                 if (distribucion[i][j].equals(asiento)) {
-                    if (distribucion[i][j].toLowerCase().charAt(0) == 'V') {
+                    if (distribucion[i][j].equals("LV" + (j+1))  || distribucion[i][j].equals("kV" + (j+1)) ) {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 400.00;
                             distribucion[i][j] = "X";
                         } else {
                             System.out.println("Asiento ya reservado.");
                         }
-                    } else if (distribucion[i][j].toLowerCase().charAt(0) == 'P') {
+                    } else if (distribucion[i][j].equals("JP" + (j+1))  || distribucion[i][j].equals("IP" + (j+1))) {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 200.00;
                             distribucion[i][j] = "X";
@@ -77,14 +84,15 @@ public class Sala {
                             System.out.println("Asiento ya reservado.");
                         }
                     }
+                    totalAsiento = precioAsiento + totalAsiento;
+                    return totalAsiento;
                 }
-                totalAsiento = precioAsiento + totalAsiento;
             }
-            return totalAsiento;
         }
         System.out.println("Asiento no encontrado.");
         return null;
     }
+
 
 
 

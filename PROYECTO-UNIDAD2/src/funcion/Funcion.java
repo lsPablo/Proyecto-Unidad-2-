@@ -42,4 +42,6 @@ public class Funcion {
         String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Sala: %s", id, horaProyeccion,salaEnCartelera);
         return cartelera;
     }
+
+
 }

@@ -156,25 +156,23 @@ public class Menu {
                             case 1:
                                 System.out.println("--- COMPRAR BOLETOS ---");
                                 sc.nextLine();
-                                System.out.println("Elige la hora de la funcion (HH:MM)");
+                                System.out.println("ELIGE LA HORA DE LA FUNCION (HH:MM)");
                                 String hora = sc.nextLine();
                                 LocalTime horaFuncionElegida = LocalTime.parse(hora);
-                                Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida);
-                                String salaElegida = funcionElegida.getId();
-                                cine.mostrarDistribucionSalaPorId(salaElegida);
+                                System.out.println("EN QUE SALA: ");
+                                String salaDeseada = sc.nextLine();
+                                Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida, salaDeseada);
+                                cine.mostrarDistribucionSala(horaFuncionElegida, salaDeseada);
                                 System.out.println("Elige la cantidad de asientos");
                                 int cantidadAsientos=sc.nextInt();
 
+                                Double totalAsientos = 0.00;
                                 for (int i = 0; i < cantidadAsientos; i++) {
                                     System.out.println("Ingresa el Asiento deseado");
                                     String asiento = sc.next();
-                                    Double totalAsientos = funcionElegida.getSala().reservarAsiento(asiento);
-                                    System.out.println("TOTAL ASIENTOS: "+totalAsientos);
+                                    totalAsientos = totalAsientos + funcionElegida.getSala().reservarAsiento(asiento);
                                 }
-
-
-
-
+                                System.out.println("TOTAL ASIENTOS: "+totalAsientos);
 
                                 break;
                             case 2:
