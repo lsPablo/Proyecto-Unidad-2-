@@ -234,4 +234,10 @@ public class Cine {
             }
         }
     }
+
+    public void mostrarListaBoletos(Cliente cliente) {
+        for(Boleto boleto: cliente.listaBoletos){
+            System.out.println(boleto.mostrarBoleto());
+        }
+    }
 }
