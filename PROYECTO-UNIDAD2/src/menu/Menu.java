@@ -217,7 +217,8 @@ public class Menu {
                                                 return;
                                             }else{
                                                 System.out.println("GRACIAS POR TU COMPRA");
-                                                System.out.println(boleto.mostrarBoleto());
+                                                System.out.println("==BOLETOS COMPRADOS==");
+                                                cine.mostrarListaBoletos(cliente);
                                             }
                                             return;
                                         case 2:
