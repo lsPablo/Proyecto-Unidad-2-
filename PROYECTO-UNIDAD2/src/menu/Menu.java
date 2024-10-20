@@ -3,9 +3,7 @@ package menu;
 import boleto.Boleto;
 import cine.Cine;
 import funcion.Funcion;
-import pago.ImprimirBoleto;
 import peliculas.Pelicula;
-import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -20,7 +18,6 @@ public class Menu {
     public Cine cine = new Cine();
     public Pelicula pelicula;
     Scanner sc = new Scanner(System.in);
-    ImprimirBoleto imprimirBoleto;
 
     public void login() {
         System.out.println("-----------------BIENVENIDO A LA FAMILIA CINEPOLLIS-----------------");
@@ -184,8 +181,9 @@ public class Menu {
 
                                     if (precio != null) {
                                         totalAsientos += precio;
-                                        String idBoleto = imprimirBoleto.generarIdBoleto();
+                                        String idBoleto = "0";
                                         Boleto boleto = new Boleto(idBoleto, peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
+                                        boleto.setId(boleto.generarIdBoleto());
                                         cliente.listaBoletos.add(boleto);
                                     } else {
                                         System.out.println("No se pudo reservar el asiento: " + asiento);
@@ -193,6 +191,7 @@ public class Menu {
 
                                 }
                                 System.out.println("TOTAL ASIENTOS: " + totalAsientos);
+                                break;
                             case 2:
                                 System.out.println("HASTA LUEGO.");
                                 break;
