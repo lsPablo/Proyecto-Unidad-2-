@@ -190,7 +190,6 @@ public class Menu {
                     System.out.println("--- COMPRAR BOLETOS ---");
                     break;
                     case 3:
-                        //aqui a trabajar
                         int tipopago = 0;
                         while (tipopago != 3){
                             System.out.println("***SELECCIONA EL METODO DE PAGO");
@@ -202,7 +201,6 @@ public class Menu {
                             switch (tipopago){
                                 case 1:
                                     System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO EN EFECTIVO");
-
                                     break;
                                 case 2:
                                     System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO CON TARJETA");
@@ -210,9 +208,9 @@ public class Menu {
                                     //aplicarDescuentosSiMesNacimiento(cliente);
                                     cliente.mostrarTotalCompra();
                                     break;
-                                    case 3:
-                                        System.out.println("HASTA LUEGO");
-                                        break;
+                                case 3:
+                                    System.out.println("HASTA LUEGO");
+                                    break;
                                 default:
                                     System.out.println("OPCION INVALIDA");
                                     break;
@@ -235,17 +233,16 @@ public class Menu {
                                         //cliente.obtenerProd();
                                         cliente.agregarProductoACompras();
                                         System.out.println("PRODUCTO CARGADO CORRECTAMENTE");
-
                                         break;
-                                        case 2:
-                                            cliente.mostrarTotalCompra();
-                                            break;
-                                            case 3:
-                                                System.out.println("HASTA LUEGO");
-                                                break;
-                                                default:
-                                                    System.out.println("OPCION INVALIDA");
-                                                    break;
+                                    case 2:
+                                        cliente.mostrarTotalCompra();
+                                        break;
+                                    case 3:
+                                        System.out.println("HASTA LUEGO");
+                                        break;
+                                    default:
+                                        System.out.println("OPCION INVALIDA");
+                                        break;
                                 }
                             }
                             break;
