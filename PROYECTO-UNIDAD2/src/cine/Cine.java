@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Cine {
@@ -219,7 +220,6 @@ public class Cine {
         System.out.println("Funcion no encontrada");
         return null; // Retorna null si no se encuentra la función
     }
-
 
     public void mostrarDistribucionSala(LocalTime horaDeseada, String salaDeseada) {
         System.out.println("---SALAS---");

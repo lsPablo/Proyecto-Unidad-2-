@@ -28,7 +28,6 @@ public class Cliente extends Usuario {
         return datos;
     }
 
-
     public void mostrarProdcliente(){
         System.out.println("ESTOS SON LOS PRODUCTO DULCES");
         int iterador = 1;
@@ -62,9 +61,9 @@ public class Cliente extends Usuario {
         System.out.println("INGRESA EL ID DEL PRODUCTO QUE DESEAS COMPRAR");
         String idProducto = sc.next();
         for (Producto producto : this.cine.listaProductos) {
-            if (producto.getNombre().equals(idProducto)) {
-                cine.listaCompras.add(producto);
+            if (producto.getID().equals(idProducto)) {
                 System.out.println("Producto agregado a la lista de compras: " + producto.getNombre());
+                cine.listaCompras.add(producto);
                 return;
             }
         }
@@ -78,30 +77,38 @@ public class Cliente extends Usuario {
             System.out.println(producto.getNombre() + " - " + producto.getPrecio());
             total += producto.getPrecio();
         }
+        double descuento = aplicarDescuento();
+        if (descuento > 0) {
+            total = total *(1-descuento);
+        }
         System.out.println("Total a pagar: " + total);
     }
 
     public void registrarTarjeta(){
+
         System.out.println("INGRESA LOS DATOS DE TU TARJETA");
-        System.out.println("INGRESA EL ID DE TU TARJETA");
-        String idTarjeta = sc.next();
+        String idTarjeta;
         while(true){
+            System.out.println("INGRESA EL ID DE TU TARJETA");
+            idTarjeta = sc.next();
             if (idTarjeta.matches("\\d{1,18}")){
                 break;
             }else {
                 System.out.println("Número de tarjeta inválido. Por favor, ingresa un número de hasta 18 dígitos");
             }
         }
-        System.out.println("INGRESA EL CVV DE TU TARJETA");
-        String CVV = sc.next();
+
+        String CVV;
         while(true){
+            System.out.println("INGRESA EL CVV DE TU TARJETA");
+            CVV = sc.next();
             if (CVV.matches("\\d{3}")){
                 break;
             }else{
                 System.out.println("CVV INVALIDO, INGRESA EL CORRECTO");
             }
         }
-        YearMonth fechaanio = null;
+        YearMonth fechaanio;
         while(true){
             System.out.println("INGRESA EL ANIO DE VENCIMIENTO DE TU TARJETA");
             int anio = sc.nextInt();
@@ -119,5 +126,17 @@ public class Cliente extends Usuario {
             }
         }
         System.out.println("TARJETA REGISTRADA");
+    }
+
+    public double aplicarDescuento(){
+        LocalDate fechaActual = LocalDate.now();
+        int mesActual = fechaActual.getMonthValue();
+        int mesNacimiento = fechaActual.getMonthValue();
+
+        if (mesActual == mesNacimiento){
+            System.out.println("¡FELICIDADES! TIENES UN DESCUENTO POR TU MES DE NACIMIENTO");
+            return 0.2;
+        }
+        return 0;
     }
 }

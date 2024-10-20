@@ -1,12 +1,12 @@
 package pago.tarjeta;
 
-import pago.MetodoPago;
+import pago.ImprimirBoleto;
 import producto.Producto;
 import usuarios.cliente.Cliente;
 
 import java.time.LocalDateTime;
 
-public class Tarjeta extends MetodoPago {
+public class Tarjeta extends ImprimirBoleto {
 
     public String tarjeta;
 

@@ -68,7 +68,6 @@ public class Menu {
                 case 2:
 
                     System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
-                    sc.nextLine();
                     System.out.println("INGRESA TU NOMBRE COMPLETO: ");
                     String nombre = sc.nextLine();
 
@@ -188,6 +187,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("--- COMPRAR BOLETOS ---");
+                    //Crear boleto.
                     break;
                     case 3:
                         int tipopago = 0;
@@ -230,9 +230,7 @@ public class Menu {
 
                                 switch (verprod){
                                     case 1:
-                                        //cliente.obtenerProd();
                                         cliente.agregarProductoACompras();
-                                        System.out.println("PRODUCTO CARGADO CORRECTAMENTE");
                                         break;
                                     case 2:
                                         cliente.mostrarTotalCompra();

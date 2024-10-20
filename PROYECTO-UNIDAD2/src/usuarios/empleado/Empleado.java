@@ -178,7 +178,6 @@ public class Empleado extends Usuario {
         return null;
     }
 
-
     public void eliminarProductos(){
         if (cine.listaProductos.size() == 0){
             System.out.println("NO HAY PRODUCTOS REGISTRADOS");
