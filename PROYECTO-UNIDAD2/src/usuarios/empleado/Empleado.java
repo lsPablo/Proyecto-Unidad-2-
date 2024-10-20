@@ -33,7 +33,7 @@ public class Empleado extends Usuario {
     }
 
     public void agregarProductoDulce(){
-
+        sc.nextLine();
         String ID = cine.generarIdDulce();
         System.out.println("INGRESA LA CATEGORIA DEL PRODUCTO A AGREGAR: ");
         String id = sc.next();
@@ -93,6 +93,7 @@ public class Empleado extends Usuario {
         double precios =0;
         String tamaños = "";
         while(opciontamaños < 1 || opciontamaños > 4){
+            sc.nextLine();
             System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
             System.out.println("1.- CHICO");
             System.out.println("2.- MEDIANO");
@@ -179,7 +180,8 @@ public class Empleado extends Usuario {
     }
 
     public void eliminarProductos(){
-        if (cine.listaProductos.size() == 0){
+        sc.nextLine();
+        if (cine.listaProductos.isEmpty()){
             System.out.println("NO HAY PRODUCTOS REGISTRADOS");
             return;
         }
@@ -226,6 +228,7 @@ public class Empleado extends Usuario {
     }
 
     public void eliminarPelicula(){
+        sc.nextLine();
         if (cine.listaPeliculas.size() == 0){
             System.out.println("NO HAY PELICULAS REGISTRADAS");
             return;
@@ -312,9 +315,7 @@ public class Empleado extends Usuario {
     }
 
     public void eliminarFuncion(String tituloPeli){
-        //MOSTRAR FUNCIONES
-        //pelicula.mostrarFunciones(tituloPeli);
-
+        sc.nextLine();
         System.out.println("INGRESA EL ID DE LA FUNCION A ELIMINAR: ");
         String idFuncion = sc.nextLine();
 

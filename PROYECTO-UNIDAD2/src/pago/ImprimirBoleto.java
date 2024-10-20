@@ -22,8 +22,7 @@ public class ImprimirBoleto {
     public LocalDateTime fechaCompra;
     public Producto producto;
 
-    public ImprimirBoleto(String id, Cliente cliente, Producto producto, LocalDateTime fechaCompra, Boleto boleto) {
-        this.id = this.generarIdBoleto();
+    public ImprimirBoleto(Cliente cliente, Producto producto, LocalDateTime fechaCompra, Boleto boleto) {
         this.cliente = cliente;
         this.producto = producto;
         this.fechaCompra = LocalDateTime.now();

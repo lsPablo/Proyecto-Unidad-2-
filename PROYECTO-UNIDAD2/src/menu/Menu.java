@@ -184,7 +184,8 @@ public class Menu {
 
                                     if (precio != null) {
                                         totalAsientos += precio;
-                                        Boleto boleto = new Boleto(imprimirBoleto.generarIdBoleto(), peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
+                                        String idBoleto = imprimirBoleto.generarIdBoleto();
+                                        Boleto boleto = new Boleto(idBoleto, peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
                                         cliente.listaBoletos.add(boleto);
                                     } else {
                                         System.out.println("No se pudo reservar el asiento: " + asiento);
