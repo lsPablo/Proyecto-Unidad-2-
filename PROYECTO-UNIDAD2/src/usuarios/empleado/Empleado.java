@@ -132,6 +132,7 @@ public class Empleado extends Usuario {
     }
 
     public void mostrarProdDulces(){
+        sc.nextLine();
         int iterador = 1;
         System.out.println("--PRODUCTOS DULCES--");
         for(Producto producto: this.cine.listaDulce){
