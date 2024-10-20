@@ -74,11 +74,11 @@ public class Sala {
 
                     // VIP
                     if (distribucion[i][j].startsWith("LV") || distribucion[i][j].startsWith("KV")) {
-                        if (!distribucion[i][j].equals("X")) {
+                        if (!distribucion[i][j].equals(" X ")) {
                             precioAsiento = 400.00;
 
 
-                            distribucion[i][j] = "X";
+                            distribucion[i][j] = " X ";
                             System.out.println("Asiento VIP reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
@@ -86,9 +86,9 @@ public class Sala {
                         }
                     }
                     else if (distribucion[i][j].startsWith("JP") || distribucion[i][j].startsWith("IP")) {
-                        if (!distribucion[i][j].equals("X")) {
+                        if (!distribucion[i][j].equals(" X ")) {
                             precioAsiento = 200.00;
-                            distribucion[i][j] = "X";
+                            distribucion[i][j] = " X ";
                             System.out.println("Asiento Preferente reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
@@ -96,9 +96,9 @@ public class Sala {
                         }
                     }
                     else {
-                        if (!distribucion[i][j].equals("X")) {
+                        if (!distribucion[i][j].equals(" X ")) {
                             precioAsiento = 75.00;
-                            distribucion[i][j] = "X";
+                            distribucion[i][j] = " X ";
                             System.out.println("Asiento General reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
