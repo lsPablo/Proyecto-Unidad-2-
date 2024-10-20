@@ -1,5 +1,6 @@
 package usuarios.cliente;
 
+import boleto.Boleto;
 import cine.Cine;
 import producto.Producto;
 import usuarios.Usuario;
@@ -15,12 +16,14 @@ import java.util.Scanner;
 
 public class Cliente extends Usuario {
     private Scanner sc = new Scanner(System.in);
+    public ArrayList<Boleto>listaBoletos = new ArrayList<>();
 
 
 
     public Cliente (String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Cine cine) {
         super(id, nombre, apellido, direccion, telefono, fechaNacimiento, contrasenia, Rol.CLIENTE, cine);
     }
+
 
     public String mostrarDatosCliente() {
         String datos = String.format("Id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, Fecha de Nacimiento: %s",

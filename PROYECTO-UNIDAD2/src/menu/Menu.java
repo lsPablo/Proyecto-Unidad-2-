@@ -1,7 +1,9 @@
 package menu;
 
+import boleto.Boleto;
 import cine.Cine;
 import funcion.Funcion;
+import pago.ImprimirBoleto;
 import peliculas.Pelicula;
 import salas.Sala;
 import usuarios.Usuario;
@@ -18,6 +20,7 @@ public class Menu {
     public Cine cine = new Cine();
     public Pelicula pelicula;
     Scanner sc = new Scanner(System.in);
+    ImprimirBoleto imprimirBoleto;
 
     public void login() {
         System.out.println("-----------------BIENVENIDO A LA FAMILIA CINEPOLLIS-----------------");
@@ -162,12 +165,12 @@ public class Menu {
                                 String salaDeseada = sc.nextLine();
                                 Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida, salaDeseada);
                                 cine.mostrarDistribucionSala(horaFuncionElegida, salaDeseada);
+                                System.out.println("Elige la cantidad de asientos");
+                                int cantidadAsientos = sc.nextInt();
                                 System.out.println("PRECIOS: ");
                                 System.out.println("Asientos VIP: $400");
                                 System.out.println("Asientos Preferente: $200");
                                 System.out.println("Asientos General: $75");
-                                System.out.println("Elige la cantidad de asientos");
-                                int cantidadAsientos = sc.nextInt();
 
                                 Double totalAsientos = 0.00;
                                 for (int i = 0; i < cantidadAsientos; i++) {
@@ -181,9 +184,12 @@ public class Menu {
 
                                     if (precio != null) {
                                         totalAsientos += precio;
+                                        Boleto boleto = new Boleto(imprimirBoleto.generarIdBoleto(), peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
+                                        cliente.listaBoletos.add(boleto);
                                     } else {
                                         System.out.println("No se pudo reservar el asiento: " + asiento);
                                     }
+
                                 }
                                 System.out.println("TOTAL ASIENTOS: " + totalAsientos);
                             case 2:
