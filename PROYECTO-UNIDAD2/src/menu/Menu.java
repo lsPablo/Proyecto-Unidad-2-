@@ -127,7 +127,7 @@ public class Menu {
         while (opcion != 5) {
             System.out.println("Menú del Cliente");
             System.out.println("1.- VER CARTELERA");
-            System.out.println("2.- COMPRAR BOLETOS");
+            System.out.println("2.- CONFIRMAR COMPRA BOLETOS");
             System.out.println("3.- METODO DE PAGO");
             System.out.println("4.- COMPRAR EN DULCERIA");
             System.out.println("5.- Salir");
@@ -162,18 +162,29 @@ public class Menu {
                                 String salaDeseada = sc.nextLine();
                                 Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida, salaDeseada);
                                 cine.mostrarDistribucionSala(horaFuncionElegida, salaDeseada);
+                                System.out.println("PRECIOS: ");
+                                System.out.println("Asientos VIP: $400");
+                                System.out.println("Asientos Preferente: $200");
+                                System.out.println("Asientos General: $75");
                                 System.out.println("Elige la cantidad de asientos");
-                                int cantidadAsientos=sc.nextInt();
+                                int cantidadAsientos = sc.nextInt();
 
                                 Double totalAsientos = 0.00;
                                 for (int i = 0; i < cantidadAsientos; i++) {
                                     System.out.println("Ingresa el Asiento deseado");
                                     String asiento = sc.next();
-                                    totalAsientos = totalAsientos + funcionElegida.getSala().reservarAsiento(asiento);
-                                }
-                                System.out.println("TOTAL ASIENTOS: "+totalAsientos);
+                                    asiento = asiento.trim().toUpperCase();
 
-                                break;
+
+                                    Double precio = funcionElegida.getSala().reservarAsiento(asiento);
+
+                                    if (precio != null) {
+                                        totalAsientos += precio;
+                                    } else {
+                                        System.out.println("No se pudo reservar el asiento: " + asiento);
+                                    }
+                                }
+                                System.out.println("TOTAL ASIENTOS: " + totalAsientos);
                             case 2:
                                 System.out.println("HASTA LUEGO.");
                                 break;
@@ -186,7 +197,7 @@ public class Menu {
                     System.out.println("");
                     break;
                 case 2:
-                    System.out.println("--- COMPRAR BOLETOS ---");
+                    System.out.println("--- CONFIRMAR COMPRA BOLETOS ---");
                     //Crear boleto.
                     break;
                     case 3:
@@ -321,7 +332,7 @@ public class Menu {
                     System.out.println("--MOSTRAR FUNCIONES--");
                     sc.nextLine();
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
-                    String peliculaInteres = sc.nextLine();
+                    String peliculaInteres = sc.next();
 
                     empleado.mostratrarFunciones(peliculaInteres);
                     break;

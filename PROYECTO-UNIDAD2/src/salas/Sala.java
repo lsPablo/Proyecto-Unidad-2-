@@ -40,7 +40,7 @@ public class Sala {
                 } else if (letra == 'J' || letra == 'I') {
                     distribucion[j][i] = letra + "P" + (i + 1);
                 } else {
-                    distribucion[j][i] = letra + " " + (i + 1);
+                    distribucion[j][i] = letra + "G" + (i + 1);
                 }
                 letra--; // Decrementa la letra después de su uso
             }
@@ -58,40 +58,59 @@ public class Sala {
     }
 
     public Double reservarAsiento(String asiento) {
-        Double precioAsiento = 0.00, totalAsiento = 0.00;
+        Double precioAsiento = 0.00;
+
+        asiento = asiento.trim().toUpperCase();
+
+        boolean asientoEncontrado = false;
+
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 10; j++) {
                 if (distribucion[i][j].equals(asiento)) {
-                    if (distribucion[i][j].equals("LV" + (j+1))  || distribucion[i][j].equals("kV" + (j+1)) ) {
+                    asientoEncontrado = true;
+
+                    // VIP
+                    if (distribucion[i][j].startsWith("LV") || distribucion[i][j].startsWith("KV")) {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 400.00;
                             distribucion[i][j] = "X";
+                            System.out.println("Asiento VIP reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
+                            return null;
                         }
-                    } else if (distribucion[i][j].equals("JP" + (j+1))  || distribucion[i][j].equals("IP" + (j+1))) {
+                    }
+                    else if (distribucion[i][j].startsWith("JP") || distribucion[i][j].startsWith("IP")) {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 200.00;
                             distribucion[i][j] = "X";
+                            System.out.println("Asiento Preferente reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
+                            return null;
                         }
-                    }else{
+                    }
+                    else {
                         if (!distribucion[i][j].equals("X")) {
                             precioAsiento = 75.00;
                             distribucion[i][j] = "X";
+                            System.out.println("Asiento General reservado.");
                         } else {
                             System.out.println("Asiento ya reservado.");
+                            return null;
                         }
                     }
-                    totalAsiento = precioAsiento + totalAsiento;
-                    return totalAsiento;
+                    return precioAsiento;
                 }
             }
         }
-        System.out.println("Asiento no encontrado.");
+
+        if (!asientoEncontrado) {
+            System.out.println("Asiento no encontrado.");
+        }
         return null;
     }
+
 
 
 
