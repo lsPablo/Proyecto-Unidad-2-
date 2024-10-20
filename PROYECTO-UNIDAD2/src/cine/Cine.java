@@ -4,6 +4,7 @@ import boleto.Boleto;
 import cartelera.Cartelera;
 import funcion.Funcion;
 import peliculas.Pelicula;
+import peliculas.proximosEstrenos.ProximosEstrenos;
 import producto.Producto;
 import salas.Sala;
 import usuarios.Usuario;
@@ -31,6 +32,7 @@ public class Cine {
     public ArrayList<Producto>listaDulce =new ArrayList<>();
     public ArrayList<Producto>listaCompras =new ArrayList<>();
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
+    public ArrayList<ProximosEstrenos> listaProximosEstrenos=new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
     public Cartelera cartelera = new Cartelera();
 
@@ -146,6 +148,10 @@ public class Cine {
         listaPeliculas.add(pelicula);
     }
 
+    public void registrarProximosEstrenos(ProximosEstrenos proximosEstrenos){
+        listaProximosEstrenos.add(proximosEstrenos);
+    }
+
     public boolean existePelícula(String nombrePelicula) {
         for (Pelicula pelicula : this.listaPeliculas) {
             if (pelicula.getTitulo().equals(nombrePelicula)) {
@@ -183,12 +189,22 @@ public class Cine {
     }
 
     public void mostrarCartelera(){
-        if (listaPeliculas.size() == 0){
+        if (listaPeliculas.isEmpty()){
             System.out.println("NO HAY PELICULAS REGISTRADAS");
         }
 
         for (Pelicula pelicula : this.listaPeliculas){
             System.out.println(pelicula.mostrarTitulo());
+        }
+    }
+
+    public void mostrarProximosEstrenos(){
+        if (listaProximosEstrenos.isEmpty()){
+            System.out.println("NO HAY PELICULAS PROXIMAS REGISTRADAS");
+        }
+
+        for (ProximosEstrenos proximosEstrenos : this.listaProximosEstrenos){
+            System.out.println(proximosEstrenos.mostrarDatos());
         }
     }
 

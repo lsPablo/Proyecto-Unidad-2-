@@ -10,8 +10,6 @@ import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
-
-import javax.print.DocFlavor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -126,13 +124,11 @@ public class Menu {
 
     private void mostrarMenuCliente(Cliente cliente) {
         int opcion = 0;
-        while (opcion != 5) {
+        while (opcion != 3) {
             System.out.println("Menú del Cliente");
             System.out.println("1.- VER CARTELERA");
-            System.out.println("2.- CONFIRMAR COMPRA BOLETOS");
-            System.out.println("3.- METODO DE PAGO");
-            System.out.println("4.- COMPRAR EN DULCERIA");
-            System.out.println("5.- Salir");
+            System.out.println("2.- PROXIMOS ESTRENOS");
+            System.out.println("3.- Salir");
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
@@ -293,40 +289,10 @@ public class Menu {
                     System.out.println("");
                     break;
                 case 2:
-                    System.out.println("--- CONFIRMAR COMPRA BOLETOS ---");
-                    //Crear boleto.
+                    System.out.println("---PROXIMOS ESTRENOS---");
+                    cine.mostrarProximosEstrenos();
                     break;
-                    case 3:
-
-                        break;
-                        case 4:
-                            System.out.println("BIENVENIDO A LA DULCERIA");
-                            cliente.mostrarProdcliente();
-                            int verprod = 0;
-                            while (verprod != 3){
-                                System.out.println("1.- COMPRAR PRODUCTO");
-                                System.out.println("2.- QUIERO VER QUE SALE");
-                                System.out.println("3.- SALIR");
-                                System.out.println("SELECCIONA UNA OPCION");
-                                verprod = sc.nextInt();
-
-                                switch (verprod){
-                                    case 1:
-                                        //cliente.agregarProductoACompras();
-                                        break;
-                                    case 2:
-                                        cliente.mostrarTotalCompra();
-                                        break;
-                                    case 3:
-                                        System.out.println("HASTA LUEGO");
-                                        break;
-                                    default:
-                                        System.out.println("OPCION INVALIDA");
-                                        break;
-                                }
-                            }
-                            break;
-                case 5:
+                case 3:
                     System.out.println("HASTA TU PROXIMA VISITA");
                     break;
                 default:
@@ -338,7 +304,7 @@ public class Menu {
 
     private void mostrarMenuEmpleado(Empleado empleado) {
         int opcion = 0;
-        while (opcion != 13) {
+        while (opcion != 16) {
             System.out.println("MENÚ DE EMPLEADO");
             System.out.println("1.-AGREGAR PRODUCTOS DULCES A LA DULCERIA");
             System.out.println("2.-AGREGAR PRODUCTOS SALADOS A LA DULCERIA");
@@ -352,6 +318,9 @@ public class Menu {
             System.out.println("10.-AGREGAR FUNCIONES");
             System.out.println("11.-MOSTRAR FUNCIONES");
             System.out.println("12.-ELIMINAR FUNCIONES");
+            System.out.println("13.- AGREAGAR PROXIMO ESTRENO");
+            System.out.println("14.- MOSTRAR PROXIMOS ESTRENO");
+            System.out.println("15.- ELIMINAR PROXIMO ESTRENO");
             System.out.println("13.-SALIR");
 
             System.out.println("SELECCIONA UNA OPCION");
@@ -419,6 +388,18 @@ public class Menu {
                     empleado.eliminarFuncion(peliculaInteres);
                     break;
                 case 13:
+                    System.out.println("--AGREGAR PROXIMO ESTRENO--");
+                    empleado.agregarProximosEstrenos();
+                    break;
+                case 14:
+                    System.out.println("--MOSTRAR PROXIMO ESTRENO--");
+                    cine.mostrarProximosEstrenos();
+                    break;
+                case 15:
+                    System.out.println("--ELIMINAR PROXIMO ESTRENO--");
+                    empleado.eliminarProximosEstrenos();
+                    break;
+                case 16:
                     System.out.println("HASTA LUEGO");
                     return;
                 default:

@@ -3,13 +3,16 @@ package usuarios.empleado;
 import cine.ValidadorCine;
 import funcion.Funcion;
 import peliculas.Pelicula;
+import peliculas.proximosEstrenos.ProximosEstrenos;
 import producto.Producto;
 import salas.Sala;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 import cine.Cine;
+
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -218,7 +221,7 @@ public class Empleado extends Usuario {
     }
 
     public void mostrarPeliculas() {
-        if (cine.listaPeliculas.size() == 0) {
+        if (cine.listaPeliculas.isEmpty()) {
             System.out.println("NO HAY PELICULAS REGISTRADAS");
         }
 
@@ -228,8 +231,7 @@ public class Empleado extends Usuario {
     }
 
     public void eliminarPelicula(){
-        sc.nextLine();
-        if (cine.listaPeliculas.size() == 0){
+        if (cine.listaPeliculas.isEmpty()) {
             System.out.println("NO HAY PELICULAS REGISTRADAS");
             return;
         }
@@ -244,7 +246,53 @@ public class Empleado extends Usuario {
                 break;
             }
         }
-        System.out.println("NO HAY PELICULAS REGISTRADAS CON ESE NOMBRE.");
+        System.out.println("PELICULA ELIMINADA EXISTOSAMENTE.");
+    }
+
+    public void agregarProximosEstrenos(){
+        String idPelicula = cine.generarIdPelicula();
+        System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
+        String nombrePelicula = sc.nextLine();
+        System.out.println("INGRESA EL GENERO: ");
+        String generoPelicula = sc.nextLine();
+        System.out.println("INGRESA SU CLASIFICACIÓN (A|B|C|): ");
+        char clasificacionPelicula = sc.next().charAt(0);
+
+        System.out.println("INGRESA LOS MINUTOS DE DURACIÓN: ");
+        int minutosPelicula = sc.nextInt();
+        sc.nextLine();
+        Duration duracion = Duration.ofMinutes(minutosPelicula);
+        System.out.println("INGRESA UNA SINOPSIS: ");
+        String sinopsisPelicula = sc.nextLine();
+        System.out.println("INGRESA AÑO DE ESTRENO (YYYY): ");
+        String anioEstrenoPelicula = sc.nextLine();
+        System.out.println("INGRESA EL MES DE ESTRENO (MM): ");
+        String meseEstrenoPelicula = sc.nextLine();
+        System.out.println("INGRESA EL DIA DE ESTRENO (DD):");
+        String diaEstrenoPelicula = sc.nextLine();
+        LocalDate fechaEstreno = LocalDate.of(Integer.parseInt(anioEstrenoPelicula), Integer.parseInt(meseEstrenoPelicula), Integer.parseInt(diaEstrenoPelicula));
+
+        ProximosEstrenos proximosEstrenos = new ProximosEstrenos(idPelicula, nombrePelicula ,generoPelicula,clasificacionPelicula,duracion,sinopsisPelicula, fechaEstreno);
+        cine.registrarProximosEstrenos(proximosEstrenos);
+    }
+
+    public void eliminarProximosEstrenos(){
+        if (cine.listaProximosEstrenos.isEmpty()){
+            System.out.println("NO HAY PELICULAS PROXIMAS REGISTRADAS");
+            return;
+        }
+
+        System.out.println("INGRESA EL NOMBRE DE LA PELICULA A ELIMINAR:");
+        String nombrePelicula = sc.nextLine();
+
+        for (ProximosEstrenos proximosEstrenos : this.cine.listaProximosEstrenos){
+            if (proximosEstrenos.getTitulo().equals(nombrePelicula)){
+                int posicion = cine.listaProximosEstrenos.indexOf(proximosEstrenos);
+                cine.listaProximosEstrenos.remove(posicion);
+                break;
+            }
+        }
+        System.out.println("PELICULA ELIMINADA EXISTOSAMENTE.");
     }
 
     public void verSalas(){
@@ -282,6 +330,11 @@ public class Empleado extends Usuario {
         Duration duracionPelicula = cine.obtenerPeliculaPorNombre(nombrePelicula).getDuracion();
         Duration duracionTotal = duracionPelicula.plusMinutes(20);
         boolean chocanHoras = false;
+
+        if (horaFuncion.isBefore(LocalTime.of(8,0)) || horaFuncion.isAfter(LocalTime.of(23,0))){
+            System.out.println("NO ES POSIBLE REGISTRAR FUNCIONES ANTES DE LAS 8:00AM O DESPUES DE LAS 23:00PM ");
+            return;
+        }
 
         Pelicula pelicula = cine.obtenerPeliculaPorNombre(nombrePelicula);
 
