@@ -170,6 +170,7 @@ public class Menu {
                                 System.out.println("Asientos General: $75");
 
                                 Double totalAsientos = 0.00;
+                                Boleto boleto = null;
                                 for (int i = 0; i < cantidadAsientos; i++) {
                                     System.out.println("Ingresa el Asiento deseado");
                                     String asiento = sc.next();
@@ -182,7 +183,7 @@ public class Menu {
                                     if (precio != null) {
                                         totalAsientos += precio;
                                         String idBoleto = "0";
-                                        Boleto boleto = new Boleto(idBoleto, peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
+                                        boleto = new Boleto(idBoleto, peliculaVer, salaDeseada, asiento, horaFuncionElegida,precio);
                                         boleto.setId(boleto.generarIdBoleto());
                                         cliente.listaBoletos.add(boleto);
                                     } else {
@@ -191,6 +192,43 @@ public class Menu {
 
                                 }
                                 System.out.println("TOTAL ASIENTOS: " + totalAsientos);
+
+                                int tipopago = 0;
+                                while (tipopago != 2){
+                                    System.out.println("***SELECCIONA EL METODO DE PAGO");
+                                    System.out.println("1.- EFECTIVO");
+                                    System.out.println("2.- PAGO CON TERJETA");
+                                    tipopago = sc.nextInt();
+
+                                    switch (tipopago){
+                                        case 1:
+                                            System.out.println("----PAGO EN EFECTIVO----");
+                                            System.out.println("INGRESA EL DINERO: ");
+                                            Double efectivo = sc.nextDouble();
+
+                                            if (efectivo < totalAsientos) {
+                                                System.out.println("FALTAN $" + (totalAsientos - efectivo) + " PESOS.");
+                                                break;
+                                            } else if (efectivo > totalAsientos) {
+                                                System.out.println("TU CAMBIO ES DE $" + (efectivo - totalAsientos) + " PESOS.");
+                                                System.out.println("GRACIAS POR TU COMPRA");
+
+                                                boleto.mostrarBoleto();
+                                            }else{
+                                                System.out.println("GRACIAS POR TU COMPRA");
+                                            }
+                                            break;
+                                        case 2:
+                                            System.out.println("----PAGO CON TARJETA----");
+                                            cliente.registrarTarjeta();
+                                            //aplicarDescuentosSiMesNacimiento(cliente);
+                                            cliente.mostrarTotalCompra();
+                                            break;
+                                        default:
+                                            System.out.println("OPCION INVALIDA");
+                                            break;
+                                    }
+                                }
                                 break;
                             case 2:
                                 System.out.println("HASTA LUEGO.");
@@ -208,32 +246,7 @@ public class Menu {
                     //Crear boleto.
                     break;
                     case 3:
-                        int tipopago = 0;
-                        while (tipopago != 3){
-                            System.out.println("***SELECCIONA EL METODO DE PAGO");
-                            System.out.println("1.- EFECTIVO");
-                            System.out.println("2.- PAGO CON TERJETA");
-                            System.out.println("3.- SALIR");
-                            tipopago = sc.nextInt();
 
-                            switch (tipopago){
-                                case 1:
-                                    System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO EN EFECTIVO");
-                                    break;
-                                case 2:
-                                    System.out.println("HAZ SELECCIONADO LA OPCION DE PAGO CON TARJETA");
-                                    cliente.registrarTarjeta();
-                                    //aplicarDescuentosSiMesNacimiento(cliente);
-                                    cliente.mostrarTotalCompra();
-                                    break;
-                                case 3:
-                                    System.out.println("HASTA LUEGO");
-                                    break;
-                                default:
-                                    System.out.println("OPCION INVALIDA");
-                                    break;
-                            }
-                        }
                         break;
                         case 4:
                             System.out.println("BIENVENIDO A LA DULCERIA");
