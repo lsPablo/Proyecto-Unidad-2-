@@ -368,7 +368,7 @@ public class Menu {
         int opcion = 0;
         while (opcion != 3) {
             System.out.println("---MENÚ ADMINISTRADOR---");
-            System.out.println("1.-REGISTRAR EMPLEADO.");
+            System.out.println("1.-REGISTRAR CINEPOLLITO.");
             System.out.println("2.-MOSTRAR DATOS DEL EMPLEADO.");
             System.out.println("3.-SALIR.");
 
@@ -377,7 +377,7 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("-----HAS ELEGIDO CREAR UNA NUEVA CUENTA-----");
+                    System.out.println("-----BIENVENIDO A LA FAMILIA CINEPOLLITO-----");
                     System.out.println("INGRESA TU NOMBRE COMPLETO: ");
                     String nombre = sc.next();
 

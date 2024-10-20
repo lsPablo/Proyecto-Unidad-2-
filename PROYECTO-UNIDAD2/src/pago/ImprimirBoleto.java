@@ -1,5 +1,6 @@
 package pago;
 
+import boleto.Boleto;
 import producto.Producto;
 import usuarios.cliente.Cliente;
 
@@ -17,10 +18,11 @@ public class ImprimirBoleto {
     //precio
     //tipo de asiento
     //tipo descuento.
+    public Boleto boleto;
     public LocalDateTime fechaCompra;
     public Producto producto;
 
-    public ImprimirBoleto(String id, Cliente cliente, Producto producto, LocalDateTime fechaCompra){
+    public ImprimirBoleto(String id, Cliente cliente, Producto producto, LocalDateTime fechaCompra, Boleto boleto) {
         this.id = this.generarIdBoleto();
         this.cliente = cliente;
         this.producto = producto;
