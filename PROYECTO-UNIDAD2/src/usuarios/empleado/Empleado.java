@@ -33,7 +33,6 @@ public class Empleado extends Usuario {
     }
 
     public void agregarProductoDulce(){
-        sc.nextLine();
         String ID = cine.generarIdDulce();
         System.out.println("INGRESA LA CATEGORIA DEL PRODUCTO A AGREGAR: ");
         String id = sc.next();
@@ -200,9 +199,9 @@ public class Empleado extends Usuario {
     public void agregarPelicula(){
         String idPelicula = cine.generarIdPelicula();
         System.out.println("INGRESA EL NOMBRE DE LA PELICULA: ");
-        String nombrePelicula = sc.nextLine();
+        String nombrePelicula = sc.next();
         System.out.println("INGRESA EL GENERO: ");
-        String generoPelicula = sc.nextLine();
+        String generoPelicula = sc.next();
         System.out.println("INGRESA SU CLASIFICACIÓN (A|B|C|): ");
         char clasificacionPelicula = sc.next().charAt(0);
 

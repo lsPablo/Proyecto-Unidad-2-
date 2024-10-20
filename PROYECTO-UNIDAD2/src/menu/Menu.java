@@ -4,6 +4,7 @@ import boleto.Boleto;
 import cine.Cine;
 import funcion.Funcion;
 import peliculas.Pelicula;
+import producto.Producto;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -194,6 +195,53 @@ public class Menu {
                                 }
                                 System.out.println("TOTAL ASIENTOS: " + totalAsientos);
 
+                                System.out.println("BIENVENIDO A LA DULCERIA");
+                                cliente.mostrarProdcliente();
+                                int verprod = 0;
+                                while (verprod != 2){
+                                    System.out.println("1.- COMPRAR PRODUCTO");
+                                    System.out.println("2.- SALIR");
+                                    System.out.println("SELECCIONA UNA OPCION");
+                                    verprod = sc.nextInt();
+
+                                    switch (verprod){
+                                        case 1:
+                                            //String idProducto;
+                                            System.out.println("--- COMPRAR PRODUCTO ---");
+                                            System.out.println("INGRESA EL ID DEL PRODUCTO QUE DESEAS COMPRAR");
+                                            String idProducto = sc.next();
+
+                                            for (Producto producto: this.cine.listaProductos){
+                                                if (producto.getID().equals(idProducto)){
+                                                    System.out.println("PRODUCTO AGREGADO A LA CUENTA");
+                                                    cine.listaCompras.add(producto);
+                                                    break;
+                                                }
+                                            }
+                                            System.out.println("PRODUCTO NO ENCONTRADO");
+                                            break;
+                                        case 2:
+                                            System.out.println("HASTA LUEGO");
+                                            break;
+                                        default:
+                                            System.out.println("OPCION INVALIDA");
+                                            break;
+                                    }
+                                }
+                                double total = 0;
+                                for (Producto producto : this.cine.listaCompras){
+                                    System.out.println(producto.getNombre()+ "-"+producto.getPrecio());
+                                    total += producto.getPrecio();
+                                }
+                                System.out.println("TOTAL A PAGAR EN DULCERIA: " + total);
+
+                                double gastototal =0;
+                                gastototal=(total+totalAsientos);
+
+
+                            System.out.println("\nTOTAL DE COMPRAS ES DE: " + gastototal);
+
+
                                 int tipopago = 0;
                                 while (tipopago != 2){
                                     System.out.println("***SELECCIONA EL METODO DE PAGO");
@@ -207,11 +255,11 @@ public class Menu {
                                             System.out.println("INGRESA EL DINERO: ");
                                             Double efectivo = sc.nextDouble();
 
-                                            if (efectivo < totalAsientos) {
-                                                System.out.println("FALTAN $" + (totalAsientos - efectivo) + " PESOS.");
+                                            if (efectivo < gastototal) {
+                                                System.out.println("FALTAN $" + (gastototal - efectivo) + " PESOS.");
                                                 break;
-                                            } else if (efectivo > totalAsientos) {
-                                                System.out.println("TU CAMBIO ES DE $" + (efectivo - totalAsientos) + " PESOS.");
+                                            } else if (efectivo > gastototal) {
+                                                System.out.println("TU CAMBIO ES DE $" + (efectivo - gastototal) + " PESOS.");
                                                 System.out.println("GRACIAS POR TU COMPRA");
                                                 System.out.println(boleto.mostrarBoleto());
                                                 return;
@@ -263,7 +311,7 @@ public class Menu {
 
                                 switch (verprod){
                                     case 1:
-                                        cliente.agregarProductoACompras();
+                                        //cliente.agregarProductoACompras();
                                         break;
                                     case 2:
                                         cliente.mostrarTotalCompra();
