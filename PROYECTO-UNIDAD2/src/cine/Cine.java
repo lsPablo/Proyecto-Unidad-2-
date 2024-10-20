@@ -46,7 +46,7 @@ public class Cine {
         Empleado empleado = new Empleado("E","Victor", "Hernandez","Patzcuaro","654987321",fechaNacimiento1,"Curp","123",Rol.EMPLEADO, this);
         this.listaUsuarios.add(empleado);
         this.listaEmpleados.add(empleado);
-        generarSalas();
+
 
     }
 
@@ -256,4 +256,5 @@ public class Cine {
             System.out.println(boleto.mostrarBoleto());
         }
     }
+
 }

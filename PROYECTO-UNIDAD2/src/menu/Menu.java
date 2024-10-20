@@ -5,6 +5,7 @@ import cine.Cine;
 import funcion.Funcion;
 import peliculas.Pelicula;
 import producto.Producto;
+import salas.Sala;
 import usuarios.Usuario;
 import usuarios.admin.Admin;
 import usuarios.cliente.Cliente;
@@ -18,7 +19,9 @@ public class Menu {
     public Cine cine = new Cine();
     public Pelicula pelicula;
     Scanner sc = new Scanner(System.in);
-
+    public void Salas(){
+        cine.generarSalas();
+    }
     public void login() {
         System.out.println("-----------------BIENVENIDO A LA FAMILIA CINEPOLLIS-----------------");
         int opcion = 0;
@@ -158,6 +161,7 @@ public class Menu {
                                 LocalTime horaFuncionElegida = LocalTime.parse(hora);
                                 System.out.println("EN QUE SALA: ");
                                 String salaDeseada = sc.nextLine();
+                                Sala salaSeleccionada = cine.obtenerSalaPorId(salaDeseada);
                                 Funcion funcionElegida = cine.buscarFuncion(peliculaVer,horaFuncionElegida, salaDeseada);
                                 cine.mostrarDistribucionSala(horaFuncionElegida, salaDeseada);
                                 System.out.println("Elige la cantidad de asientos");
@@ -175,7 +179,7 @@ public class Menu {
                                     asiento = asiento.trim().toUpperCase();
 
 
-                                    Double precio = funcionElegida.getSala().reservarAsiento(salaDeseada, asiento);
+                                    Double precio = salaSeleccionada.reservarAsiento(asiento);
                                     precio = precio * cliente.aplicarDescuento();
 
                                     if (precio != null) {

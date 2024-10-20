@@ -9,12 +9,8 @@ import java.util.ArrayList;
 
 public class Sala {
     public String id;
-    private static String[][] distribucion = new String [12][10];
+    private String[][] distribucion = new String [12][10];
     public ArrayList<Funcion> listaFunciones;
-
-    static {
-        llenarDistribucion();
-    }
 
     public Sala(String id) {
         this.id = id;
@@ -33,7 +29,7 @@ public class Sala {
         this.id = id;
     }
 
-    public static void llenarDistribucion() {
+    public void llenarDistribucion() {
         for (int i = 0; i < 10; i++) {
             char letra = 'L'; // Inicia con la letra 'L'
             for (int j = 0; j < 12; j++) {
@@ -59,8 +55,7 @@ public class Sala {
         System.out.println("                --------PANTALLA--------  ");
     }
 
-    public Double reservarAsiento(String idSala,String asiento ) {
-        if(this.id.equals(idSala)) {
+    public Double reservarAsiento(String asiento) {
             Double precioAsiento = 0.00;
 
             asiento = asiento.trim().toUpperCase();
@@ -113,7 +108,6 @@ public class Sala {
             if (!asientoEncontrado) {
                 System.out.println("Asiento no encontrado.");
             }
-        }
         return null;
         }
 
