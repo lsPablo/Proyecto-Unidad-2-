@@ -5,7 +5,7 @@ Este repositorio contiene el proyecto elaborado para la evaluación de la Unidad
 ## Integrantes
 
 - [Nombre del integrante 1]
-- [Nombre del integrante 2]
+- Sergio Manrique Ambriz
 - Pablo Cesar Gallegos Valencia
 
 
