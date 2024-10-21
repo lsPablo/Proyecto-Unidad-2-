@@ -131,7 +131,7 @@ public class Menu {
         while (opcion != 3) {
             System.out.println("Menú del Cliente");
             System.out.println("1.- VER CARTELERA");
-            System.out.println("2.- PROXIMOS ESTRENOS");
+            System.out.println("2.- PROXIMOS POLLIESTRENOS");
             System.out.println("3.- Salir");
 
             System.out.println("SELECCIONA UNA OPCION");
