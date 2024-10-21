@@ -217,8 +217,8 @@ public class Menu {
                                                     cine.listaCompras.add(producto);
                                                     break;
                                                 }
+                                                System.out.println("PRODUCTO NO ENCONTRADO");
                                             }
-                                            System.out.println("PRODUCTO NO ENCONTRADO");
                                             break;
                                         case 2:
                                             System.out.println("HASTA LUEGO");
