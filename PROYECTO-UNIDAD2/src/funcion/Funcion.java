@@ -1,15 +1,12 @@
 package funcion;
 
-import peliculas.Pelicula;
 import salas.Sala;
-
 import java.time.LocalTime;
 
 public class Funcion {
     String id;
     Sala sala;
     LocalTime horaProyeccion;
-
 
     public Funcion(String idFuncion, Sala sala, LocalTime horaProyeccion) {
         this.id = idFuncion;
@@ -42,6 +39,5 @@ public class Funcion {
         String cartelera = String.format("ID FUNCION: %s, HORA DE FUNCION: %s, Sala: %s", id, horaProyeccion,salaEnCartelera);
         return cartelera;
     }
-
 
 }

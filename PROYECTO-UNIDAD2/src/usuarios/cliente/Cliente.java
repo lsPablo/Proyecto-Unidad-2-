@@ -5,11 +5,8 @@ import cine.Cine;
 import producto.Producto;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,12 +15,9 @@ public class Cliente extends Usuario {
     private Scanner sc = new Scanner(System.in);
     public ArrayList<Boleto>listaBoletos = new ArrayList<>();
 
-
-
     public Cliente (String id, String nombre, String apellido, String direccion, String telefono, LocalDate fechaNacimiento, String contrasenia, Cine cine) {
         super(id, nombre, apellido, direccion, telefono, fechaNacimiento, contrasenia, Rol.CLIENTE, cine);
     }
-
 
     public String mostrarDatosCliente() {
         String datos = String.format("Id: %s, Nombre: %s, Apellido: %s, Direccion: %s, Telefono: %s, Fecha de Nacimiento: %s",
@@ -50,18 +44,6 @@ public class Cliente extends Usuario {
             System.out.println(producto.mostrarProductoCliente());
             iterador1++;
         }
-
-    }
-
-    public double obtenerProd(){
-        System.out.println("INGRESA EL ID DEL PRODUCTO QUE DESEAS COMPRAR");
-        String idProducto = sc.next();
-        for (Producto producto : this.cine.listaProductos){
-            if (producto.getNombre().equals(idProducto)){
-                return producto.getPrecio();
-            }
-        }
-        return 0;
     }
 
     public void agregarProductoACompras() {
@@ -84,12 +66,10 @@ public class Cliente extends Usuario {
             System.out.println(producto.getNombre() + " - " + producto.getPrecio());
             total += producto.getPrecio();
         }
-
         System.out.println("Total a pagar: " + total);
     }
 
     public void registrarTarjeta(){
-
         System.out.println("INGRESA LOS DATOS DE TU TARJETA");
         String idTarjeta;
         while(true){
@@ -143,8 +123,5 @@ public class Cliente extends Usuario {
         }
         return 1;
     }
-
-
-
 
 }

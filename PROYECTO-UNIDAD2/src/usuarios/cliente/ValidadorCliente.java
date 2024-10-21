@@ -1,6 +1,5 @@
 package usuarios.cliente;
 
-import java.time.LocalDateTime;
 import java.time.YearMonth;
 
 public class ValidadorCliente {

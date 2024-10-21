@@ -2,11 +2,9 @@ package usuarios;
 
 import cine.Cine;
 import usuarios.utils.Rol;
-
 import java.time.LocalDate;
 
 public class Usuario {
-
 
     public String id;
     public String nombre;
@@ -61,4 +59,5 @@ public class Usuario {
     public Rol getRol() {
         return rol;
     }
+
 }

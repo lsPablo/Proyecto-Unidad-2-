@@ -13,13 +13,10 @@ import usuarios.cliente.Cliente;
 import usuarios.cliente.ValidadorCliente;
 import usuarios.empleado.Empleado;
 import usuarios.utils.Rol;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Cine {
 
@@ -34,8 +31,7 @@ public class Cine {
     public ArrayList<Pelicula>listaPeliculas =new ArrayList<>();
     public ArrayList<ProximosEstrenos> listaProximosEstrenos=new ArrayList<>();
     public ArrayList<Sala>listaSalas =new ArrayList<>();
-    public Cartelera cartelera = new Cartelera();
-
+    private ValidadorCliente validador = new ValidadorCliente();
 
     public Cine(){
         LocalDate fechaNcimiento=LocalDate.of(1990,11,05);
@@ -46,11 +42,7 @@ public class Cine {
         Empleado empleado = new Empleado("E","Victor", "Hernandez","Patzcuaro","654987321",fechaNacimiento1,"Curp","123",Rol.EMPLEADO, this);
         this.listaUsuarios.add(empleado);
         this.listaEmpleados.add(empleado);
-
-
     }
-
-    private ValidadorCliente validador = new ValidadorCliente();
 
     public void generarSalas(){
         for (int i = 0; i < 11; i++) {

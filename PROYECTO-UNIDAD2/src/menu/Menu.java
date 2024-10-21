@@ -19,9 +19,11 @@ public class Menu {
     public Cine cine = new Cine();
     public Pelicula pelicula;
     Scanner sc = new Scanner(System.in);
+
     public void Salas(){
         cine.generarSalas();
     }
+
     public void login() {
         System.out.println("-----------------BIENVENIDO A LA FAMILIA CINEPOLLIS-----------------");
         int opcion = 0;
@@ -107,7 +109,6 @@ public class Menu {
                     Cliente cliente = new Cliente(id, nombre, apellido, direccion, telefono, fechaNacimiento, nuevaContrasenia, cine);
                     cine.registrarCliente(cliente);
                     System.out.println("Cuenta creada exitosamente.");
-
                     break;
 
                 case 3:
@@ -178,7 +179,6 @@ public class Menu {
                                     String asiento = sc.next();
                                     asiento = asiento.trim().toUpperCase();
 
-
                                     Double precio = salaSeleccionada.reservarAsiento(asiento);
                                     precio = precio * cliente.aplicarDescuento();
 
@@ -191,7 +191,6 @@ public class Menu {
                                     } else {
                                         System.out.println("No se pudo reservar el asiento: " + asiento);
                                     }
-
                                 }
                                 System.out.println("TOTAL ASIENTOS: " + totalAsientos);
 
@@ -238,9 +237,7 @@ public class Menu {
                                 double gastototal =0;
                                 gastototal=(total+totalAsientos);
 
-
-                            System.out.println("\nTOTAL DE COMPRAS ES DE: " + gastototal);
-
+                                System.out.println("\nTOTAL DE COMPRAS ES DE: " + gastototal);
 
                                 int tipopago = 0;
                                 while (tipopago != 2){
@@ -338,7 +335,6 @@ public class Menu {
                 case 2:
                     System.out.println("--AGREGAR PRODUCTO SALADO A LA DULCERIA--");
                     empleado.agregarProductoSalado();
-
                     break;
                 case 3:
                     System.out.println("AQÍ ESTAN LOS PRODUCTOS DULCES: ");
@@ -383,12 +379,10 @@ public class Menu {
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
 
-                    sc.nextLine();
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
                     peliculaInteres = sc.nextLine();
 
                     empleado.mostratrarFunciones(peliculaInteres);
-
                     empleado.eliminarFuncion(peliculaInteres);
                     break;
                 case 13:

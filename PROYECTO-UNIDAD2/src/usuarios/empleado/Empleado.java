@@ -1,6 +1,5 @@
 package usuarios.empleado;
 
-import cine.ValidadorCine;
 import funcion.Funcion;
 import peliculas.Pelicula;
 import peliculas.proximosEstrenos.ProximosEstrenos;
@@ -9,10 +8,8 @@ import salas.Sala;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 import cine.Cine;
-
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -66,7 +63,6 @@ public class Empleado extends Usuario {
                     tamaño = "MEDIANO";
                     break;
                 case 3:
-
                     System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
                     precio = sc.nextDouble();
                     tamaño = "GRANDE";
@@ -91,10 +87,10 @@ public class Empleado extends Usuario {
         System.out.println("INGRESA EL NOMBRE DEL PRODUCTO QUE VAS A INGRESAR: ");
         String nombres = sc.next();
 
-        int opciontamaños =0;
+        int opciontamanios =0;
         double precios =0;
-        String tamaños = "";
-        while(opciontamaños < 1 || opciontamaños > 4){
+        String tamanios = "";
+        while(opciontamanios < 1 || opciontamanios > 4){
             sc.nextLine();
             System.out.println("EL PRODUCTO A INGRESAR TIENE TAMAÑO");
             System.out.println("1.- CHICO");
@@ -102,33 +98,32 @@ public class Empleado extends Usuario {
             System.out.println("3.- GRANDE");
             System.out.println("4.- NO TIENE TAMAÑO");
             System.out.println("SELECCIONA UNA OPCION");
-            opciontamaños = sc.nextInt();
+            opciontamanios = sc.nextInt();
 
-            switch (opciontamaños){
+            switch (opciontamanios){
                 case 1:
                     System.out.println("INGRESA EL PRECIO DEL PRODUCTO CHICO: ");
                     precios = sc.nextDouble();
-                    tamaños = "CHICO";
+                    tamanios = "CHICO";
                     break;
                 case 2:
                     System.out.println("INGRESA EL PRECIO DEL PRODUCTO MEDIANO: ");
                     precios = sc.nextDouble();
-                    tamaños = "MEDIANO";
+                    tamanios = "MEDIANO";
                     break;
                 case 3:
-
                     System.out.println("INGRESA EL PRECIO DEL PRODUCTO GRANDE: ");
                     precios = sc.nextDouble();
-                    tamaños = "GRANDE";
+                    tamanios = "GRANDE";
                     break;
                 case 4:
                     System.out.println("INGRESA EL PRECIO DEL PRODUCTO:");
                     precios = sc.nextDouble();
-                    tamaños = "";
+                    tamanios = "";
                     break;
             }
         }
-        Producto producto = new Producto(ID,ids, nombres, tamaños, precios);
+        Producto producto = new Producto(ID,ids, nombres, tamanios, precios);
         cine.registrarSalado(producto);
         cine.registrarProducto(producto);
         System.out.println("PRODUCTO REGISTRADO EXITOSAMENTE.");
@@ -387,12 +382,10 @@ public class Empleado extends Usuario {
     }
 
     public void mostratrarFunciones(String tituloPeli){
-
         Pelicula peliculaInteres = cine.obtenerPeliculaPorNombre(tituloPeli);
         for (Funcion funcion : peliculaInteres.listaFunciones) {
             System.out.println(funcion.mostrarFuncion());
         }
     }
-
 
 }

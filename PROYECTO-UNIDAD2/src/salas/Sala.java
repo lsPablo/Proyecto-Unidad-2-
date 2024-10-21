@@ -1,10 +1,6 @@
 package salas;
 
 import funcion.Funcion;
-import peliculas.Pelicula;
-import usuarios.cliente.Cliente;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Sala {
@@ -71,8 +67,6 @@ public class Sala {
                         if (distribucion[i][j].startsWith("LV") || distribucion[i][j].startsWith("KV")) {
                             if (!distribucion[i][j].equals(" X ")) {
                                 precioAsiento = 400.00;
-
-
                                 distribucion[i][j] = " X ";
                                 System.out.println("Asiento VIP reservado.");
                             } else {
@@ -109,10 +103,6 @@ public class Sala {
                 System.out.println("Asiento no encontrado.");
             }
         return null;
-        }
-
-
-
+    }
 
 }
-

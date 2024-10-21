@@ -1,8 +1,6 @@
 package peliculas;
 
 import funcion.Funcion;
-
-import java.sql.Time;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,8 +13,6 @@ public class Pelicula {
     public Duration duracion;
     public String sinopsis;
     public ArrayList<Funcion> listaFunciones = new ArrayList();
-
-    Scanner sc = new Scanner(System.in);
 
     public Pelicula(String id, String titulo, String gernero, char clasificacion, Duration duracion, String sinopsis) {
         this.id = id;
@@ -96,6 +92,5 @@ public class Pelicula {
         String titulo = String.format("%s ", this.titulo);
         return titulo;
     }
-
 
 }

@@ -1,7 +1,6 @@
 package boleto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Random;
 
@@ -13,7 +12,6 @@ public class Boleto {
     public LocalTime horaFuncion;
     public Double precioBoleto;
 
-
     public Boleto(String id, String tituloPelicula, String sala, String asiento, LocalTime horaFuncion, Double precioBoleto) {
         this.id = id;
         this.tituloPelicula = tituloPelicula;
@@ -21,7 +19,6 @@ public class Boleto {
         this.asiento = asiento;
         this.horaFuncion = horaFuncion;
         this.precioBoleto = precioBoleto;
-
     }
 
     public String getId() {
