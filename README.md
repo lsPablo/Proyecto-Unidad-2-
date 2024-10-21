@@ -6,8 +6,8 @@ Este repositorio contiene el proyecto elaborado para la evaluación de la Unidad
 
 - [Nombre del integrante 1]
 - [Nombre del integrante 2]
-- [Nombre del integrante 3]
-- [Nombre del integrante 4]
+- Pablo Cesar Gallegos Valencia
+
 
 ## Habilidades Empleadas
 
