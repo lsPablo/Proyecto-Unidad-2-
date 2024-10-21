@@ -1,4 +1,19 @@
-# Proyecto-Unidad-2-
-Sistema CINEPOLLIS 
+# Proyecto de Evaluación Unidad II - Programación Orientada a Objetos
+
+Este repositorio contiene el proyecto elaborado para la evaluación de la Unidad II de la materia **Programación Orientada a Objetos**, impartida por el profesor **Eder Rivera Cisneros**.
+
+## Integrantes
+
+- [Nombre del integrante 1]
+- [Nombre del integrante 2]
+- [Nombre del integrante 3]
+- [Nombre del integrante 4]
+
+## Habilidades Empleadas
+
+- **Uso apropiado de clases:** Se implementaron clases de manera eficiente y efectiva para estructurar el código.
+- **Buena estructura:** La organización del proyecto facilita la comprensión y el mantenimiento.
+- **Líneas de código legibles y ordenadas:** Se aplicaron buenas prácticas de codificación, asegurando que el código sea fácil de leer y entender.
+
 
 ![Logo](https://github.com/user-attachments/assets/b8c77dae-74b4-425f-94c7-2446a854229c)
