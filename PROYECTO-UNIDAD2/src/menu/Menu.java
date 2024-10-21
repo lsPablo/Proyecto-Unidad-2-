@@ -325,7 +325,7 @@ public class Menu {
             System.out.println("13.- AGREAGAR PROXIMO ESTRENO");
             System.out.println("14.- MOSTRAR PROXIMOS ESTRENO");
             System.out.println("15.- ELIMINAR PROXIMO ESTRENO");
-            System.out.println("13.-SALIR");
+            System.out.println("16.-SALIR");
 
             System.out.println("SELECCIONA UNA OPCION");
             opcion = sc.nextInt();
