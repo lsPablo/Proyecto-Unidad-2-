@@ -393,6 +393,7 @@ public class Menu {
                 case 12:
                     System.out.println("--ELIMINAR FUNCIONES--");
 
+                    sc.nextLine();
                     System.out.println("INGRESA LA PELICULA DE INTERES: ");
                     peliculaInteres = sc.nextLine();
 
