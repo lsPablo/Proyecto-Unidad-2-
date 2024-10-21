@@ -269,9 +269,23 @@ public class Menu {
                                         case 2:
                                             System.out.println("----PAGO CON TARJETA----");
                                             cliente.registrarTarjeta();
-                                            //aplicarDescuentosSiMesNacimiento(cliente);
-                                            cliente.mostrarTotalCompra();
-                                            break;
+                                            System.out.println("INGRESA EL DINERO: ");
+                                            Double efectivos = sc.nextDouble();
+
+                                            if (efectivos < gastototal) {
+                                                System.out.println("FALTAN $" + (gastototal - efectivos) + " PESOS.");
+                                                break;
+                                            } else if (efectivos > gastototal) {
+                                                System.out.println("TU CAMBIO ES DE $" + (efectivos - gastototal) + " PESOS.");
+                                                System.out.println("GRACIAS POR TU COMPRA");
+                                                System.out.println(boleto.mostrarBoleto());
+                                                return;
+                                            }else{
+                                                System.out.println("GRACIAS POR TU COMPRA");
+                                                System.out.println("==BOLETOS COMPRADOS==");
+                                                cine.mostrarListaBoletos(cliente);
+                                            }
+                                            return;
                                         default:
                                             System.out.println("OPCION INVALIDA");
                                             break;
